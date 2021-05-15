@@ -7,6 +7,6 @@
   <meta name="description" content="Oefening 1" />
 </head>
 <body>
-  <h1><?php echo 'Hello World; ?></h1>
+  <h1><?php echo 'Hello World'; ?></h1>
 </body>
 </html>
