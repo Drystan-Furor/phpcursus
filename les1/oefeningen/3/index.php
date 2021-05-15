@@ -17,7 +17,7 @@ $lengte = '1.80';
 
 $gewichtTypen = array('Ondergewicht', 'Gezond gewicht', 'Overgewicht', 'Obesitas');
 
-$bmi = $gewicht / $lengte^2;
+$bmi = ($gewicht / ($lengte * $lengte));
 
 if($bmi > 0 && $bmi <= 18.5) {
     echo $gewichtTypen[0];

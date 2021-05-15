@@ -8,19 +8,15 @@ echo $halloWereld;
 
 Oefening 2
 
-Wat is hier fout?
-$_My_var = "hallo" // correct.
-
-Wat is hier fout?
+$_My_var = "hallo" // ; ontbreekt.
 $my_var0 = "hallo"; // correct.
-
-Wat is hier fout?
 $!000_ = "hallo"; // ongeoorloofd teken.
-
-Wat is hier fout?
 $1_hallo_ = "hallo"; // begint met een getal.
 
+
 Oefening 3
+
+<?php 
 
 $aanhef = 'dhr';
 $voornaam = 'Piet';
@@ -30,10 +26,19 @@ $postcode = '1234 AB';
 $woonplaats = 'Plaats';
 $land = 'Land';
 
+echo '<br/>';
 echo $aanhef;
+echo '<br/>';
 echo $voornaam;
+echo '<br/>';
 echo $achternaam;
+echo '<br/>';
 echo $straat;
+echo '<br/>';
 echo $postcode; 
+echo '<br/>';
 echo $woonplaats;
+echo '<br/>';
 echo $land;
+echo '<br/>';
+?>
