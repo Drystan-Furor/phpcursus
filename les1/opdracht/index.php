@@ -10,11 +10,24 @@
  * 5. Tonen van de grofheid van de tekst; met indicator "rood", "geel" of "groen".
  */
 
+$niceWords = array('sweet', 'darling', 'pumpkin', 'ducklin', 'happy', 'beautiful');
+
+$random = rand(0, 20);
+
+echo $random;
+
+for($i=0; $i<100; $i++) {
+    if($i % 5 == 0) {
+        $randomIndex = rand(0, count($niceWords)-1);
+        echo $niceWords[$randomIndex];
+    }
+}
+ 
 // 1.
 $curseWords = array('bastard', 'shit', 'piss off', 'dick', 'stfu', 'fyfi', 'fuck');
 $niceWords = array('sweet', 'darling', 'pumpkin', 'ducklin', 'happy', 'beautiful');
 
-$originalText = "there are many fucking variations of passages of Lorem Ipsum available, but the shit majority have suffered alteration in some damned form, by injected humour, or randomised words which don't look even slightly believable. if you are going to use a passage of Lorem Ipsum, you need to be fucking sure there isn't anything embarrassing hidden in the middle of text.  all the Lorem Ipsum generators on the dick head Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. it uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
+$originalText = "there are many pumkining variations of passages of Lorem Ipsum available, but the shit majority have suffered alteration in some damned form, by injected humour, or randomised words which don't look even slightly believable. if you are going to use a passage of Lorem Ipsum, you need to be fucking sure there isn't anything embarrassing hidden in the middle of text.  all the Lorem Ipsum generators on the dick head Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. it uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
 
 foreach($curseWords as $curseWord) {
     $sanitizedText = str_ireplace(

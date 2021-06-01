@@ -1,4 +1,4 @@
-# PHP Leren Programmeren
+PHP Leren Programmeren
 
 Met deze cursus leg je de fundering die je nodig hebt om zelf met PHP web applicaties te maken. 
 
@@ -11,9 +11,9 @@ Module 1 is gericht op de syntax en semantiek van de PHP taal.
 - Arrays
 - Operators
 - Control Structures (if / else statements)
-- Loops 
 - Functions
 - String functions
+- Loops
 - Includes
 - HTML Forms
 - Requests
@@ -27,7 +27,6 @@ Module 2 richt zich op objectgeorienteerd programmeren (OOP).
 - Getters en Setters
 - Constanten
 - Abstract Classes en Interfaces
-- Dependency Injection
 - Static keyword
 - Polymorfisme
 
@@ -44,6 +43,7 @@ Module 4 is gericht op het toepassen van de model-view-control (MVC) design patt
 
 - MVC pattern
 - Routing
+- Dependency Injection
 - Framework opzetten
 
 Na het voltooien van deze cursus ben je in staat om zelfstandig een eenvoudige webapplicatie te bouwen in PHP.

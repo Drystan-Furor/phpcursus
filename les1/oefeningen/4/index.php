@@ -76,6 +76,15 @@ $productenMatrix = array(
         )
     );
 
+
+$kaas = $productenMatrix[0];
+
+echo $kaas['Voorraad'];
+
+echo $productenMatrix[0]['Voorraad'];
+
+$keys = array_keys($kaas);
+
 ?>
 
 Oefening 5
@@ -88,7 +97,9 @@ function countChars($string) {
     return strlen($string);
 }
 
-echo 'Aantal tekens: ' . countChars('Hallo Wereld');
+$charCount = countChars('Hallo Wereld');
+
+echo "Aantal tekens: {$charCount}";
 
 ?>
 
@@ -102,7 +113,12 @@ function replaceWords($words = array(), $replacementWords = array(), $subject = 
     return str_replace($words, $replacementWords, $subject);
 }
 
-print_r(replaceWords( array('hello', 'world'), array('Hallo', 'Wereld'), 'hello world.'));
+print_r(replaceWords( array('hello', 'world'), array('Byebye', 'World'), 'hello world.'));
+
+$string = 'hello world.';
+
+echo str_replace('world', 'Wereld', str_replace('hello', 'Bye', $string));
+
 
 ?>
 
@@ -125,5 +141,7 @@ function stringSplitToArrayWithLowerCaseWords($string) {
 }
 
 print_r(stringSplitToArrayWithLowerCaseWords($tekst));
+
+
 
 ?>

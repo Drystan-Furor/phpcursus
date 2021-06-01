@@ -5,25 +5,47 @@ Schrijf een programma waarmee onderstaande data in een tabel wordt getoond met h
 
 <?php 
 
+$getallen = array(1,2,3,4,5);
+
+foreach($getallen as $getal) {
+    echo $getal;
+}
+
+for($i = 0; $i < count($getallen); $i++) {
+    echo $getallen[$i];
+    if($i == 3) {
+        break;
+    }
+}
+
+$running = true;
+while($running) {
+    $running = false;
+}
+
 $students =
   array(
-    array("first_name" => "Piet", "score" => 8.3, "last_name" => "Smith"),
+    array(
+        "first_name" => "Piet", 
+        "score" => 8.3, 
+        "last_name" => "Smith"
+    ),
     array("first_name" => "Jan", "score" => 9.2, "last_name" => "de Boer"),
     array("first_name" => "Anna", "score" => 9.0, "last_name" => "Bel")
 ); 
 
-function array2DTable($matrix) {
+function maakTabel($matrix = array()) {
 
     $html = '<table border="1">';
-    foreach(array_keys($matrix[0]) as $header) {
-        $html .= '<th>' . $header . '</th>';
+    foreach(array_keys($matrix[0]) as $columnName) {
+        $html .= '<th>' . $columnName. '</th>';
     }
 
     foreach ($matrix as $row) {
         $html .= '<tr>';
-        foreach ($row as $cell) {
-            $html .= '<td>' . $cell . '</td>';
-        } 
+        foreach($row as $waarde) {
+           $html .= "<td>$waarde</td>";
+        }
         $html .= '</tr>';
     } 
 
@@ -32,9 +54,16 @@ function array2DTable($matrix) {
     return $html;
 }
 
-echo array2DTable($students);
+echo maakTabel($students);
 
 ?>
+
+<a href="downloads/les.pdf" title="">Download deze les</a>
+
+<form action="email.php" method="POST">
+    <input type="text" name="email" value="">
+    <input type="submit" value="Submit">
+</form>
 
 Oefening 2
 
@@ -67,7 +96,7 @@ Oefening 4
 
 <?php 
 
-function array2DTableExtended($matrix, $highlight = array()) {
+function highlight($matrix, $highlight = array()) {
 
     $html = '<table border="1">';
     foreach(array_keys($matrix[0]) as $header) {
@@ -91,6 +120,10 @@ function array2DTableExtended($matrix, $highlight = array()) {
     return $html;
 }
 
-echo array2DTableExtended($students, $students[count($students)-1]);
+$student = $students[count($students)-1];
+
+echo highlight(array(
+        array('id' => 1),
+        array('id' => 2)), array('id' => 2));
 
 ?>

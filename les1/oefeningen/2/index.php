@@ -20,7 +20,7 @@ Oefening 3
 
 $aanhef = 'dhr';
 $voornaam = 'Piet';
-$achternaam = 'de Boer';
+$achterNaam = 'de Boer';
 $straat = 'Een straat 1';
 $postcode = '1234 AB';
 $woonplaats = 'Plaats';
