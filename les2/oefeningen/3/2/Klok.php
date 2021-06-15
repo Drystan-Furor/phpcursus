@@ -1,5 +1,6 @@
 <?php 
-class Clock 
+
+class Klok
 {
 
     private $time = 0;
@@ -31,5 +32,11 @@ class Clock
         echo 'The current day is ' . $this->day . PHP_EOL;
         echo 'The time is '. $this->time . PHP_EOL; 
         echo '------------------------------------------' . PHP_EOL;
+    }
+
+    public function run() {
+        while($this->getDay() <= 7) {
+            $this->tick();
+        }
     }
 }

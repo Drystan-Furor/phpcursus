@@ -4,25 +4,7 @@ Schrijf een programma waarmee onderstaande data in een tabel wordt getoond met h
 *hint: het gaat hier om keys en values.
 
 <?php 
-
-$getallen = array(1,2,3,4,5);
-
-foreach($getallen as $getal) {
-    echo $getal;
-}
-
-for($i = 0; $i < count($getallen); $i++) {
-    echo $getallen[$i];
-    if($i == 3) {
-        break;
-    }
-}
-
-$running = true;
-while($running) {
-    $running = false;
-}
-
+ 
 $students =
   array(
     array(
@@ -57,13 +39,6 @@ function maakTabel($matrix = array()) {
 echo maakTabel($students);
 
 ?>
-
-<a href="downloads/les.pdf" title="">Download deze les</a>
-
-<form action="email.php" method="POST">
-    <input type="text" name="email" value="">
-    <input type="submit" value="Submit">
-</form>
 
 Oefening 2
 
