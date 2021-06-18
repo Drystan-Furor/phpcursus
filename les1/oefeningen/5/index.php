@@ -4,7 +4,7 @@ Schrijf een programma waarmee onderstaande data in een tabel wordt getoond met h
 *hint: het gaat hier om keys en values.
 
 <?php 
- 
+   
 $students =
   array(
     array(

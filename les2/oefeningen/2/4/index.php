@@ -6,7 +6,7 @@
 
 <?php if(isset($_SESSION['username'])): ?>
 
-<h1>Welkom terug <?php echo $_SESSION['username']; ?></h1>
+<h2>Welkom terug <?php echo $_SESSION['username']; ?></h2>
 
 <?php else: ?>
 
