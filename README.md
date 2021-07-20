@@ -17,8 +17,8 @@ Onderwijsvorm
 - Het cursus materiaal staat online gepubliceerd.
 - De student krijgt toegang tot een online community
 - De module bestaat uit 5 bijeenkomsten van een dagdeel die worden gegeven in een periode van 10 weken. 
-- In de weken waarin geen bijeenkomsten plaats vind is docent beschikbaar voor vragen en begeleiding van de eindopdracht 
-- De begeleiding werd aangeboden via de online community (slack) en video bellen middels zoom.
+- In de weken waarin geen bijeenkomsten zijn is docent beschikbaar voor vragen en begeleiding van de eindopdracht 
+- De begeleiding wordt aangeboden via de online community (slack) en video bellen middels zoom.
 
 Inhoud
 
