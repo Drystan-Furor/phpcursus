@@ -7,7 +7,7 @@ PHP Leren Programmeren
 Toetsing
 
 - Om de deelnemers te stimuleren hebben we twee soorten certificaten namelijk een certificaat met toetsing en een deelname certificaat gehanteerd.   
-- Deelnemers die de toetsing na de herkansing niet gehaald hebben kwamen in aanmerking voor een deelname certificaat.       
+- Deelnemers die de toetsing na de herkansing niet gehaald hebben komen in aanmerking voor een deelname certificaat.       
 - De studenten werken toe naar een eindopdracht, het huiswerk wordt voor iedere les ingeleverd. De docent geeft hier feedback op.
 - De eindopdracht wordt gegeven aan het eind van de laatste les. De studenten krijgen twee weken de tijd om de opdracht af te ronden en in te leveren.
 
