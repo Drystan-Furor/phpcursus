@@ -42,7 +42,12 @@ class Database
     public function query($sql) 
     {
         $this->result = $this->connect()->query($sql);
-
+        
+        if(!$this->result) {
+            printf("Error message: <br>\n%s<br>\n%s<br>\n", $this->connection->error, $sql);
+            die();
+        }
+        
         return $this;
     }
 

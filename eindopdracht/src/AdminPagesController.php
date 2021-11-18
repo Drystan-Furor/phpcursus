@@ -35,7 +35,7 @@ class AdminPagesController extends Controller
         $content = $_POST['content'];
         $slug = $_POST['slug'];
 
-        Database::raw("INSERT INTO pages ('title', 'content', 'slug') VALUES ('$title', '$content', '$slug')");
+        Database::raw("INSERT INTO pages (title, content, slug) VALUES ('$title', '$content', '$slug')");
 
         header('location: /admin/pages');
     }
