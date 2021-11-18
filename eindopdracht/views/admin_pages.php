@@ -3,17 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Admin Pages</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
   </head>
   <body>
+
+    <?php require 'components/admin_menu.php'; ?>
+
     <h1>Admin Pages</h1>
     <div>
         <?php echo $_SESSION['user']->username; ?> (<a href="/logout">uitloggen</a>)
     </div>
-    
+
     <div style="margin-top:20px;">
       <a href="/admin/page/add">Add Page</a>
     </div>
-    
+
     <div style="margin-top:20px;">
         <table border="1" width="100%">
         <tr>

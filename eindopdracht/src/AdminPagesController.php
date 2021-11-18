@@ -58,8 +58,14 @@ class AdminPagesController extends Controller
             
             $id = $_POST['id'];
             $title = $_POST['title'];
+            $content = $_POST['content'];
+            $slug = $_POST['slug'];
 
-            Database::raw('update pages set title = "'. $title .'" where id = ' . $id);
+            $updateQuery = 'update pages set title = "%s", content = "%s", slug = "%s" where id = %d';
+
+            Database::raw(
+                sprintf($updateQuery, $title, $content, $slug, $id)
+            );
 
             header('location: /admin/page/edit?id=' . $id);
         }
