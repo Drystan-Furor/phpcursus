@@ -5,7 +5,7 @@
  */
 class Database 
 {
-    protected static $instance = null;
+    protected static $instance = null; 
     protected $connection;
     protected $result;
 
@@ -42,6 +42,7 @@ class Database
     public function query($sql) 
     {
         $this->result = $this->connect()->query($sql);
+
         return $this;
     }
 

@@ -16,6 +16,7 @@ switch($requestedRoute)
         $indexController = new IndexController;
         $indexController->index();
         break;
+    
     case '/login':
         $loginController = new LoginController;
 
@@ -30,6 +31,7 @@ switch($requestedRoute)
         $loginController = new LoginController;
         $loginController->logout();
         break;
+        
     case '/admin/pages':
         $adminPagesController = new AdminPagesController;
 
@@ -40,6 +42,28 @@ switch($requestedRoute)
         $adminPagesController->index();
         break;
     
+    case '/admin/page/edit':
+        $adminPagesController = new AdminPagesController;
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $adminPagesController->update();
+        } else {
+            $adminPagesController->edit();
+        }
+        
+        break;
+    
+    case '/admin/page/add':
+        $adminPagesController = new AdminPagesController;
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $adminPagesController->store();
+        }
+        else {
+            $adminPagesController->create();
+        }
+
+        break;
     default:
         $notFoundController = new NotFoundController;
         $notFoundController->index();

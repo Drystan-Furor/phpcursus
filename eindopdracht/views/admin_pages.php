@@ -9,6 +9,11 @@
     <div>
         <?php echo $_SESSION['user']->username; ?> (<a href="/logout">uitloggen</a>)
     </div>
+    
+    <div style="margin-top:20px;">
+      <a href="/admin/page/add">Add Page</a>
+    </div>
+    
     <div style="margin-top:20px;">
         <table border="1" width="100%">
         <tr>
@@ -38,13 +43,18 @@
             echo '</td>';
            
             echo '<td>';
+            echo '<ul><li>';
             if($page['status'] === 'draft') {
                 echo '<a href="/admin/pages/?id=' . $page['id'] . '&action=publish">publish</a>';
             } else {
                 echo '<a href="/admin/pages/?id=' . $page['id'] . '&action=unpublish">unpublish</a>';   
             }
+            echo '</li>';
+            echo '<li>';
+            echo '<a href="/admin/page/edit/?id=' . $page['id'] . '">edit</a>';
+            echo '</li>';
+            echo '</ul>';
             echo '</td>';
-
             echo '</tr>';
         }
         ?>

@@ -20,7 +20,6 @@
 
     <?php endif; ?>
 
-
     <img src="/images/logo.jpeg" alt="Avans+ logo" width="200" />
 
   </body>
