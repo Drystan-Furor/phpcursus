@@ -17,12 +17,29 @@ class AdminPagesController extends Controller
         $this->view('admin_pages.php', $pages);
     }
 
+
+
+
+
+    //--------------------------------
     public function edit() 
     {
         $page = Database::raw('select * from pages where id = ' . $_REQUEST['id'])->asObject();
 
         $this->view('admin_page_edit.php', $page);
     }
+
+    public function show() //probeer een show knop te maken om page te presenteren, dan heb je de navmenu concept, krijg SHOW onder EDIT op Page
+    {
+        $page = Database::raw('select * from pages where id = ' . $_REQUEST['id'])->asObject();
+
+        $this->view('newpage.php', $page);
+    }
+    //-----------------------------
+
+
+
+
 
     public function create() 
     {

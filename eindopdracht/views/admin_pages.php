@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="nl">
-  <head>
-    <meta charset="utf-8">
-    <title>Admin Pages</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  </head>
+<?php $title = 'Admin Page Edit' ?>
+  <?php require 'components/header.php'; ?>
   <body>
-
+    <?php require 'components/menu.php'; ?>
     <?php require 'components/admin_menu.php'; ?>
 
     <h1>Admin Pages</h1>
@@ -57,9 +49,16 @@
                 echo '<a href="/admin/pages/?id=' . $page['id'] . '&action=unpublish">unpublish</a>';   
             }
             echo '</li>';
-            echo '<li>';
+            echo '<li>'; // dit is de edit link, de bestaande a href
             echo '<a href="/admin/page/edit/?id=' . $page['id'] . '">edit</a>';
             echo '</li>';
+
+            echo '<li>';
+            echo '<a href="/newpage/?id=' . $page['id'] . '">show</a>'; //  /newpage is new route
+            echo '</li>';
+
+
+
             echo '</ul>';
             echo '</td>';
             echo '</tr>';

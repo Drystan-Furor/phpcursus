@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="nl">
-  <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-  </head>
+<?php $title = 'Login' ?>
+  <?php require 'components/header.php'; ?>
   <body>
     <?php include 'components/menu.php'; ?>
     

@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="nl">
-  <head>
-    <meta charset="utf-8">
-    <title>Admin Page Add</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  </head>
+  <?php $title = 'Admin Page Add' ?>
+  <?php require 'components/header.php'; ?>
   <body>
+    <?php require 'components/menu.php'; ?>
     <?php require 'components/admin_menu.php'; ?>
 
     <h1>Page Add View</h1>

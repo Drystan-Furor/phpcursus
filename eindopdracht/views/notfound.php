@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="nl">
-  <head>
-    <meta charset="utf-8">
-    <title>404 - Pagina niet gevonden</title>
-  </head>
+
+  <?php $title = '404 - Pagina niet gevonden' ?>
+  <?php require 'components/header.php'; ?>
   <body>
+  <?php include 'components/menu.php'; ?>
    <h1>Oeps..</h1>
-
-   <?php include 'components/menu.php'; ?>
-
+   <p>
+     You have reached the end of the internet.
+   </p>
   </body>
 </html>
