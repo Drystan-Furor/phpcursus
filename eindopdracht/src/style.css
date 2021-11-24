@@ -1,8 +1,34 @@
+.adminmenucontainer {
+    position: relative;
+}
+
 .adminmenu {
-    width: 700px;
-    height: 200px;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+}
+
+
+/* footer -----------------------------------------------------------------------------*/
+
+footer {
+    background-color: rgb(15, 15, 15);
+    color: rgb(248, 4, 4);
+    padding: 5px 0 15px 15px;
+    border: 1px solid white;
+    border-radius: 50px 50px 0 0;
+    font-size: 80%;
     text-align: center;
+    left: 0;
+    width: 100%;
+    margin: 2% 0 0 0;
+    position: fixed;
+    bottom: 0px;
+}
+
+footer a:link,
+footer a:visited {
+    color: rgb(248, 4, 4);
+    text-decoration: none;
 }

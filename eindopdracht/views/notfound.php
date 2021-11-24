@@ -7,5 +7,4 @@
    <p>
      You have reached the end of the internet.
    </p>
-  </body>
-</html>
+   <?php require 'components/footer.php'; ?>

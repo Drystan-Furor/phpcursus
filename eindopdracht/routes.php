@@ -11,63 +11,63 @@ $requestUri = explode('?', $_SERVER['REQUEST_URI'], 2);
 $requestedRoute = $requestUri[0];
 
 switch ($requestedRoute) {
-    case '/':
-        $indexController = new IndexController;
-        $indexController->index();
-        break;
+case '/':
+    $indexController = new IndexController;
+    $indexController->index();
+    break;
 
-    case '/login':
-        $loginController = new LoginController;
+case '/login':
+    $loginController = new LoginController;
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $loginController->login();
-        } else {
-            $loginController->index();
-        }
-        break;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $loginController->login();
+    } else {
+        $loginController->index();
+    }
+    break;
 
-    case '/logout':
-        $loginController = new LoginController;
-        $loginController->logout();
-        break;
+case '/logout':
+    $loginController = new LoginController;
+    $loginController->logout();
+    break;
 
-    case '/admin/pages':
-        $adminPagesController = new AdminPagesController;
+case '/admin/pages':
+    $adminPagesController = new AdminPagesController;
 
-        if (isset($_GET['action']) && isset($_GET['id'])) {
-            $adminPagesController->update();
-        }
+    if (isset($_GET['action']) && isset($_GET['id'])) {
+        $adminPagesController->update();
+    }
 
-        $adminPagesController->index();
-        break;
+    $adminPagesController->index();
+    break;
 
-    case '/admin/page/edit':
-        $adminPagesController = new AdminPagesController;
+case '/admin/page/edit':
+    $adminPagesController = new AdminPagesController;
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $adminPagesController->update();
-        } else {
-            $adminPagesController->edit();
-        }
-        break;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $adminPagesController->update();
+    } else {
+        $adminPagesController->edit();
+    }
+    break;
 
-    case '/admin/page/add':
-        $adminPagesController = new AdminPagesController;
+case '/admin/page/add':
+    $adminPagesController = new AdminPagesController;
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $adminPagesController->store();
-        } else {
-            $adminPagesController->create();
-        }
-        break;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $adminPagesController->store();
+    } else {
+        $adminPagesController->create();
+    }
+    break;
 
-    case '/newpage':
-        $newPageController = new NewPageController;
-        $newPageController->index();
-        break;
+case '/newpage':
+    $newPageController = new NewPageController;
+    $newPageController->index();
+    break;
 
-    default:
-        $notFoundController = new NotFoundController;
-        $notFoundController->index();
-        break;
+default:
+    $notFoundController = new NotFoundController;
+    $notFoundController->index();
+    break;
 }
