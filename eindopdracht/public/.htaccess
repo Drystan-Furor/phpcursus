@@ -14,5 +14,8 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    #configuration for CSS file
+    RewriteRule ^css/(.*)$ /public/$1 [NC,L]
 </IfModule>
 

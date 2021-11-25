@@ -3,6 +3,25 @@
 /**
  * De pages controller behandeld de requests voor de route "/admin/pages".
  */
+
+     /*
+    Middels gebruik van een aangepaste edit/store combinatie functie zou het mogelijk zijn geweest
+    om "PAGES" te bestempelen als topics, en dan per topic-page een alinea toe te voegen.
+    Om dit echter mogelijk te maken, zou de database uitgebreid moeten worden met een estra Table
+    Deze Table zou een FOREIGN KEY moeten bevatten die verwijst naar de PRIMARY KEY van PAGES
+    als PAGES dan TOPICS zijn, zou je dus PER topic-page een <form> invullen, waarvan je Title als een <h1>
+    en content als een <p> zou kunnen plaatsen in een php echo na een query.
+
+    Aangezien de readme vooraf ons alleen vertelt over USERS en PAGES, moesten we in dit raamwerk de opdracht maken.
+    Ook is het bij nadere beschouwing van de Eindopdracht in RAW niet de bedoeling om de database uit te breiden.
+
+    Echter, de Eindopdracht in RAI zou betekenen dat wij meerdere blogs per page hadden kunnen schrijven.
+    Voor nu is het meer dan gevraagd en heb ik alle code die ik ervoor geschreven had verwijderd.
+    Verwijderd uit
+        AdminPagesController
+        routes
+        admin_page_add_blogpost [volledig verwijdert]
+    */
 class AdminPagesController extends Controller
 {
     public function index()
@@ -54,25 +73,6 @@ class AdminPagesController extends Controller
         header('location: /admin/pages');
     }
 
-
-    /*
-    Middels gebruik van een aangepaste edit/store combinatie functie zou het mogelijk zijn geweest
-    om "PAGES" te bestempelen als topics, en dan per topic-page een alinea toe te voegen.
-    Om dit echter mogelijk te maken, zou de database uitgebreid moeten worden met een estra Table
-    Deze Table zou een FOREIGN KEY moeten bevatten die verwijst naar de PRIMARY KEY van PAGES
-    als PAGES dan TOPICS zijn, zou je dus PER topic-page een <form> invullen, waarvan je Title als een <h1>
-    en content als een <p> zou kunnen plaatsen in een php echo na een query.
-
-    Aangezien de readme vooraf ons alleen vertelt over USERS en PAGES, moesten we in dit raamwerk de opdracht maken.
-    Ook is het bij nadere beschouwing van de Eindopdracht in RAW niet de bedoeling om de database uit te breiden.
-
-    Echter, de Eindopdracht in RAI zou betekenen dat wij meerdere blogs per page hadden kunnen schrijven.
-    Voor nu is het meer dan gevraagd en heb ik alle code die ik ervoor geschreven had verwijderd.
-    Verwijderd uit
-        AdminPagesController
-        routes
-        admin_page_add_blogpost [volledig verwijdert]
-    */
 
     public function update()
     {
