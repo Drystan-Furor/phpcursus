@@ -9,7 +9,7 @@
 
         <h1><?php echo $params[0]->title; ?></h1>
 
-        <p><?php echo $params[0]->content; ?></p>
+        <p class ="centeredpar"><?php echo $params[0]->content; ?></p>
 
     <?php else : ?>
 

@@ -1,3 +1,24 @@
+* {
+    margin-top: 0;
+    /*margin: 0;*/
+    /*padding: 0;*/
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    /*--top for load box--*/
+    font-size: 100%;
+    font-family: "Courier New", monospace;
+    background-color: #45CEF7;
+    color: black;
+    align-items: center;
+}
+
+
+/* adminmenu -----------------------------------------------------------------------------*/
+
 .adminmenucontainer {
     position: relative;
 }
@@ -6,23 +27,176 @@
     position: absolute;
     top: 8px;
     right: 16px;
+    padding: 15px;
+    border: 3px solid #EE8600;
+    border-radius: 50px;
+    font-size: 80%;
+    text-align: center;
+    color: #45CEF7;
+    background-color: rgb(15, 15, 15);
+}
+
+.adminmenu a:link,
+.adminmenu a:visited {
+    color: rgb(248, 4, 4);
+    text-decoration: none;
+}
+
+
+/* navigatie menu ---------------------------------------------------------------------------*/
+
+.navmenu {
+    background-color: #767676;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    border-radius: 50px;
+    font-size: 80%;
+    font-family: Verdana, monospace;
+    text-align: left;
+    border: 3px solid #EE8600;
+    top: 8px;
+    left: 16px;
     font-size: 18px;
+}
+
+.navmenu a:link,
+.navmenu a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.navmenu a:hover,
+.navmenu a:active {
+    text-decoration: underline;
+    color: rgb(248, 4, 4);
+}
+
+
+/*--------------------------------------------------------------CENTER*/
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-family: Copperplate, Fantasy, serif;
+    /*text-shadow: 2px 2px;*/
+    font-size: 200%;
+    color: #d41e1e;
+    text-align: center;
+    background-color: rgb(15, 15, 15);
+    border: 3px solid #EE8600;
+    border-radius: 50px;
+    margin-bottom: 1px;
+}
+
+.centeredpar {
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    position: absolute;
+    padding-bottom: 10%;
+    margin-bottom: 10%;
+    margin-top: 20px;
+    width: 90%;
+    font-size: 80%;
+    background-color: white;
+    border: 3px solid #EE8600;
+    border-radius: 5px;
+}
+
+
+/*--------------------------buttons-------------*/
+
+.submitbutton {
+    background-color: #767676;
+    color: rgb(9, 129, 35);
+    padding: 5px;
+    font-family: Copperplate, Fantasy, serif;
+    border: 3px solid rgb(9, 129, 35);
+    border-radius: 50px;
+    font-size: 120%;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    cursor: pointer;
+}
+
+
+/*----------------logoutcontainer----------*/
+
+.logoutcontainer {
+    display: block;
+    margin-left: auto;
+    margin-right: 16px;
+    margin-top: 3px;
+    width: 20%;
+    font-family: Copperplate, Fantasy, serif;
+    /*text-shadow: 2px 2px;*/
+    font-size: 80%;
+    color: #45CEF7;
+    text-align: center;
+    background-color: rgb(15, 15, 15);
+    border: 3px solid #EE8600;
+    border-radius: 50px;
+    margin-bottom: 1px;
+}
+
+.logoutcontainer a:link,
+.logoutcontainer a:visited {
+    color: #d41e1e;
+    text-decoration: none;
+}
+
+
+/*--------------------adminpages-----------------*/
+
+.adminpages-container {
+    position: relative;
+}
+
+.adminpages {
+    margin-left: 5%;
+    margin-right: 5%;
+    position: absolute;
+    padding-bottom: 10%;
+    margin-bottom: 10%;
+    margin-top: 20px;
+    width: 90%;
+    font-size: 80%;
+    background-color: white;
+    border: 3px solid #EE8600;
+    border-radius: 5px;
+}
+
+.adminpages table tr {
+    border: 1px solid #EE8600;
+    width: 100%;
+}
+
+.adminpages table td {
+    border: 1px solid #EE8600;
 }
 
 
 /* footer -----------------------------------------------------------------------------*/
 
+.footer-container {
+    position: relative;
+}
+
 footer {
-    background-color: rgb(15, 15, 15);
-    color: rgb(248, 4, 4);
+    background-color: #767676;
+    color: #45CEF7;
     padding: 5px 0 15px 15px;
     border: 1px solid white;
     border-radius: 50px 50px 0 0;
-    font-size: 80%;
+    font-size: 60%;
     text-align: center;
     left: 0;
     width: 100%;
-    margin: 2% 0 0 0;
+    margin: 10% 0 0 0;
     position: fixed;
     bottom: 0px;
 }
@@ -31,4 +205,11 @@ footer a:link,
 footer a:visited {
     color: rgb(248, 4, 4);
     text-decoration: none;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
 }

@@ -3,8 +3,8 @@
 
   <body>
       <?php require 'components/admin_menu.php'; ?>
-      <?php require 'components/logout.php'; ?>
       <?php require 'components/menu.php'; ?>
+      <?php require 'components/logout.php'; ?>
 
       <h1>Page Add View</h1>
       <?php

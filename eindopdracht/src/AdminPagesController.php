@@ -21,6 +21,7 @@
         AdminPagesController
         routes
         admin_page_add_blogpost [volledig verwijdert]
+    
     */
 class AdminPagesController extends Controller
 {

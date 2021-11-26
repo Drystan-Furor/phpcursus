@@ -3,15 +3,15 @@
 <?php require 'components/header.php'; ?>
 
 <body>
-    <?php require 'components/admin_menu.php'; ?>
-    <?php require 'components/logout.php'; ?>
+    <?php require 'components/admin_menu.php'; ?>  
     <?php require 'components/menu.php'; ?>
+    <?php require 'components/logout.php'; ?>
 
-
+<div class="adminpages-container">
     <h1>Admin Pages</h1>
 
-    <div style="margin-top:20px;">
-        <table border="1" width="100%">
+    <div class="adminpages">
+        <table>
             <tr>
                 <td>ID</td>
                 <td>TITLE</td>
@@ -65,7 +65,8 @@
                     </td>
                 </tr>
             <?php endforeach; ?>
-
         </table>
     </div>
+    </div>
+
     <?php require 'components/footer.php'; ?>
