@@ -5,6 +5,7 @@
  */
 class LoginController extends Controller
 {
+
     public function index()
     {
         $this->view('login.php');
@@ -14,17 +15,18 @@ class LoginController extends Controller
 
     public function login()
     {
-
-        $username = $_POST['username'] ?? '';
-        $password = $_POST['password'] ?? '';
+        $username = EscapeString::from_Input($_POST['username'] ?? '');
+        $password = EscapeString::from_Input($_POST['password'] ?? '');
 
         $sql = "SELECT id, username 
                 FROM users 
                 WHERE username LIKE '$username' 
                 AND password LIKE '$password'";
 
-        $user = Database::raw($sql)->asObject(); // fluent interface techniek.
 
+        $user = Database::raw($sql)->asObject(); // fluent interface techniek.
+        //$user = mysqli_real_escape_string(Database::raw($sql)->asObject()); // fluent interface techniek.
+        //$user = Database::mysqli_real_escape_string(raw($sql)->asObject()); // fluent interface techniek.
 
         if (!is_null($user)) {
             $_SESSION['user'] = $user;

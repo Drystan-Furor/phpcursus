@@ -65,9 +65,9 @@ class AdminPagesController extends Controller
 
     public function store()
     {
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $slug = $_POST['slug'];
+        $title = EscapeString::from_Input($_POST['title']);
+        $content = EscapeString::from_Input($_POST['content']);
+        $slug = EscapeString::from_Input($_POST['slug']);
 
         Database::raw("INSERT INTO pages (title, content, slug) VALUES ('$title', '$content', '$slug')");
 
@@ -94,10 +94,10 @@ class AdminPagesController extends Controller
 
         if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['slug'])) {
 
-            $id = $_POST['id'];
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            $slug = $_POST['slug'];
+            $id = EscapeString::from_Input($_POST['id']);
+            $title = EscapeString::from_Input($_POST['title']);
+            $content = EscapeString::from_Input($_POST['content']); 
+            $slug = EscapeString::from_Input($_POST['slug']);
 
             $updateQuery = 'UPDATE pages set title = "%s", content = "%s", slug = "%s" where id = %d';
 
