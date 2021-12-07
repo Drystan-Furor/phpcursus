@@ -4,6 +4,7 @@
         <ul>
             <li><a href="/admin/pages">Pages</a></li>
             <li><a href="/admin/page/add">Add Page</a></li>
+            <li><a href="/admin/blogs">Blogs</a></li>
         </ul>
         </div>
     </div>

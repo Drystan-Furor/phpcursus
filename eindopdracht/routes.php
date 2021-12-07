@@ -31,6 +31,8 @@ case '/logout':
     $loginController->logout();
     break;
 
+
+        //--------------------------- pages
 case '/admin/pages':
     $adminPagesController = new AdminPagesController;
 
@@ -65,6 +67,40 @@ case '/newpage':
     $newPageController = new NewPageController;
     $newPageController->index();
     break;
+
+
+        //-----------------------------------blogs AdminBlogsController 
+case '/admin/blogs':
+    $adminBlogsController = new AdminBlogsController;
+
+    if (isset($_GET['action']) && isset($_GET['id'])) {
+        $adminBlogsController->updateBlog();
+    }
+
+    $adminBlogsController->index();
+    break;
+
+case '/admin/blog/edit':
+    $adminBlogsController = new AdminBlogsController;
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $adminBlogsController->updateBlog();
+    } else {
+        $adminBlogsController->editBlog();
+    }
+    break;
+
+case '/admin/blog/add':
+    $adminBlogsController = new AdminBlogsController;
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $adminBlogsController->storeBlog();
+    } else {
+        $adminBlogsController->createBlog();
+    }
+    break;
+
+
 
 default:
     $notFoundController = new NotFoundController;

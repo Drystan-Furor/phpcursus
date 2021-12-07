@@ -45,6 +45,7 @@ class AdminPagesController extends Controller
         $page = Database::raw('SELECT * from pages where id = ' . $_REQUEST['id'])->asObject();
 
         $this->view('admin_page_edit.php', $page);
+
     }
 
 
