@@ -32,7 +32,7 @@ case '/logout':
     break;
 
 
-        //--------------------------- pages
+//---------------------------------------------------------- pages
 case '/admin/pages':
     $adminPagesController = new AdminPagesController;
 
@@ -69,7 +69,7 @@ case '/newpage':
     break;
 
 
-        //-----------------------------------blogs AdminBlogsController 
+//--------------------------------------------blogs AdminBlogsController 
 case '/admin/blogs':
     $adminBlogsController = new AdminBlogsController;
 
@@ -98,6 +98,11 @@ case '/admin/blog/add':
     } else {
         $adminBlogsController->createBlog();
     }
+    break;
+
+case '/showblog':
+    $newPageController = new ShowBlogController;
+    $newPageController->index();
     break;
 
 

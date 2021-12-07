@@ -2,9 +2,8 @@
   <?php require 'components/header.php'; ?>
 
   <body>
-      <?php require 'components/admin_menu.php'; ?>
-      <?php require 'components/menu.php'; ?>
-      <?php require 'components/logout.php'; ?>
+      <?php include 'components/menulist.php'; ?>
+
 
       <h1>Blog Add View</h1>
       <?php

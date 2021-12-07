@@ -46,7 +46,7 @@ class AdminBlogsController extends Controller
     {
         $blog = Database::raw('SELECT * FROM blogs where id = ' . $_REQUEST['id'])->asObject();
 
-        $this->view('index.php', $blog);
+        $this->view('showblog.php', $blog);
     }
 
 

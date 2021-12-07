@@ -105,6 +105,18 @@ body {
     border-radius: 5px;
 }
 
+.centeredblog {
+    text-align: center;
+    background-color: white;
+    border: 3px solid #EE8600;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.centertext {
+    text-align: center;
+}
+
 
 /*--------------------------buttons-------------*/
 

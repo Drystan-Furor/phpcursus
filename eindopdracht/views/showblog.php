@@ -1,4 +1,4 @@
-<?php $title = 'Page Viewer' ?>
+<?php $title = 'Blogpost' ?>
 <?php require 'components/header.php'; ?>
 
 <body>

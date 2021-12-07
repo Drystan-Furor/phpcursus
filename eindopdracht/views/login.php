@@ -2,7 +2,8 @@
 <?php require 'components/header.php'; ?>
 
 <body>
-    <?php include 'components/menu.php'; ?>
+
+    <?php include 'components/menulist.php'; ?>
 
     <h1 class="center">Dit is de login pagina</h1>
 

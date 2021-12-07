@@ -18,14 +18,14 @@ $j = 1;
                             $i++; ?> / </a>
                 <?php endforeach; ?>
             </ul>
-            <ol>Blogs:
+            <ul>Blogs:
                 <?php
-                foreach ($bloglist as $blog) : ?>
-                    <li><a href="<?php echo "/index/?id=" . $blog['id'] ?>">
-                            [<?php echo $j . "] " . $blog['title'];
+                foreach ($bloglist as $blogpost) : ?>
+                    <li><a href="<?php echo "/showblog/?id=" . $blogpost['id']?>"> <!-- ?id=" . $blogpost['id'] -->
+                            [<?php echo $j . "] " . $blogpost['title'];
                                 $j++; ?></a></li>
                 <?php endforeach; ?>
-            </ol>
+            </ul>
         </ul>
     </div>
 </div>
