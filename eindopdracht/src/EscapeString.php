@@ -22,7 +22,7 @@ class EscapeString
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
-        $data = Database::mysqli_real_escape_string($data);
+        //$data = Database::mysqli_real_escape_string($data);
         return $data;
     }
 }
