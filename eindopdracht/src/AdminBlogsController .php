@@ -37,7 +37,7 @@ class AdminBlogsController extends Controller
     {
         $blog = Database::raw('SELECT * from blogs where id = ' . $_REQUEST['id'])->asObject();
 
-        $this->view('admin_blogs_edit.php', $blog);
+        $this->view('admin_blog_edit.php', $blog);
     }
 
 
@@ -53,7 +53,7 @@ class AdminBlogsController extends Controller
 
     public function createBlog()
     {
-        $this->view('admin_blogs_add.php');
+        $this->view('admin_blog_add.php');
     }
 
     public function storeBlog()

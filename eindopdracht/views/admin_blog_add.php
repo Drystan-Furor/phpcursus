@@ -6,7 +6,7 @@
       <?php require 'components/menu.php'; ?>
       <?php require 'components/logout.php'; ?>
 
-      <h1>Page Add View</h1>
+      <h1>Blog Add View</h1>
       <?php
         $formaction = "/admin/blog/add";
         $valueId = "";
