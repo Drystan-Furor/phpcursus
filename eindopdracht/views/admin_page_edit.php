@@ -1,4 +1,4 @@
-  <?php $title = 'Admin Page Edit' ?>
+<?php $title = 'Admin Page Edit' ?>
   <?php require 'components/header.php'; ?>
 
   <body>

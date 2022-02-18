@@ -1,4 +1,4 @@
-  <?php $title = 'Admin Blog Add' ?>
+<?php $title = 'Admin Blog Add' ?>
   <?php require 'components/header.php'; ?>
 
   <body>

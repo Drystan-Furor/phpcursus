@@ -11,5 +11,3 @@ class NewPageController extends AdminPagesController
         $this->view('newpage.php', $page);
     }
 }
-
-

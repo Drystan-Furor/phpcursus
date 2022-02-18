@@ -11,5 +11,3 @@ class ShowBlogController extends AdminBlogsController
         $this->view('showblog.php', $blog);
     }
 }
-
-
