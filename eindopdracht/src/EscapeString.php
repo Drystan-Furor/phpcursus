@@ -9,7 +9,7 @@ class EscapeString
         $this->data = $data;
     }
 
-    public function Test_input()
+    public function test_Input()
     {
         $this->data = trim($this->data);
         $this->data = stripslashes($this->data);
@@ -22,7 +22,7 @@ class EscapeString
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
-        //$data = Database::mysqli_real_escape_string($data);
+        //$data = mysqli_real_escape_string($connection, $data);
         return $data;
     }
 }

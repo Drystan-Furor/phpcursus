@@ -1,0 +1,14 @@
+Race -> get random race or user input
+Age -> get age
+Gender -> get array of pronouns
+    Gender->Object must be passed to Sentence Generator, to get array of pronouns
+
+Profile -> get face
+
+NpcGenController
+
+
+
+
+
+resources
