@@ -8,13 +8,12 @@
 
 class Age extends Race
 {
-    var $age;
+    private $age;
 
     //** VAR applies to all, SWITCH specifies ON $this->dndrace */
     private function __construct()
     {
-        $age = rand(14, 80); // age is always 14 - 80 not dependend on $race
-        $this->age = $age;
+        $this->age = self::defineAge(); 
         //construct default
     }
 
@@ -31,10 +30,8 @@ class Age extends Race
     }
 
     //** Age Selector IF race != human aging */
-    public function defineAge()
+    private function defineAge()
     {
-        $age = new Age();
-
         switch ($this->dndrace) {
             case $this->dndrace == "Elf":
                 $age = rand(14, 750);
@@ -81,9 +78,9 @@ class Age extends Race
                 $age = rand(14, 500);
                 break;
             default:
-                $age = $this->age;
+                $age = rand(14, 80); // age is always 14 - 80 not dependend on $race
                 break;
+                return $age;
         }
-        $this->age = $age;
     }
 }

@@ -6,13 +6,13 @@
 
 class Poor
 {
-    var $garb;
+    var $outfit;
     var $intro;
 
     private function __construct()
     {
-        $this->garb = Poor::clothes();
-        $this->intro = Poor::poorIntros();
+        $this->outfit = self::clothes();
+        $this->intro = self::intros();
     }
 
 
@@ -39,9 +39,9 @@ class Poor
     //------------------------------------build generated sentence
     private static function clothes()
     {
-        $outfit = Poor::outfits();
-        $textile = Poor::textiles();
-        $textile2 = Poor::textiles();
+        $outfit = self::outfits();
+        $textile = self::textiles();
+        $textile2 = self::textiles();
 
         $clothes = [
             $outfit . " made of " . $textile . ", hanging a bit loose,",
@@ -59,29 +59,29 @@ class Poor
     
             $textile . " apron",
         ];
-        $garb = array_rand(array_flip($clothes), 1);
-        return $garb;
+        $outfit = array_rand(array_flip($clothes), 1);
+        return $outfit;
     }
 
 
     //-------------------------------------INTRO
-    private function poorIntros()
+    private function intros()
     {
         $wealthinessTypes = [
-            'who looks rather poor.',
+            'who looks rather self.',
             'who seems to be penniless.', 'that looks quite impoverished.',
             'who recently became bankrupt.', ' looking poverty-stricken at best.',
             'who looks underpriviliged.', 'who makes a down-and-out impression.',
         ];
-        $beggarIntro = array_rand(array_flip($wealthinessTypes), 1);
-        return $beggarIntro;
+        $intro = array_rand(array_flip($wealthinessTypes), 1);
+        return $intro;
     }
 
 
 
-    public function getGarb()
+    public function getOutfit()
     {
-        return $this->garb;
+        return $this->outfit;
     }
 
     public function getIntro()

@@ -25,8 +25,6 @@ class LoginController extends Controller
 
 
         $user = Database::raw($sql)->asObject(); // fluent interface techniek.
-        //$user = mysqli_real_escape_string(Database::raw($sql)->asObject()); // fluent interface techniek.
-        //$user = Database::mysqli_real_escape_string(raw($sql)->asObject()); // fluent interface techniek.
 
         if (!is_null($user)) {
             $_SESSION['user'] = $user;

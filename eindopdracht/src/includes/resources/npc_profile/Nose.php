@@ -18,6 +18,12 @@ class Nose
 
     private static function randomNose()
     {
+        
+        if ($new_npc->race->getRace() == "aaracockra") {
+            $nose = new aarakocra();
+            $nose = aarakocra::randomNose();
+        }
+        
         $nose = rand(1, 100);
         switch ($nose) {
         case $nose >= 1 && $nose <= 24:
@@ -69,6 +75,11 @@ class Nose
             break;
         }
         return $nose;
+    }
+
+    public function setNose($nose)
+    {
+        $this->nose = $nose;
     }
 
     public function getNose()

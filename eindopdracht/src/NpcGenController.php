@@ -6,7 +6,6 @@ class NpcGenController
 
     private function __construct()
     {
-        $new_npc = new Race($new_npc);
     }
 
 

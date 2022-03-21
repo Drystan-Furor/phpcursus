@@ -1,6 +1,9 @@
 <?php
 
-// Aasimar
+class aasimar
+{
+
+}
 
 $isAasimar = true;
 $isFallen = rand(1, 20);

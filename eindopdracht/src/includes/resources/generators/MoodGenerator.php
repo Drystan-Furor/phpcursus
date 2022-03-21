@@ -5,9 +5,14 @@
  */
 class MoodGenerator
 {
-    var $mood;
+    public $mood;
 
-    public static function getMood()
+    private function __construct()
+    {
+        $this->mood = self::generateMood();
+    }
+
+    public static function generateMood()
     {
         $moods = [
             'angry', 'happy', 'careless', 'neutral',
@@ -32,5 +37,10 @@ class MoodGenerator
         $mood = array_rand(array_flip($moods), 1);
         return $mood;
     }
+
+    public function getMood()
+    {
+        return $this->mood;
+    }
 }
-//$new_mood = MoodGenerator::getMood();
+//$new_mood = MoodGenerator::generateMood();

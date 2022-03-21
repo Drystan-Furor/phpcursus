@@ -5,7 +5,7 @@
  */
 // Scar Tissue Arrays
 
-class Scars
+class ScarsGenerator
 {
     var $scar;
 
@@ -26,14 +26,12 @@ class Scars
     }
 
     //------------------------------------------------------has a VAR scar
-    private static function scarLines()
+    public static function scarLines()
     {
-        $mark = Scars::scarMarkings();
+        $mark = self::scarMarkings();
         $scarlines = [
             "horizontal " . $mark,
             "vertical " . $mark,
-            $mark,
-            $mark,
             $mark,
             "diagonal " . $mark . ", from the left to the right",
             "diagonal " . $mark . ", from the right to the left",
@@ -45,7 +43,7 @@ class Scars
 
     //------------------------------------------------on the X SIDE
 
-    private static function scarSides()
+    public static function scarSides()
     {
         $scarsides = [
             "left side", "right side", "middle",
@@ -55,7 +53,7 @@ class Scars
     }
 
     //-------------------------------------------------of the x LOCATION
-    private static function scarLocation()
+    public static function scarLocation()
     {
         $scarlocations = [
             "left cheek",   "right cheeck",
@@ -70,22 +68,31 @@ class Scars
         return $location;
     }
 
-
-    private static function scar()
+    //---------------------- full sentence
+    public static function scar($new_npc)
     {
-        $line = Scars::scarLines();
-        $side = Scars::scarSides();
-        $loca = Scars::scarLocation();
-
-        $scar = $line . ' ' . $side . ' ' . $loca;
+        $hasScar = rand(1, 2);
+        if ($hasScar == 1) {
+            $scar = "You " . VerbsGenerator::getObservation() . " " .
+                $new_npc->Gender::getHeShe() . " has a " .
+                ScarsGenerator::scarLines() . ' on the ' .
+                ScarsGenerator::scarSides() . ' of ' .
+                $new_npc->Gender::getHisHer() . " " .
+                ScarsGenerator::scarLocation() . ". ";;
+        } else {
+            $scar = "";
+        }
         return $scar;
-    }
+    } 
 
     public function getScar()
     {
         return $this->scar;
     }
+
 }
 
-$scar = new Scars();
-echo $scar->scar;
+/*
+$scar = new ScarsGenerator();
+echo $scar->getScar();
+*/

@@ -6,19 +6,19 @@
 
 class Beggar
 {
-    var $garb;
-    var $intro;
+    private $outfit;
+    private $intro;
 
     private function __construct()
     {
-        $this->garb = Beggar::clothes();
-        $this->intro = Beggar::beggarIntros();
+        $this->outfit = self::clothes();
+        $this->intro = self::intros();
     }
 
     private static function textiles()
     {
         $textiles = [
-            'hemp', 'coarse wool', 'rags',
+            'hemp', 'coarse wool', 
         ];
         $textile = array_rand(array_flip($textiles), 1);
         return $textile;
@@ -27,7 +27,8 @@ class Beggar
     private static function outfits()
     {
         $outfits = [
-            'tunic', 'robe', 'garment',
+            'short skirted tunic', 'robe', 'garment', 'cotton bag', 'rags',
+            'hooded cloak'
         ];
         $outfit = array_rand(array_flip($outfits), 1);
         return $outfit;
@@ -44,24 +45,26 @@ class Beggar
         return $outfitDetail;
     }
 
-    private static function clothes()
+    private static function weathered()
     {
-        $outfit = Beggar::outfits();
-        $textile = Beggar::textiles();
-        $outfitDetail = Beggar::outfitDetails();
-
-        $clothes = [
-            $outfit . " made of " . $textile . ", " . $outfitDetail,
-            "hooded " . $textile . " cloak, " . $outfitDetail,
-            "functional " . $textile . " " . $outfit,
-            "cotton bag " . $outfitDetail,
-            "short skirted " . $textile . " tunic",
+        $weathered = [
+            'partially torn', 'damaged and dirty', 
+            'stained', 'functional','',
         ];
-        $garb = array_rand(array_flip($clothes), 1);
-        return $garb;
+        $weathered = array_rand(array_flip($weathered));
+        return $weathered;
     }
 
-    private function beggarIntros()
+    public function clothes()
+    {
+        $this->outfit = " wears a " . self::weathered() ." " . self::outfits() . 
+        " made of " . self::textiles() . ", " . self::outfitDetails() . 
+        " and a " . self::weathered() ." ";//Belt;
+        return $this->outfit;
+    }
+
+    //-----------------------intro
+    public static function intros()
     {
         $wealthinessTypes = [
             'who seems to be homeless.', 'that looks like a beggar.',
@@ -69,18 +72,13 @@ class Beggar
             'a genuine panhandler.', 'a scrounger at best.',
             'who is regarded as a deadbeat.', 'who looks like a real hobo.',
         ];
-        $beggarIntro = array_rand(array_flip($wealthinessTypes), 1);
-        return $beggarIntro;
+        $intro = array_rand(array_flip($wealthinessTypes), 1);
+        return $intro;
     }
 
-
-
-
-
-
-    public function getGarb()
+    public function getOutfit()
     {
-        return $this->garb;
+        return $this->outfit;
     }
 
     public function getIntro()
@@ -88,36 +86,4 @@ class Beggar
         return $this->intro;
     }
 
-
-
-
-
 }
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

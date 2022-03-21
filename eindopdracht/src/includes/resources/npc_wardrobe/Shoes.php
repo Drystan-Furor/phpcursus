@@ -7,7 +7,7 @@ class Shoes
 
     private function __construct()
     {
-        $this->shoes = Shoes::shoes();
+        $this->shoes = self::shoes();
     }
 
 
@@ -49,11 +49,11 @@ class Shoes
         return $wearing;
     }
 
-    private static function shoes() 
+    public static function shoes() 
     {
-        $wearing = Shoes::wearing(); // wearing
-        $shoeType = Shoes::Types(); // shoes
-        $shoeMaterial = Shoes::Materials(); // made of x
+        $wearing = self::wearing(); // wearing
+        $shoeType = self::Types(); // shoes
+        $shoeMaterial = self::Materials(); // made of x
 
         $shoes = $wearing." ".$shoeType . " made of " . $shoeMaterial . ". ";
         return $shoes;

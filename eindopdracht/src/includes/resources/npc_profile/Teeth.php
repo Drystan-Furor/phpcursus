@@ -20,14 +20,15 @@ class Teeth
             'rotten ', 'shiny white', 'yellow', 'buck', 'quite large',
             'rather small', 'yellow and grey', 'crooked', 'canine whiskers',
         ];
-        return $teethType = array_rand(array_flip($teethTypes), 1);
+        $teethType = array_rand(array_flip($teethTypes), 1);
+        return $teethType;
     }
 
     private function dentalWorks()
     {
         $quality = Verbsgenerator::getQuality();
         $metal = MaterialGenerator::getMetalType();
-        $teethType = Teeth::teethTypes();
+        $teethType = self::teethTypes();
 
         $dentalwork = [
             "is missing a tooth", "is missing several teeth",

@@ -10,7 +10,7 @@ class Jewelry
 
     private function __construct()
     {
-        $this->jewel = Jewelry::craftJewel();
+        $this->jewel = self::craftJewel();
     }
 
     private static function jewelryTypes()
@@ -38,7 +38,7 @@ class Jewelry
     {
         $jewelmaterial = MaterialGenerator::getMetalType();
         $jewelgemstone = MaterialGenerator::getGemstoneType();
-        $jewelrytype = Jewelry::jewelryTypes();
+        $jewelrytype = self::jewelryTypes();
 
         $jewel = $jewelmaterial . " " . $jewelrytype .
             " set with a " . $jewelgemstone;

@@ -11,17 +11,17 @@ teeth
 chin
 */
 // Face Detail Generator
+// getters and setters are in each seperate class, getters are public
 
 class ProfileGenerator
 {
-    var $profile;
+    private $eyes;
+    private $nose;
+    private $mouth;
+    private $teeth;
+    private $chin;
 
     private function __construct()
-    {
-        $this->profile = self::Profile();
-    }
-
-    private function Profile()
     {
         $eyes = new Eyes();
         $this->eyes = $eyes->getEyes();
@@ -37,24 +37,35 @@ class ProfileGenerator
         
         $chin = new Chin();
         $this->chin = $chin->getChin();
+    }
 
-        $profile = [
-            $this->eyes,
-            $this->nose,
-            $this->mouth,
-            $this->teeth,
-            $this->chin,
-        ];
-        return $profile;
+    public function getChin()
+    {
+        return $this->chin;
+    }
+
+    public function getEyes() 
+    {
+        return $this->eyes;
+    }
+
+    public function getMouth()
+    {
+        return $this->mouth;
+    }
+
+    public function getNose()
+    {
+        return $this->nose;
+    }
+
+    public function getTeeth()
+    {
+        return $this->teeth;
     }
 }
 
 /*
 $new_profile = new ProfileGenerator();
-$new_profile == array of properties, taken from each class
+$new_profile->getEyes(); etc.
 */
-
-
-
-
-

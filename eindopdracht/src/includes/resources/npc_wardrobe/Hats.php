@@ -6,11 +6,11 @@
 
 class Hats
 {
-    var $hat;
+    private $hat;
 
     private function __construct()
     {
-        $this->hat = Hats::setHat();
+        $this->hat = self::hasHat();
     }
 
 
@@ -35,8 +35,8 @@ class Hats
 
     private static function craftHat()
     {
-        $hattextile = Hats::hatMaterials();
-        $hatType = Hats::hatTypes();
+        $hattextile = self::hatMaterials();
+        $hatType = self::hatTypes();
 
         $hats = [ //  wears
             "a wimple, a piece of cloth worn over the head and around the face and neck",
@@ -54,14 +54,22 @@ class Hats
         return $hat;
     }
 
-    private static function setHat()
+    private function hasHat()
     {
-        $hat = rand(1, 20);
-        if ($hat > 15) {
-            $hat = "";
+        $this->hat = rand(1, 20);
+        if ($this->hat > 15) {
+            $this->hat = "";
         } else {
-            $hat = Hats::craftHat();
+            $this->hat = self::craftHat();
         }
-        return $hat;
+        return $this->hat;
+    }
+
+    /*
+    get properties
+    */
+    public function getHat()
+    {
+        return $this->hat;
     }
 }

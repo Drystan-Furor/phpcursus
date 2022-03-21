@@ -3,23 +3,11 @@
 
 class VerbsGenerator
 {
-    var $class;
-    var $quality;
-    var $maintenance;
-    var $observe;
-    var $indicator;
-    var $length;
-
-    //-----------------CLASSES
-    public static function getClass()
-    {
-        $npcClasses = [
-            'Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk',
-            'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard',
-        ];
-        $class = array_rand(array_flip($npcClasses));
-        return $class;
-    }
+    private $quality;
+    private $maintenance;
+    private $observe;
+    private $indicator;
+    private $length;
 
     //-----------------------------------------quality
     public static function getQuality()
@@ -91,15 +79,21 @@ class VerbsGenerator
         $length = array_rand(array_flip($lenghts), 1);
         return $length;
     }
+
+    public static function getClasping()
+    {
+        $clasping = [
+            'clasps', 'clutches', 'clenches', 'holds', 'wears', 'is holding',
+            'thightly squeezing', 'is caressing', 'fiddling with',
+        ];
+        $clasps = array_rand(array_flip($clasping), 1);
+        return $clasps;
+    }
 }
 //$class = VerbsGenerator::getClass();// make functions static to call them this way
 /*
 $observation = VerbsGenerator::getObservation();
 $new_complexity = VerbsGenerator::getComplexity();
+$new_length = VerbsGenerator::getLength();
+$new_clasp = VerbsGenerator::getClasping();
 */
-//------------------------------------------------------beggar
-    $clasping = [
-        'clasps', 'clutches', 'clenches', 'holds', 'wears', 'is holding',
-        'thightly squeezing', 'is caressing', 'fiddling with',
-    ];
-    $clasps = array_rand(array_flip($clasping), 1);

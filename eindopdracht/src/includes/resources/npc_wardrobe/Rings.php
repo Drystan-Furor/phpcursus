@@ -13,6 +13,11 @@ class Rings
         $this->ring = Rings::craftRing();
     }
 
+    public function getRing()
+    {
+        return $this->ring;
+    }
+
 
     private static function getComplexity()
     {
@@ -32,11 +37,11 @@ class Rings
         return $ringcomplexity;
     }
 
-    private static function craftRing()
+    public static function craftRing()
     {
         $ringMaterial = MaterialGenerator::getMetalType();
         $ringGemstone = MaterialGenerator::getGemstoneType();
-        $ringcomplexity = Rings::getComplexity();
+        $ringcomplexity = self::getComplexity();
 
         $ringType = $ringcomplexity . $ringMaterial;
         $isSignetRing = rand(1, 20);
@@ -47,11 +52,3 @@ class Rings
         return $ring;
     }
 }
-
-
-
-//-------------------------------------------------------------------------------rings
-
-$ringcomplexity = array_rand(array_flip($ringcomplexities), 1);
-$ringGemstone = array_rand(array_flip($gemstones), 1);
-$ringMaterial = array_rand(array_flip($metals), 1);

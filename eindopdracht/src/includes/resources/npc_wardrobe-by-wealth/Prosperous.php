@@ -1,71 +1,89 @@
-
 <?php
+class Prosperous
+{
+    var $outfit;
+    var $intro;
 
-//-------------------------------------------------------------------------------rich
-if ($prosperous == true || $rich == true) {
-
-    $wardrobes = [
-        'tunic', 'robe', 'costume', 'gown', "doublet", 'cote hardie',
-    ];
-
-
-    $fabrics = [
-        'clean', 'plain', 'straightforward', 'classic', 'simple', 'beautiful',
-    ];
+    private function __construct()
+    {
+        $this->outfit = self::clothes();
+        $this->intro = self::intros();
+    }
 
 
-    $textiles = [
-        "silk", "velvet", 'cotton', 'linen',
-    ];
+    //-------------------------------ARRAY'S for random sentence building
+    private static function textiles()
+    {
+        $textiles = [
+            "silk", "velvet", 'cotton', 'linen',
+        ];
+        $textile = array_rand(array_flip($textiles), 1);
+        return $textile;
+    }
 
-    $textile = array_rand(array_flip($textiles), 1);
-    $wardrobe = array_rand(array_flip($wardrobes), 1);
-    $fabric = array_rand(array_flip($fabrics), 1);
-
-
-
-
-    $clothingtype3 = [
-        $fabric . " hooded " . $textile . " cloak",
-        $fabric . " " . $textile . " houppelande, a full length robe like garment",
-        $wardrobe . ", that buttons in the front to a low waist, 
-        and is fitted to a " . $fabric . " bodice,",
-        $wardrobe . ", fit closely to the body",
-        "Burgundian style " . $wardrobe,
-        $fabric . " " . $textile . " " . $wardrobe,
-
-        $wardrobe . " of " . $fabric . " " . $textile,
-
-        $textile . " " . $wardrobe .
-            " similar to the clothing of the elite but made of cheaper 
-            materials with less dye and ornamentation",
-
-    ];
-    $garb = array_rand(array_flip($clothingtype3), 1);
-}
+    private static function outfits()
+    {
+        $outfits = [
+            'tunic', 'robe', 'gown', "doublet", 'cote hardie',
+        ];
+        $outfit = array_rand(array_flip($outfits), 1);
+        return $outfit;
+    }
 
 
+    //------------------------------------build generated sentence
+    private static function clothes()
+    {
+        $outfit = self::outfits();
+        $textile = self::textiles();
+        $complexity = VerbsGenerator::getComplexity();
 
-//------------------------------------------------------prosperous
-if ($prosperous == true) {
 
-    $wealthinessTypes = [
-        'who seems to have some coin.',
-        'who looks rather comfortable.',
-        'who seems to be fortunate.',
-        'that looks a bit prospering.',
-        'who recently became upper-class.',
-        'looking affluent at best.',
-        'who looks priviliged.',
-        'who seems to be doing well.',
-    ];
-    $wealth = array_rand(array_flip($wealthinessTypes), 1);
+        $clothes = [
+            $complexity . " hooded " . $textile . " cloak",
+            $complexity . " " . $textile . " houppelande, a full length robe like garment",
+            $outfit . ", that buttons in the front to a low waist, 
+            and is fitted to a " . $complexity . " bodice,",
+            $outfit . ", fit closely to the body",
+            "Burgundian style " . $outfit,
+            $complexity . " " . $textile . " " . $outfit,
+    
+            $outfit . " of " . $complexity . " " . $textile,
+    
+            $textile . " " . $outfit .
+                " similar to the clothing of the elite but made of cheaper 
+                materials with less dye and ornamentation",
+    
+        ];
+        $outfit = array_rand(array_flip($clothes), 1);
+        return $outfit;
+    }
 
-    $outfit = $intro . $thisGender .
-        " wears a " . $garb .
-        " with " . $clothingDetail . " that has " . $sleeve . ". " .
-        $headdress .
-        "Finalized with a " . $belt . ". " .
-        $feetWithShoes .
-        "The light reflects on a " . $jewel . ". ";
+
+    //-------------------------------------INTRO
+    private function intros()
+    {
+        $wealthinessTypes = [
+            'who seems to have some coin.',
+            'who looks rather comfortable.',
+            'who seems to be fortunate.',
+            'that looks a bit prospering.',
+            'who recently became upper-class.',
+            'looking affluent at best.',
+            'who looks priviliged.',
+            'who seems to be doing well.',
+        ];
+        $intro = array_rand(array_flip($wealthinessTypes), 1);
+        return $intro;
+    }
+
+    public function getOutfit()
+    {
+        return $this->outfit;
+    }
+
+    public function getIntro()
+    {
+        return $this->intro;
+    }
 }
