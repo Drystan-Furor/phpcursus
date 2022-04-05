@@ -7,6 +7,8 @@ class IndexController extends Controller
     public function index() 
     {
         $page = Database::raw('select * from pages where slug = "home"')->asObject();
-        $this->view('index.php', $page);
+        $blogs = Database::raw('SELECT * from blogs')->asArray();
+
+        $this->view('index.php', $page, $blogs);
     }
 }

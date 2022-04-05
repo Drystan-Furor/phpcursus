@@ -1,67 +1,87 @@
 <?php
+
 /**
  * De pages controller behandeld de requests voor de route "/admin/pages".
  */
+
 class AdminPagesController extends Controller
 {
-    public function index() 
+    public function index()
     {
         // login check, redirect terug naar login
         // wanneer de gebruiker niet is ingelogd.
-        if(!isset($_SESSION['user'])) {
+        if (!isset($_SESSION['user'])) {
             header('location: /login');
         }
-        
-        $pages = Database::raw('select * from pages')->asArray();
+
+        $pages = Database::raw('SELECT * from pages')->asArray();
 
         $this->view('admin_pages.php', $pages);
     }
 
-    public function edit() 
+
+
+    public function edit()
     {
-        $page = Database::raw('select * from pages where id = ' . $_REQUEST['id'])->asObject();
+        $page = Database::raw('SELECT * from pages where id = ' . $_REQUEST['id'])->asObject();
 
         $this->view('admin_page_edit.php', $page);
+
     }
 
-    public function create() 
+
+
+    public function show() 
+    {
+        $page = Database::raw('SELECT * FROM pages where id = ' . $_REQUEST['id'])->asObject();
+
+        $this->view('newpage.php', $page);
+    }
+
+
+
+    public function create()
     {
         $this->view('admin_page_add.php');
     }
 
     public function store()
     {
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $slug = $_POST['slug'];
+        $title = EscapeString::from_Input($_POST['title']);
+        $content = EscapeString::from_Input($_POST['content']);
+        $slug = EscapeString::from_Input($_POST['slug']);
 
         Database::raw("INSERT INTO pages (title, content, slug) VALUES ('$title', '$content', '$slug')");
 
         header('location: /admin/pages');
     }
 
+
     public function update()
     {
         $action = $_REQUEST['action'] ?? '';
         $id = $_REQUEST['id'] ?? 0;
 
-        switch($action) {
-            case 'publish':
-                Database::raw('update pages set status = "published" where id = ' . $id);
-                break;
-            case 'unpublish':
-                Database::raw('update pages set status = "draft" where id = ' . $id);
-                break;
-        } 
-        
-        if(isset($_POST['title']) && isset($_POST['content']) && isset($_POST['slug'])) {
-            
-            $id = $_POST['id'];
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            $slug = $_POST['slug'];
+        switch ($action) {
+        case 'publish':
+            Database::raw('UPDATE pages set status = "published" where id = ' . $id);
+            break;
+        case 'unpublish':
+            Database::raw('UPDATE pages set status = "draft" where id = ' . $id);
+            break;
+        case 'delete':
+            Database::raw('DELETE FROM pages where id = ' . $id);
+            break;
+        }
 
-            $updateQuery = 'update pages set title = "%s", content = "%s", slug = "%s" where id = %d';
+        if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['slug'])) {
+
+            $id = EscapeString::from_Input($_POST['id']);
+            $title = EscapeString::from_Input($_POST['title']);
+            $content = EscapeString::from_Input($_POST['content']); 
+            $slug = EscapeString::from_Input($_POST['slug']);
+
+            $updateQuery = 'UPDATE pages set title = "%s", content = "%s", slug = "%s" where id = %d';
 
             Database::raw(
                 sprintf($updateQuery, $title, $content, $slug, $id)

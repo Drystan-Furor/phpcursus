@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="nl">
-  <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-  </head>
-  <body>
-    <?php include 'components/menu.php'; ?>
-    
-    <h1>Dit is de login pagina</h1>
-    
-    <form action="/login" method="post">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Username">
+<?php $title = 'Login' ?>
+<?php require 'components/header.php'; ?>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password">
+<body>
 
-        <input type="submit" value="Submit">
-    </form>
+    <?php include 'components/menulist.php'; ?>
 
-    <?php if(isset($_SESSION['login_invalid'])): ?>
+    <h1 class="center">Dit is de login pagina</h1>
+
+    <div class="center">
+        <form action="/login" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <br>
+
+            <button class="submitbutton" type="submit" value="Submit">Submit</button>
+        </form>
+    </div>
+    <?php if (isset($_SESSION['login_invalid'])) : ?>
 
         <p>De logingegevens zijn onjuist.</p>
 
     <?php endif; ?>
-  
-    </body>
-</html>
+    <?php require 'components/footer.php'; ?>

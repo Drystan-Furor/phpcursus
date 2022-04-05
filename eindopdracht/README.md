@@ -4,7 +4,7 @@
 Stel de document root van MAMP in op de /public map.
 
 ## Database
-Maak via phpmyadmin een database (bijvoorbeeld genaamd phpcursus) aan met 2 tabellen
+Maak via phpmyadmin een database (bijvoorbeeld genaamd phpcursus) aan met 3 tabellen
 
 1. pages
     - id (int, auto increment)
@@ -16,6 +16,13 @@ Maak via phpmyadmin een database (bijvoorbeeld genaamd phpcursus) aan met 2 tabe
     - id (int, auto increment)
     - username (varchar 255)
     - password (varchar 255)
+
+3. blogs
+    - id (int, auto increment)
+    - title (varchar 255 )
+    - content (text)
+    - slug (varchar 255)
+    - status (ENUM met waarden published en draft en default waarde draft)
 
 Vul deze tabellen met wat test data. (Dat kan via insert in phpmyadmin). De pages tabel moet in ieder geval een homepagina bevatten, zorg dat de slug kolom een waarde "home" krijgt.
 
