@@ -21,14 +21,23 @@ class Race
     private $heritage; // exceptions != $this->raceorigin, so RNG new heritage
 
 
-    // Race RNG  
+    /** 
+     * Race RNG 
+     * new race() is by default a random race
+     */  
     private function __construct()
     {
-        $this->dndrace = self::randomRace(); //new race() is by default a random race
-        $this->heritage = self::setHeritage();
+        $this->dndrace = self::_randomRace(); 
+        $this->raceorigin = self::_setHeritage();
     }
 
-    private function raceArray()
+
+    /**
+     * Here we create a list of all the races.
+     * 
+     * @return array list
+     */
+    private function _raceArray()
     {
         //----------------------------------------------------dndraces array
         $RacesArray = [
@@ -45,65 +54,105 @@ class Race
         return $RacesArray;
     }
 
-    private function updateRaceArray()
+
+    /**
+     * Drow is offical, but not on webpage, Elf-Subclass, 
+     * if input === "Drow" then != homebrew
+     * add Drow to Race Array, logically after cleaning because array is RETURNED
+     * 
+     * @param $dndrace == value to be checked IF == DROW
+     * 
+     * @return updated raceArray
+     */
+    protected function updateRaceArray($dndrace)
     {
-        if ($this->dndrace == "drow") { // Drow is offical, but not on webpage, Elf-Subclass, if input === "Drow" then != homebrew
-            $racesArray[] = self::raceArray();
-            $racesArray[] = "Drow"; //add Drow to Race Array, logically after cleaning because array is RETURNED
+        if ($dndrace == "drow") { 
+            $racesArray[] = self::_raceArray();
+            $racesArray[] = "Drow"; 
             return $racesArray;
         }
     }
 
-    private function randomFromRaceArray()
+    /**
+     * Get 1 random value of the whole raceArray
+     * 
+     * @return random value of raceArray
+     */
+    private function _randomFromRaceArray()
     {
-        $RacesArray = self::raceArray();
+        $RacesArray = self::_raceArray();
         $random = array_rand(array_flip($RacesArray), 1); //random
         return $random;
     }
+
     //------------------------------------RACE getter/setter
-    private function randomRace()
+    /**  
+     * Function _randomRace() sets both Race and Origin to the Race Default
+     * 
+     * @return race and origin
+     */
+    private function _randomRace()
     {
-        $this->dndrace  = self::randomFromRaceArray(); //random
-        $this->raceorigin = $this->dndrace;
+        $this->dndrace  = self::_randomFromRaceArray(); //random
+        $this->raceorigin = self::_setHeritage();
         $_POST['commonrace'] = $this->dndrace; 
         return $_POST['commonrace'];
     }
 
-    private function setRace()// hard setter for user input
+    //------------------------------------------------HERITAGE getter/setter
+    //random origin selector used on NAMES.inc
+
+    /** 
+     * Origin is defined by heritage, some races do not have 
+     * ancestors of the same type. All exceptions listed here are
+     * races that should not have direct ancestors of the same type. 
+     * 
+     * @return origin
+     */
+    private function _setHeritage()
+    {
+        $heritage = self::_randomFromRaceArray(); //random
+        while (
+            $heritage == "Genasi"
+            || $heritage == "Yuan-Ti Pureblood"
+            || $heritage == "Simic Hybrid"
+        ) {
+            $heritage = self::_randomFromRaceArray();
+        }
+        $this->raceorigin = $heritage;
+        return $this->raceorigin;
+    }
+
+    /**
+     * Public Race setter for FROM handling 
+     * enables the user to create a custom race
+     */
+    public function setRace()// hard setter for user input
     {
         $this->dndrace = new Homebrew;
         $this->dndrace = $this->dndrace->getHomebrewRace();
-        $this->raceorigin = self::setHeritage();
-        $this->racesArray = self::updateRaceArray();
+        $this->raceorigin = self::_setHeritage();
+        $this->racesArray = self::updateRaceArray($this->dndrace);
     }
 
+    /**
+     * Getter to acces value of dndrace variable
+     * 
+     * @return dndrace
+     */
     public function getRace()
     {
         return $this->dndrace;
     }
 
+    /**
+     * Getter to acces value of origin variable
+     * 
+     * @return origin
+     */
     public function getRaceorigin()
     {
         return $this->raceorigin;
     }
 
-
-    //------------------------------------------------HERITAGE getter/setter
-    //random origin selector used on NAMES.inc
-    private function setHeritage()
-    {
-        $this->heritage = self::raceArray();
-        while (
-            $this->heritage == "Genasi"
-            || $this->heritage == "Yuan-Ti Pureblood"
-            || $this->heritage == "Simic Hybrid"
-        ) {
-            $this->heritage = self::raceArray();
-        }
-    }
-
-    public function getHeritage()
-    {
-        return $this->heritage;
-    }
 }

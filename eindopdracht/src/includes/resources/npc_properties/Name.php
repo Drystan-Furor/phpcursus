@@ -21,15 +21,18 @@ class Name extends Race
     and author best known for co-creating the pioneering role-playing game 
      Dungeons & Dragons (D&D) with Dave Arneson.";
 
-    /*
-    this constructor requires 4 parameters;
-    the parameters are set in Class RaceXXX;
-    Class RaceXXX calls new Name(1,2,3,4);
-    This class generates the object properties;
-    this class is called by subclasses that extend this class.
-    all races are subclasses of this class;
-    the new_npc is designated with the generateName function;
-    */
+    /**
+     * This constructor requires 4 parameters;
+     * the parameters are set in Class RaceXXX;
+     * Class RaceXXX calls new Name(1,2,3,4);
+     * This class generates the object properties;
+     * this class is called by subclasses that extend this class.
+     * all races are subclasses of this class;
+     * the new_npc is designated with the generateName function;
+     * 
+     * @param $firstname 
+     * 
+     */
     private function __construct($lastname, $firstname, $nickname, $description)
     {
         $this->lastname = $lastname;
@@ -40,39 +43,72 @@ class Name extends Race
 
     
 
-    public static function generateName($new_npc) //pass the object to the function
+    /**
+     * Name based on Race
+     * verify that the name will NOT be grnerated If
+     * race == genasi.
+     */
+    public static function generateName($race) //pass the object to the function
     {
-        if ($new_npc->race->getRace() == "Genasi"
-            || $new_npc->race->getHeritage() == "Genasi"
-            || $new_npc->race->getHomebrew() == true
+        //address the exceptions of races first
+        if ($race->getRace() == "Genasi"
+            || $race->getRaceorigin() == "Genasi"
+            || $race->getHomebrew() == true
         ) {
-            $raceName = $new_npc->race->getHeritage();//ultimately return a string here
-            //include_once 'includes/dndraces/' . $this->heritage . '.php'; // call script
+            $raceName = $race->getHeritage();
+            //include_once 'includes/dndraces/' . $raceName . '.php'; 
         } else {
-            $raceName = $new_npc->race->getRace();//ultimately return a string here
+            $raceName = $race->getRace();
         }
+        // ELSE == ALL other scenario's
+
         $raceName = strtolower($raceName);              //no caps's in filename
         $raceName = str_replace(' ', '', $raceName);    //no spaces in filename
         $raceName = str_replace('-', '', $raceName);    //no dashes in filename
-        $raceName = new $raceName();    //makes all races into class call
+        $raceName = new $raceName();    //new aarakocra() [example]
         //include_once 'includes/dndraces/' . $raceName . '.php'; // call script
+        $lastname = $raceName::getLastname();
+        $firstname = $raceName::getFirstname();
+        $nickname = $raceName::getNickname();
+        $description = $raceName::getDescription();
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getFirstname() 
     {
         return $this->firstname;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getLastname() 
     {
         return $this->lastname;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getNickname() 
     {
         return $this->nickname;
     }
 
+
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getDescription() 
     {
         return $this->description;

@@ -16,14 +16,18 @@ class Homebrew
     }
 
     //------------------------------------------------------homebrew
-    //** localrace variable is readline on page, allows Homebrew // && $race != 'Drow' */
+    /** 
+     * Local race variable is readline on page, 
+     * allows Homebrew // && $race != 'Drow' 
+     * 
+     * @return UserInputRace
+     */
     public function setHomebrew()
     {
-        if (
-            array_key_exists('setcommonrace', $_POST) //is button clicked
+        if (array_key_exists('setcommonrace', $_POST) //is button clicked
             && !$_POST['commonrace'] == "" // is it not empty string
             && !ctype_space($_POST['commonrace']) // is it NOT white spacing
-            && !((bool)$_POST['commonrace'] == null) // does it exist
+            && !((bool)$_POST['commonrace'] == null) // does it exist?
         ) {
             $race = EscapeString::from_Input(($_POST['commonrace'])); //clean that input
             $race = ucwords(strtolower($race)); //-------------------ALL OF THE WORDS (caps to lower)

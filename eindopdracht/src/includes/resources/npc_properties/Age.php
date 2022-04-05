@@ -10,27 +10,45 @@ class Age extends Race
 {
     private $age;
 
-    //** VAR applies to all, SWITCH specifies ON $this->dndrace */
+    /**
+     * VAR applies to all, SWITCH specifies ON $this->dndrace
+     */
     private function __construct()
     {
-        $this->age = self::defineAge(); 
+        $this->age = self::_defineAge(); 
         //construct default
     }
-
-    public function SetAge($age)
+    
+    /**
+     * Setter
+     * 
+     * @param $age is a number
+     * 
+     * @return this object
+     */
+    public function setAge($age)
     {
         $this->age = $age;
         //Setter Function 
     }
 
-    public function GetAge()
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
+    public function getAge()
     {
         return $this->age;
         //Get the set age
     }
 
-    //** Age Selector IF race != human aging */
-    private function defineAge()
+    /** 
+     * Age Selector IF race != human aging 
+     * 
+     * @return specific age
+     */
+    private function _defineAge()
     {
         switch ($this->dndrace) {
             case $this->dndrace == "Elf":

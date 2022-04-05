@@ -52,25 +52,26 @@ class Belts
     }
 
     public static function belt()
-    {
-        $metal = MaterialGenerator::getMetalType();
-    
+    {   
         // array of mixed vars from arrays.
         $belts = [
             //belt + buckle
             self::beltFashion() . " " . self::beltmaterial() . " 
-            belt with a " . $metal . " buckle",
+            belt with a " . MaterialGenerator::getMetalType() . " buckle",
+
             // buckled belt
-            $metal . " buckled " . self::beltFashion() . " 
+            MaterialGenerator::getMetalType() . " buckled " . self::beltFashion() . " 
             " . self::beltmaterial() . " belt",
     
             //belt + item
             self::beltFashion() . " " . self::beltmaterial() . " belt
             with " . self::beltitem() . " strapped to it",
+
             //belt + 2 items
             self::beltFashion() . " " . self::beltmaterial() . " belt
             with " . self::beltitem() . " and " . self::beltitem() . " 
             strapped to it",
+            
             // belt + 3 items
             self::beltFashion() . " " . self::beltmaterial() . " belt
             used to hold  " . self::beltitem() . ",  " . self::beltitem() . "
@@ -91,7 +92,7 @@ class Belts
             self::beltFashion() . " " . self::beltmaterial() . " belt
             holding " . self::beltitem() . " and a " . self::beltFashion() .
             " " . self::beltmaterial() . " bandolier with a "
-             . $metal . " buckle holding "
+             . MaterialGenerator::getMetalType() . " buckle holding "
              . self::beltitem() . " and " . self::beltitem(),
         ];
         //pregenerated belt selector

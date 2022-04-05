@@ -1,24 +1,28 @@
 <?php
  /** 
-  Gender Vars and Person Pronounce
+  * Gender RNG
+  * Gender Vars and Person Pronounce
   */
-// Gender RNG
-//------------------------------------------------------gender vars
-
-
 class Gender
 {
-    private $gender;
-    private $manWoman;
-    private $heshe;
-    private $hisher;
-
+    /**
+     * Construct a man or a woman
+     */
     private function __construct()
     {
-        $this->gender = self::setGender();
+        $this->gender = self::_setGender();
     }
 
-    private function setGender() 
+
+    //------------------------------------------------------gender vars
+    /**
+     * Based on random of 1 or 2
+     * 50/50 to be either gender
+     * Setter
+     * 
+     * @return pronounces
+     */
+    private function _setGender() 
     {
         $rnggender = rand(1, 2);
         if ($rnggender == 1) {
@@ -35,32 +39,52 @@ class Gender
         }   
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getGender()
     {
         return $this->gender;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getManWoman()
     {
         return $this->manWoman;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getHeShe()
     {
         return $this->heshe;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getHisHer()
     {
         return $this->hisher;
     }
 
 }
+
 /*
 $new_gender = new Gender();
 $gender = $new_gender->getGender();
-$manWoman = $new_gender->getGender();
-$heshe = $new_gender->getGender();
-$hisher = $new_gender->getGender();
-
+$manWoman = $new_gender->getManWoman();
+$heshe = $new_gender->getHeShe();
+$hisher = $new_gender->getHisHer();
 */

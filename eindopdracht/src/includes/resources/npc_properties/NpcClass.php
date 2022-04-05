@@ -19,6 +19,11 @@ class NpcClass
         return $this->npcClass;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getNpcClass()
     {
         return $this->npcClass;

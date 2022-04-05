@@ -4,6 +4,11 @@
  * the final class 
  * takes all information from all generators and
  * makes a string concat
+ * Goal of this Class is to call all other classes
+ * Assign those classes to properties and
+ * use THAT->getter to assign the value to THIS Classes property
+ * 
+ * If we build mult properties we have to Get them seperatly out of that class
  * 
  */
 class DndNpcRng
@@ -22,29 +27,51 @@ class DndNpcRng
 
     private function __construct()
     {
-        $this->new_npc = self::dndRngNpc();
+        $this->new_npc = self::_dndRngNpc();
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getNewNpc()
     {
         return $this->new_npc;
     }
 
-    private function dndRngNpc()
+
+    /**
+     * Method to call all classes and use or acces proeprties
+     */
+    private function _dndRngNpc()
     {
         // gender race age
-        $this->gender = new Gender();
-        $this->dndrace = new Race(); //property is Class, not value of class, not a return function
-        $this->age = new Age();
+        // OBJECT == new Class
+        //property is Class, not value of class, not a return function
+        // THIS OBJECT == class->get Object Value of THAT Class
 
-        //name [generated after race is defined]
-        $this->name = Name::generateName($this->new_npc); //pass object to class method, allows to pass multiple properties
-        //$this->name = Name::generateName($this->new_npc->dndrace->getRace()); //pass race from getter
-        // would be exceptional if we did not need to access > 1 properties
+        $this->gender = new Gender(); 
+        $this->gender = $this->gender->getGender();
+
+        $this->dndrace = new Race(); 
+        $this->raceorigin = $this->dndrace->getRaceorigin();
+        $this->dndrace = $this->dndrace->getRace();
+        
+        $this->age = new Age();
+        $this->age = $this->age->getAge();
+
+
+
+        //name [requires a race and origing]
         //$this->name = new Name(); the constructor requires 4 values -> explore to make users enter their own name.
+        //pass object to class method, allows to pass multiple properties
+        $this->name = Name::generateName($this->dndrace); 
+        
 
         //body {also public method}
         $this->body = new BodiesGenerator();
+        $this->body =
 
         //face
         $this->face = new ProfileGenerator();
@@ -65,7 +92,7 @@ class DndNpcRng
         //Hat
         $this->hat = new Hats();
         //Belt
-
+        $this->belt = new Belts();
         //Shoes
 
         // jewel / ring
