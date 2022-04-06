@@ -2,15 +2,15 @@
 
 /**
  * NOSE RNG, based on real percentages found in research.
+ * Nose Selector (Based on actual research data for percentages)
  */
-
-//------------------- Nose Selector (Based on actual research data for percentages)
-
-
 class Nose
 {
     var $nose;
 
+    /**
+     * Constructor
+     */
     private function __construct()
     {
         $this->nose = self::randomNose();
@@ -24,6 +24,7 @@ class Nose
             $nose = aarakocra::randomNose();
         }
         
+        //-------------------------------------DEFAULT Human Nose
         $nose = rand(1, 100);
         switch ($nose) {
         case $nose >= 1 && $nose <= 24:

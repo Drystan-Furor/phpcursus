@@ -6,15 +6,39 @@
 
 class Hats
 {
-    private $hat;
-
+    /**
+     * Construct a hat or no hat at all.
+     * Has hat yes/no 
+     * Yes -> craft hat / No -> empty string
+     */
     private function __construct()
     {
-        $this->hat = self::hasHat();
+        $this->hat = self::_hasHat();
     }
 
+    /**
+     * Randomize if npc has headdress
+     * roll d20, if not 16-20, NPC does not wear a hat
+     * 
+     * @return craftHat or empty string
+     */
+    private function _hasHat()
+    {
+        $this->hat = rand(1, 20);
+        if ($this->hat > 15) {
+            $this->hat = "";
+        } else {
+            $this->hat = self::_craftHat();
+        }
+        return $this->hat;
+    }
 
-    private static function hatMaterials()
+    /**
+     * Array of materials
+     * 
+     * @return single value
+     */
+    private static function _hatMaterials()
     {
         $hattextiles = [
             "leather", "felt", "cotton", "wool", "straw", "linen", "knitted", "fur",
@@ -23,7 +47,12 @@ class Hats
         return $hattextile;
     }
 
-    private static function hatTypes()
+    /**
+     * Array of materials
+     * 
+     * @return single value
+     */
+    private static function _hatTypes()
     {
         $hatTypes = [
             'cap', 'hat', 'beanie', 'hood', 'fedora', 'bowler', 'sombrero', 'beret',
@@ -33,41 +62,34 @@ class Hats
         return $hatType;
     }
 
-    private static function craftHat()
+    /**
+     * Craft a hat made of materials from arrays
+     * 
+     * @return crafted hats
+     */
+    private static function _craftHat()
     {
-        $hattextile = self::hatMaterials();
-        $hatType = self::hatTypes();
-
         $hats = [ //  wears
             "a wimple, a piece of cloth worn over the head and around the face and neck",
-            "a $hattextile sugar loaf hat: a tallish, conical hat that resembles an 
+            "a ".self::_hatMaterials()." sugar loaf hat: a tallish, conical hat that resembles an 
             inverted flower pot",
-            "a $hattextile flat mortar board type hat, people associate 
+            "a ".self::_hatMaterials()." flat mortar board type hat, people associate 
             with graduation,",
-            "a chaperon, a $hattextile hood that is sewn onto a cape",
-            "a $hattextile hood grown with extra fabric and slightly 
+            "a chaperon, a ".self::_hatMaterials()." hood that is sewn onto a cape",
+            "a ".self::_hatMaterials()." hood grown with extra fabric and slightly 
                 longer than necessary",
-            "a tall $hattextile conical hat worn tilted at the back of the head",
-            "a " . $hattextile . " " . $hatType,
+            "a tall ".self::_hatMaterials()." conical hat worn tilted at the back of the head",
+            "a " . self::_hatMaterials() . " " . self::_hatTypes(),
         ];
         $hat = array_rand(array_flip($hats), 1);
         return $hat;
     }
 
-    private function hasHat()
-    {
-        $this->hat = rand(1, 20);
-        if ($this->hat > 15) {
-            $this->hat = "";
-        } else {
-            $this->hat = self::craftHat();
-        }
-        return $this->hat;
-    }
-
-    /*
-    get properties
-    */
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getHat()
     {
         return $this->hat;

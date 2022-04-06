@@ -1,17 +1,22 @@
 <?php
-
 /**
  * Emotion Getter
  */
 class MoodGenerator
 {
-    public $mood;
-
+    /**
+     * Constructor
+     */
     private function __construct()
     {
         $this->mood = self::generateMood();
     }
 
+    /**
+     * Array of Emotions
+     * 
+     * @return emotion
+     */
     public static function generateMood()
     {
         $moods = [
@@ -38,6 +43,11 @@ class MoodGenerator
         return $mood;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getMood()
     {
         return $this->mood;

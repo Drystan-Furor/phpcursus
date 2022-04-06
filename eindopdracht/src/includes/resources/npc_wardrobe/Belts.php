@@ -1,15 +1,27 @@
 <?php
 
+/**
+ * Generate a random belt.
+ * Random materials will be generated
+ * and items attached to the belt too.
+ */
 class Belts
 {
-    private $belt;
 
+    /**
+     * Constructor
+     */
     private function __construct()
     {
         $this->belt = self::belt();
     }
 
-    private static function beltitem()
+    /**
+     * Array of random items attached to the belt.
+     * 
+     * @return item
+     */
+    private static function _beltitem()
     {
         $beltitems = [
             rand(3, 9) . ' small bottles',
@@ -30,6 +42,11 @@ class Belts
         return $beltitem;
     }
 
+    /**
+     * Array of materials
+     * 
+     * @return single value
+     */
     private static function beltmaterial()
     {
         $beltmaterial = [
@@ -41,6 +58,11 @@ class Belts
         return $beltmaterial;
     }
 
+    /**
+     * Array of materials
+     * 
+     * @return single value
+     */
     private static function beltFashion()
     {
         $beltfashion = [
@@ -51,8 +73,13 @@ class Belts
         return $beltfashion;
     }
 
+    /**
+     * Craft unique belts in array
+     * 
+     * @return belt
+     */
     public static function belt()
-    {   
+    {
         // array of mixed vars from arrays.
         $belts = [
             //belt + buckle
@@ -62,44 +89,49 @@ class Belts
             // buckled belt
             MaterialGenerator::getMetalType() . " buckled " . self::beltFashion() . " 
             " . self::beltmaterial() . " belt",
-    
+
             //belt + item
             self::beltFashion() . " " . self::beltmaterial() . " belt
-            with " . self::beltitem() . " strapped to it",
+            with " . self::_beltitem() . " strapped to it",
 
             //belt + 2 items
             self::beltFashion() . " " . self::beltmaterial() . " belt
-            with " . self::beltitem() . " and " . self::beltitem() . " 
+            with " . self::_beltitem() . " and " . self::_beltitem() . " 
             strapped to it",
-            
+
             // belt + 3 items
             self::beltFashion() . " " . self::beltmaterial() . " belt
-            used to hold  " . self::beltitem() . ",  " . self::beltitem() . "
-            and  " . self::beltitem(),
-    
+            used to hold  " . self::_beltitem() . ",  " . self::_beltitem() . "
+            and  " . self::_beltitem(),
+
             //belt + item && belt 2 + item2
             self::beltFashion() . " " . self::beltmaterial() . " belt
-            with " . self::beltitem() . " strapped to it and another "
-            . self::beltFashion() . " " . self::beltmaterial() . " 
-            belt holding " . self::beltitem(),
-    
-    
+            with " . self::_beltitem() . " strapped to it and another "
+                . self::beltFashion() . " " . self::beltmaterial() . " 
+            belt holding " . self::_beltitem(),
+
+
             //BANDOLIERS
             self::beltFashion() . " " . self::beltmaterial() . " 
-            bandolier with " . self::beltitem() . ", " . self::beltitem() . "
-            and " . self::beltitem() . " attached to it",
+            bandolier with " . self::_beltitem() . ", " . self::_beltitem() . "
+            and " . self::_beltitem() . " attached to it",
             //belt + item && bandolier + 2 item
             self::beltFashion() . " " . self::beltmaterial() . " belt
-            holding " . self::beltitem() . " and a " . self::beltFashion() .
-            " " . self::beltmaterial() . " bandolier with a "
-             . MaterialGenerator::getMetalType() . " buckle holding "
-             . self::beltitem() . " and " . self::beltitem(),
+            holding " . self::_beltitem() . " and a " . self::beltFashion() .
+                " " . self::beltmaterial() . " bandolier with a "
+                . MaterialGenerator::getMetalType() . " buckle holding "
+                . self::_beltitem() . " and " . self::_beltitem(),
         ];
         //pregenerated belt selector
         $belt = array_rand(array_flip($belts), 1);
         return $belt;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getBelt()
     {
         return $this->belt;
