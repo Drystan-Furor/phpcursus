@@ -1,9 +1,10 @@
 <?php
 class Loaded
 {
-    var $outfit;
-    var $intro;
-
+    /**
+     * Construct an outfit
+     * and a sentence based on this class outfit 
+     */
     private function __construct()
     {
         $this->outfit = self::clothes();
@@ -41,6 +42,8 @@ class Loaded
         $outfit = self::outfits();
         $textile = self::textiles();
         $complexity = VerbsGenerator::getComplexity();
+        $detail = GeneralWardrobe::outfitDetails();
+        $addition = GeneralWardrobe::richDetails();
 
 
         $clothes = [
@@ -84,12 +87,21 @@ class Loaded
     }
 
 
-
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getOutfit()
     {
         return $this->outfit;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getIntro()
     {
         return $this->intro;

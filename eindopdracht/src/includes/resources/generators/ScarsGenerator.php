@@ -1,20 +1,25 @@
 <?php
 
 /**
-  Scars
+ * Scars
  */
-// Scar Tissue Arrays
-
 class ScarsGenerator
 {
-    var $scar;
 
-    private function __construct()
+    /**
+     * Give me a scar, 50% chance
+     */
+    private function __construct($new_npc)
     {
-        $this->scar = self::scar();
+        $this->scar = self::scar($new_npc);
     }
 
-    private static function scarMarkings()
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private static function _scarMarkings()
     {
         //------------------------------------------------------has a SCAR
         $markings = [
@@ -26,9 +31,14 @@ class ScarsGenerator
     }
 
     //------------------------------------------------------has a VAR scar
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function scarLines()
     {
-        $mark = self::scarMarkings();
+        $mark = self::_scarMarkings();
         $scarlines = [
             "horizontal " . $mark,
             "vertical " . $mark,
@@ -42,7 +52,11 @@ class ScarsGenerator
 
 
     //------------------------------------------------on the X SIDE
-
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function scarSides()
     {
         $scarsides = [
@@ -53,6 +67,11 @@ class ScarsGenerator
     }
 
     //-------------------------------------------------of the x LOCATION
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function scarLocation()
     {
         $scarlocations = [
@@ -69,6 +88,13 @@ class ScarsGenerator
     }
 
     //---------------------- full sentence
+    /**
+     * Array
+     * 
+     * @param $new_npc = object from Overwatch Class
+     * 
+     * @return string
+     */
     public static function scar($new_npc)
     {
         $hasScar = rand(1, 2);
@@ -83,13 +109,17 @@ class ScarsGenerator
             $scar = "";
         }
         return $scar;
-    } 
+    }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getScar()
     {
         return $this->scar;
     }
-
 }
 
 /*

@@ -1,17 +1,25 @@
 <?php
-
-//------------------------shoes
+/**
+ * Shoes make the man
+ */
 class Shoes
 {
-    var $shoes;
 
+    /**
+     * Get me a pair of shoes
+     */
     private function __construct()
     {
         $this->shoes = self::shoes();
     }
 
 
-    private static function Materials() 
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private static function _materials() 
     {
         $shoeMaterials = [
             'goat hide', 'cow hide', 'leather', 'felt',
@@ -20,7 +28,12 @@ class Shoes
         return $shoeMaterial;
     }
 
-    private static function Types() 
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private static function _types() 
     {
         $shoeTypes = [
             'simple shoes',
@@ -38,7 +51,12 @@ class Shoes
         return $shoeType;
     }
 
-    private static function wearing() 
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private static function _wearing() 
     {
         $feetCovers = [
             'Feet covered with',
@@ -49,16 +67,26 @@ class Shoes
         return $wearing;
     }
 
+    /**
+     * A pair of shoes
+     * 
+     * @return shoes
+     */
     public static function shoes() 
     {
-        $wearing = self::wearing(); // wearing
-        $shoeType = self::Types(); // shoes
-        $shoeMaterial = self::Materials(); // made of x
+        $wearing = self::_wearing(); // wearing
+        $shoeType = self::_types(); // shoes
+        $shoeMaterial = self::_materials(); // made of x
 
         $shoes = $wearing." ".$shoeType . " made of " . $shoeMaterial . ". ";
         return $shoes;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getShoes()
     {
         return $this->shoes;

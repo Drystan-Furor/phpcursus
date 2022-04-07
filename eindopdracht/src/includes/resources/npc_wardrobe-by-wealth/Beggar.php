@@ -6,9 +6,10 @@
 
 class Beggar
 {
-    private $outfit;
-    private $intro;
-
+    /**
+     * Construct an outfit
+     * and a sentence based on this class outfit 
+     */
     private function __construct()
     {
         $this->outfit = self::clothes();
@@ -76,11 +77,23 @@ class Beggar
         return $intro;
     }
 
+
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getOutfit()
     {
         return $this->outfit;
     }
 
+
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getIntro()
     {
         return $this->intro;

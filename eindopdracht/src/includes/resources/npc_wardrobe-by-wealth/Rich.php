@@ -2,13 +2,14 @@
 <?php
 class Rich
 {
-    var $outfit;
-    var $intro;
-
+    /**
+     * Construct an outfit
+     * and a sentence based on this class outfit 
+     */
     private function __construct()
     {
-        $this->outfit = self::clothes();
-        $this->intro = self::intros();
+        $this->outfit = self::_clothes();
+        $this->intro = self::_intros();
     }
 
 
@@ -32,26 +33,37 @@ class Rich
     }
 
 
-    //------------------------------------build generated sentence
-    private static function clothes()
+    /**
+     * Build a generated sentence from arrays 
+     * call to VerbsGenerator::getComplexity()
+     * 
+     * @return outfit
+     */
+    private static function _clothes()
     {
-        $outfit = self::outfits();
-        $textile = self::textiles();
-        $complexity = VerbsGenerator::getComplexity();
-
-
         $clothes = [
-            $complexity . " hooded " . $textile . " cloak",
-            $complexity . " " . $textile . " houppelande, a full length robe like garment",
-            $outfit . ", that buttons in the front to a low waist, 
-            and is fitted to a " . $complexity . " bodice,",
-            $outfit . ", fit closely to the body",
-            "Burgundian style " . $outfit,
-            $complexity . " " . $textile . " " . $outfit,
+            VerbsGenerator::getComplexity() . " hooded " . 
+            self::textiles() . " cloak with " . GeneralWardrobe::outfitDetails() . 
+            " and it has " . GeneralWardrobe::richDetails(),
+
+            VerbsGenerator::getComplexity() . " " . self::textiles() . 
+            " houppelande, a full length robe like garment with " . GeneralWardrobe::outfitDetails() . 
+            " and it has " . GeneralWardrobe::richDetails(),
+
+            self::outfits() . ", that buttons in the front to a low waist, 
+            and is fitted to a " . VerbsGenerator::getComplexity() . " bodice,",
+
+            self::outfits() . ", fit closely to the body with " . GeneralWardrobe::outfitDetails() . 
+            " and it has " . GeneralWardrobe::richDetails(),
+
+            "Burgundian style " . self::outfits() ." with " . GeneralWardrobe::outfitDetails() . 
+            " and it has " . GeneralWardrobe::richDetails(),
+
+            VerbsGenerator::getComplexity() . " " . self::textiles() . " " . self::outfits(),
     
-            $outfit . " of " . $complexity . " " . $textile,
+            self::outfits() . " of " . VerbsGenerator::getComplexity() . " " . self::textiles(),
     
-            $textile . " " . $outfit .
+            self::textiles() . " " . self::outfits() .
                 " similar to the clothing of the elite but made of cheaper 
                 materials with less dye and ornamentation",
     
@@ -62,9 +74,14 @@ class Rich
 
 
     //-------------------------------------INTRO
-    private function intros()
+    /**
+     * Array of sentences to use in buildup
+     * 
+     * @return string intro
+     */
+    private function _intros()
     {
-        $wealthinessTypes = [
+        $intros = [
             'who looks quite wealthy.',
             'who looks very comfortable.',
             'who seems to be blooming.',
@@ -74,17 +91,29 @@ class Rich
             'who looks well-off.',
             'who seems to be on top of the heap.',
         ];
-        $intro = array_rand(array_flip($wealthinessTypes), 1);
+        $intro = array_rand(array_flip($intros), 1);
         return $intro;
     }
 
 
 
+
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getOutfit()
     {
         return $this->outfit;
     }
 
+
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getIntro()
     {
         return $this->intro;

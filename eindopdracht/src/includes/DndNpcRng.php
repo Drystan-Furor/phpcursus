@@ -51,7 +51,7 @@ class DndNpcRng
         //property is Class, not value of class, not a return function
         // THIS OBJECT == class->get Object Value of THAT Class
 
-        $this->gender = new Gender();
+        $this->new_npc = new Gender();
         //--- nouns
         $this->manWoman = $this->gender->getManWoman();
         $this->heshe = $this->gender->getHeShe();
@@ -96,14 +96,20 @@ class DndNpcRng
         $this->mood = $this->mood->getMood();
 
         //scars 
+        $this->scar = new ScarsGenerator($this->new_npc);
+        $this->scar1 = $this->scar->getScar();
+        $this->scar = new ScarsGenerator($this->new_npc);
+        $this->scar2 = $this->scar->getScar();
+        $this->scar = new ScarsGenerator($this->new_npc);
+        $this->scar3 = $this->scar->getScar();
 
         //wealth
         $this->outfit = new ProsperityGenerator();
-        // outfit = new ProsperityGenerator
-        //outfit --> shoulkd be generated in each wealth class, make getter full sentence
-        // outfit is based on wealth, so we don't RNG wealth, but we RNG outfit who getsWealth from class
+        $this->intro = $this->outfit->getIntro();
+        $this->outfit = $this->outfit->getOutfit();
+        // outfit --> should be generated in each wealth class, 
         // wealth is therefore not rng in main class
-        // so outfit is automatically wealth
+        // so outfit is automatically wealth based
 
         //Hat
         $this->hat = new Hats();
@@ -112,6 +118,8 @@ class DndNpcRng
         $this->belt = new Belts();
         $this->belt = $this->belt->getBelt();
         //Shoes
+        $this->shoes = new Shoes();
+        $this->shoes = $this->shoes->getShoes();
 
         // jewel / ring
 
@@ -124,14 +132,6 @@ class DndNpcRng
 }
 //---create object
 $new_npc = new DndNpcRng();
-
-
-
-
-
-//---outfit
-$outfit = $new_npc->outfit->ProsperityGenerator::getOutfit();
-$intro = $new_npc->outfit->ProsperityGenerator::getIntro();
 
 
 

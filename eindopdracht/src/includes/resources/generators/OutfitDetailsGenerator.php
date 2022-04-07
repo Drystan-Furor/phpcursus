@@ -2,8 +2,14 @@
 
 
 
-class GeneralWardrobe
+class OutfitDetailsGenerator
 {
+    /**
+     * Array for adding details on npc
+     * GeneralWardrobe::outfitDetails()
+     * 
+     * @return string
+     */
     public static function outfitDetails()
     {
         $clothingDetails = [ //with 
@@ -30,7 +36,12 @@ class GeneralWardrobe
         return $outfitDetail;
     }
 
-
+    /**
+     * Array for adding details on npc
+     * GeneralWardrobe::patterns()
+     * 
+     * @return string
+     */
     public static function patterns()
     {
         $patterns = [
@@ -42,6 +53,12 @@ class GeneralWardrobe
         return $pattern;
     }
 
+    /**
+     * Array for adding details on npc
+     * GeneralWardrobe::linings()
+     * 
+     * @return string
+     */
     public static function linings()
     {
 
@@ -54,20 +71,23 @@ class GeneralWardrobe
         return $lining;
     }
 
-
+    /**
+     * Array for adding details on npc
+     * GeneralWardrobe::richDetails()
+     * 
+     * @return string
+     */
     public static function richDetails()
     {
         //---------------------------if ($rich == true || $loaded == true) 
-        $lining = self::linings();
-        $pattern = self::patterns();
-
+        // It has
         $richdetails = [
             "designs featuring gimmicky or quirky elements",
-            "fur lining thats increasing " . $lining,
+            "fur lining thats increasing " . self::linings(),
             "interwoven golden thread for a shimmering effect",
-            "ornate and wildly ostentatious designs ". $pattern,
-            "patterns and designs " . $pattern,
-            "bureaucratic sigils of office dangling from the neck",
+            "ornate and wildly ostentatious designs " . self::patterns(),
+            "patterns and designs " . self::patterns(),
+            "bureaucratic sigils of office " .self::patterns(),
         ];
         $richDetail = array_rand(array_flip($richdetails), 1);
         return $richDetail;
@@ -75,17 +95,22 @@ class GeneralWardrobe
 
 
     //---------------------------------sleeves
+    /**
+     * Array for adding details on npc
+     * GeneralWardrobe::sleeves()
+     * 
+     * @return string
+     */
     public static function sleeves()
     {
-        $sleeveLength = VerbsGenerator::getLength();
-
+        // With
         $sleeves = [
-            $sleeveLength . " sleeves widened toward a bell shape",
-            "a high collar and " . $sleeveLength . " sleeves",
+            VerbsGenerator::getLength() . " sleeves widened toward a bell shape",
+            "a high collar and " . VerbsGenerator::getLength() . " sleeves",
             "full sleeves tightened at the wrist",
-            $sleeveLength . " sleeves that end at the elbow",
+            VerbsGenerator::getLength() . " sleeves that end at the elbow",
             "no sleeves",
-            $sleeveLength . " sleeves",
+            VerbsGenerator::getLength() . " sleeves",
             "slashings in the sleeves that show the under tunic",
         ];
         $sleeve = array_rand(array_flip($sleeves), 1);
