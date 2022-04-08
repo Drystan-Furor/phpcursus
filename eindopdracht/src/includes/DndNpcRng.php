@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * Overwatch
  * the final class 
  * takes all information from all generators and
  * makes a string concat
@@ -13,18 +14,11 @@
  */
 class DndNpcRng
 {
-    private $gender;
-    private $dndrace;
-    private $age;
-    private $name;
-
-    private $body;
-    private $face;
-    private $mood;
-    private $outfit; // -> new class building outfit
-
-    private $npcClass;
-
+    /**
+     * Call Overwatch.
+     * The function that calls all other classes and methods
+     * finally creating a full RNG piece of text.
+     */
     private function __construct()
     {
         $this->new_npc = self::_dndRngNpc();
@@ -42,7 +36,9 @@ class DndNpcRng
 
 
     /**
-     * Method to call all classes and use or acces proeprties
+     * Method to call all classes and use or acces properties
+     * 
+     * @return string
      */
     private function _dndRngNpc()
     {
@@ -51,12 +47,16 @@ class DndNpcRng
         //property is Class, not value of class, not a return function
         // THIS OBJECT == class->get Object Value of THAT Class
 
-        $this->new_npc = new Gender();
+        //class
+        $this->npcClass = new NpcClass();
+        $this->npcClass = $this->npcClass->getNpcClass();
+
         //--- nouns
-        $this->manWoman = $this->gender->getManWoman();
-        $this->heshe = $this->gender->getHeShe();
-        $this->hisher = $this->gender->getHisHer();
-        $this->gender = $this->gender->getGender();
+        $this->new_npc = new Gender();
+        $this->manWoman = $this->new_npc->getManWoman();
+        $this->heshe = $this->new_npc->getHeShe();
+        $this->hisher = $this->new_npc->getHisHer();
+        $this->gender = $this->new_npc->getGender();
 
         $this->dndrace = new Race();
         $this->raceorigin = $this->dndrace->getRaceorigin();
@@ -71,8 +71,12 @@ class DndNpcRng
         //$this->name = new Name(); the constructor requires 4 values 
         // -> explore to make users enter their own name.
         //pass object to class method, allows to pass multiple properties
-        // pass race to Name so it can sort what race naming class should be calles 
-        $this->name = Name::generateName($this->dndrace);
+        // pass race to Name so it can sort what race naming class should be calles
+        $this->name = new Name($this->dndrace);
+        $this->firstname = $this->name->getFirstname();
+        $this->lastname = $this->name->getLastname();
+        $this->nickname = $this->name->getNickname();
+        $this->description = $this->name->getDescription();
 
 
         //body {also public method}
@@ -83,15 +87,14 @@ class DndNpcRng
         $this->bodyshape = $this->body->getBodyShape();
 
         //face
-        $this->face = new ProfileGenerator();
-        //---face
-        $this->eyes = $this->face->getEyes(); 
-        $this->nose = $this->face->getNose();
-        $this->mouth = $this->face->getMouth();
-        $this->teeth = $this->face->getTeeth();
-        $this->chin = $this->face->getChin();
+        $this->face = new ProfileGenerator(
+            $this->dndrace, $this->new_npc, $this->npcClass
+        );
+        /**
+         This face = this face [getter]
+         */
 
-        //Mood
+        //Mood == Sentence
         $this->mood = new MoodGenerator();
         $this->mood = $this->mood->getMood();
 
@@ -103,31 +106,14 @@ class DndNpcRng
         $this->scar = new ScarsGenerator($this->new_npc);
         $this->scar3 = $this->scar->getScar();
 
-        //wealth
-        $this->outfit = new ProsperityGenerator();
+        //npc_wardrobe-by-wealth +npc_wardrobe
+        $this->outfit = new ProsperityGenerator($this->heshe);
         $this->intro = $this->outfit->getIntro();
         $this->outfit = $this->outfit->getOutfit();
-        // outfit --> should be generated in each wealth class, 
-        // wealth is therefore not rng in main class
-        // so outfit is automatically wealth based
 
-        //Hat
-        $this->hat = new Hats();
-        $this->hat = $this->hat->getHat();
-        //Belt
-        $this->belt = new Belts();
-        $this->belt = $this->belt->getBelt();
-        //Shoes
-        $this->shoes = new Shoes();
-        $this->shoes = $this->shoes->getShoes();
-
-        // jewel / ring
-
-        // weapon
-
-        //class
-        $this->npcClass = new NpcClass();
-        $this->npcClass = $this->npcClass->getNpcClass();
+        // this->weapon == full sentence
+        $this->weapon = new WeaponsGenerator($this->dndrace);
+        $this->weapon = $this->weapon->getArms();
     }
 }
 //---create object
@@ -144,8 +130,8 @@ $new_npc = new DndNpcRng();
 
 //-------------------------------------------------------subject array
 $randsubject = [
-    " the  " . $new_npc->Race::getRace() . "",
-    " this " . $this->gender->getManWoman(),
+    " the  " . $this->dndrace . "",
+    " this " . $this->gender,
     $this->gender->getHeShe(),
     " $nickname",
 ];
@@ -187,21 +173,6 @@ and HIS mouth is set with
 MOUTH.
 
 */
-//---- see face
-$face =  " You " . VerbsGenerator::getObservation() .
-    " this " . $new_npc->gender->Gender::getManWoman() . " has " .
-    $new_npc->ProfileGenerator::getNose() . //see nose
-    "The " . $new_npc->npcClass->getNpcClass() . " meets your gaze with " .
-    $new_npc->ProfileGenerator::getEyes() . // see eyes
-    "As you seize up the " . $this->gender->getManWoman() . ", you " .
-    VerbsGenerator::getObservation() . " " . $new_npc->gender->Gender::getHeShe() . " has " .
-    $new_npc->ProfileGenerator::getChin() . //see chin
-    " and " . $this->gender->getHisHer() . " mouth is set with " .
-    $new_npc->ProfileGenerator::getMouth() . ". "; //see mouth
-
-$dentals = "When the " . $new_npc->Race::getRace() . " is talking or shouting, you "
-    . VerbsGenerator::getObservation() . " " . $this->gender->getHeShe() .
-    " " . $new_npc->ProfileGenerator::getTeeth() . ". "; //see teeth
 
 //--------------------------------------------------------------see scars
 
@@ -216,7 +187,7 @@ $body = " Built " . $new_npc->body->BodiesGenerator::getBodyType() . ", "
     body with " .
     $new_npc->body->BodiesGenerator::getBodyShape() . ". ";
 //--------------------------------------------------------------see outfit
-$outfit = $this->gender->getManWoman() .
+$outfit = $this->manWoman .
     " " . $new_npc->outfit->ProsperityGenerator::getOutfit() .
     " " . Belts::belt() . ". " .
     $new_npc->hat->getHat() . Shoes::shoes() .

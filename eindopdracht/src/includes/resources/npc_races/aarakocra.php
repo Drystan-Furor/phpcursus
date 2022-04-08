@@ -53,7 +53,12 @@ class aarakocra extends Name
         return $this->biography;
     }
 
-    protected static function randomNose()
+    /**
+     * Birds have beaks, not nose
+     * 
+     * @return beak
+     */
+    public static function randomBeak()
     {
         $nose = rand(1, 100);
         switch ($nose) {

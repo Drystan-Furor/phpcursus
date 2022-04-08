@@ -22,43 +22,34 @@ class Name extends Race
      Dungeons & Dragons (D&D) with Dave Arneson.";
 
     /**
-     * This constructor requires 4 parameters;
-     * the parameters are set in Class RaceXXX;
-     * Class RaceXXX calls new Name(1,2,3,4);
-     * This class generates the object properties;
-     * this class is called by subclasses that extend this class.
-     * all races are subclasses of this class;
-     * the new_npc is designated with the generateName function;
+     * Construct a name based on race/heritage
      * 
-     * @param $firstname 
-     * 
+     * @param $race   == dndrace
+     * @param $origin == race origin / hertiage 
      */
-    private function __construct($lastname, $firstname, $nickname, $description)
+    private function __construct($race)
     {
-        $this->lastname = $lastname;
-        $this->firstname = $firstname;
-        $this->nickname = $nickname;
-        $this->description = $description;
+        $this->biography = self::_generateName($race);
     } //object name exists
 
     
-
     /**
      * Name based on Race
-     * verify that the name will NOT be grnerated If
-     * race == genasi.
+     * Check if Homebrew
+     * Set call to RNG Origin if Homebrew
+     * 
+     * @param $race == dndrace
+     * 
+     * @return raceClass()
      */
-    public static function generateName($race) //pass the object to the function
+    private function _generateName($race) 
     {
         //address the exceptions of races first
-        if ($race->getRace() == "Genasi"
-            || $race->getRaceorigin() == "Genasi"
-            || $race->getHomebrew() == true
-        ) {
-            $raceName = $race->getHeritage();
-            //include_once 'includes/dndraces/' . $raceName . '.php'; 
+        if (Homebrew::isHomebrew($race) == true) {
+            $raceName = Race::setHeritage(); 
+            //Homebrews get a RNG origin to generate names
         } else {
-            $raceName = $race->getRace();
+            $raceName = $race;
         }
         // ELSE == ALL other scenario's
 
@@ -67,18 +58,19 @@ class Name extends Race
         $raceName = str_replace('-', '', $raceName);    //no dashes in filename
         $raceName = new $raceName();    //new aarakocra() [example]
         //include_once 'includes/dndraces/' . $raceName . '.php'; // call script
-        $lastname = $raceName::getLastname();
-        $firstname = $raceName::getFirstname();
-        $nickname = $raceName::getNickname();
-        $description = $raceName::getDescription();
+        $this->lastname = $raceName::getLastname();
+        $this->firstname = $raceName::getFirstname();
+        $this->nickname = $raceName::getNickname();
+        $this->description = $raceName::getDescription();
     }
+
 
     /**
      * Getter
      * 
      * @return this object
      */
-    public function getFirstname() 
+    public function getFirstname()
     {
         return $this->firstname;
     }
@@ -88,7 +80,7 @@ class Name extends Race
      * 
      * @return this object
      */
-    public function getLastname() 
+    public function getLastname()
     {
         return $this->lastname;
     }
@@ -98,7 +90,7 @@ class Name extends Race
      * 
      * @return this object
      */
-    public function getNickname() 
+    public function getNickname()
     {
         return $this->nickname;
     }
@@ -109,7 +101,7 @@ class Name extends Race
      * 
      * @return this object
      */
-    public function getDescription() 
+    public function getDescription()
     {
         return $this->description;
     }

@@ -10,9 +10,9 @@ class Poor
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    private function __construct()
+    private function __construct($heshe)
     {
-        $this->outfit = self::clothes();
+        $this->outfit = self::clothes($heshe);
         $this->intro = self::intros();
     }
 
@@ -38,38 +38,69 @@ class Poor
 
 
     //------------------------------------build generated sentence
-    private static function clothes()
+    /**
+     * Array of sentences of outfits
+     * 
+     * @return outfit
+     */
+    private static function _clothing()
     {
-        $outfit = self::outfits();
-        $textile = self::textiles();
-        $textile2 = self::textiles();
-
         $clothes = [
-            $outfit . " made of " . $textile . ", hanging a bit loose,",
-            "hooded  " . $textile . " cloak",
-            "functional " . $textile . " " . $outfit,
-            "short skirted " . $textile . " tunic",
-            "set of simple " . $textile . " clothes",
-    
-            $textile . " cote hardie, that buttons in the front to a low waist 
-                and is fitted to a " . $textile2 . " bodice,",
-    
-            $textile . " " . $outfit .
-                " similar to the clothing of the elite but made of cheaper 
-                    materials with less dye or ornamentation,",
-    
-            $textile . " apron",
+            self::outfits() . " made of " . self::textiles() . ", hanging a bit loose,",
+
+            "hooded  " . self::textiles() . " cloak",
+
+            "functional " . self::textiles() . " " . self::outfits(),
+
+            "short skirted " . self::textiles() . " tunic",
+
+            "set of simple " . self::textiles() . " clothes",
+
+            self::textiles() . " cote hardie, that buttons in the front to a low waist 
+                and is fitted to a " . self::textiles() . " bodice,",
+
+            self::textiles() . " " . self::outfits() .
+                " similar to the clothing of commoners but made of cheap 
+                materials with less dye,",
+
+            self::textiles() . " apron",
         ];
         $outfit = array_rand(array_flip($clothes), 1);
         return $outfit;
     }
 
 
+    //-----------------------------outfit
+    /**
+     * Sentence builder
+     * He / She 
+     * 
+     * @return outfit as a sentence
+     */
+    public function clothes($heshe)
+    {
+        $belt = new Belts();
+        $belt = $belt->getBelt();
+
+        $hat = new Hats($heshe);
+        $hat = $hat->getHat();
+
+        $shoes = new Shoes();
+        $shoes = $shoes->getShoes();
+
+
+        $this->outfit = strtoupper($heshe) . " wears a " . //He / She Wears a
+            self::_clothing() .
+            " and a " . $belt . ". " . $shoes . " "
+            . $hat;
+        return $this->outfit;
+    }
+
     //-------------------------------------INTRO
     private function intros()
     {
         $wealthinessTypes = [
-            'who looks rather self.',
+            'who looks rather poor.',
             'who seems to be penniless.', 'that looks quite impoverished.',
             'who recently became bankrupt.', ' looking poverty-stricken at best.',
             'who looks underpriviliged.', 'who makes a down-and-out impression.',
@@ -99,9 +130,3 @@ class Poor
         return $this->intro;
     }
 }
-
-
-
-
-
-

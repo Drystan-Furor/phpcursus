@@ -1,16 +1,22 @@
 <?php
 
-
+/**
+ * Verbs
+ *  $quality;
+ *  $maintenance;
+ *  $observe;
+ *  $indicator;
+ *  $length;
+ */
 class VerbsGenerator
 {
-    private $quality;
-    private $maintenance;
-    private $observe;
-    private $indicator;
-    private $length;
-
     //-----------------------------------------quality
-    public static function getQuality()
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    public static function quality()
     {
         $qualities = [
             'cheap', 'affordable', 'quality', 'expensive quality',
@@ -18,8 +24,13 @@ class VerbsGenerator
         $quality = array_rand(array_flip($qualities), 1);
         return $quality;
     }
-    //$quality = Verbsgenerator::getQuality();
+    //$quality = Verbsgenerator::quality();
 
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getComplexity()
     {
         $complexities = [
@@ -28,15 +39,20 @@ class VerbsGenerator
         $complexity = array_rand(array_flip($complexities), 1);
         return $complexity;
     }
-  
+
 
     //----------------------------------------maintenance
-    public static function getMaintenance()
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    public static function maintenance()
     {
         $maintenances = [
-            'clean and slick', 'rusted', 'moldy', 'oxidated', 'clean',
+            'clean and slick', 'rusted', 'moldy', 'oxidated', 'clean', 'corroded',
             'damaged', 'shining', 'smooth', 'big', 'dented', 'flawed', 'dirty',
-            'stained', 'filthy', 'greasy', 'begrimed', 'smudged', 'squalid', 'corroded',
+            'stained', 'filthy', 'greasy', 'begrimed', 'smudged', 'squalid',
             'disheveled', 'grimey', 'well maintained', 'bloodstained', 'unkempt',
         ];
         $maintenance = array_rand(array_flip($maintenances), 1);
@@ -44,6 +60,11 @@ class VerbsGenerator
     }
 
     //---------------------------------------------observations
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getObservation()
     {
         $observations = [
@@ -56,8 +77,12 @@ class VerbsGenerator
         return $observe;
     }
 
-    //---------------indicators
-
+    //-------------------------------------------------indicators
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getIndicator()
     {
         $indicators = [
@@ -70,6 +95,11 @@ class VerbsGenerator
 
 
     //----------------------------------------------lengths
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getLength()
     {
         $lenghts = [
@@ -80,11 +110,18 @@ class VerbsGenerator
         return $length;
     }
 
-    public static function getClasping()
+    //--------------------------------------------------------Holding VerbsGenerator::holding()
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    public static function holding()
     {
         $clasping = [
             'clasps', 'clutches', 'clenches', 'holds', 'wears', 'is holding',
-            'thightly squeezing', 'is caressing', 'fiddling with',
+            'is thightly squeezing', 'is caressing', 'is fiddling with', 
+            'is clasping',
         ];
         $clasps = array_rand(array_flip($clasping), 1);
         return $clasps;

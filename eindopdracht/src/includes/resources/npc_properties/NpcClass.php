@@ -1,14 +1,24 @@
 <?php
-
+/**
+ * DND Classes
+ */
 class NpcClass
 {
-    private $npcClass;
 
+    /**
+     * Get 1 random class
+     */
     private function __construct()
     {
         $this->npcClass = self::getNpcClass();
     }
+
     //-----------------CLASSES
+    /**
+     * Array of Classes
+     * 
+     * @return class
+     */
     public function generateClass()
     {
         $npcClasses = [

@@ -3,17 +3,23 @@
 /**
  * Jewelry
  */
-
 class Jewelry
 {
-    var $jewel;
-
+    /**
+     * Construct a piece of jewelry
+     */
     private function __construct()
     {
         $this->jewel = self::craftJewel();
     }
 
-    private static function jewelryTypes()
+
+    /**
+     * Array of types
+     * 
+     * @return single type
+     */
+    private static function _jewelryType()
     {
         $jewelrytypes = [
             'necklace',
@@ -34,20 +40,27 @@ class Jewelry
         return $jewelryType;
     }
 
-    private static function craftJewel()
+    /**
+     * Create a sentence
+     * 
+     * @return string
+     */
+    public static function craftJewel()
     {
-        $jewelmaterial = MaterialGenerator::getMetalType();
-        $jewelgemstone = MaterialGenerator::getGemstoneType();
-        $jewelrytype = self::jewelryTypes();
-
-        $jewel = $jewelmaterial . " " . $jewelrytype .
-            " set with a " . $jewelgemstone;
+        $jewel = MaterialGenerator::getMetalType() . " " . self::_jewelryType() .
+            " set with a " . MaterialGenerator::getGemstoneType();
 
         return $jewel;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getJewel()
     {
         return $this->jewel;
     }
 }
+// Jewelry::craftJewel()

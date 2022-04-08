@@ -63,7 +63,7 @@ class Belts
      * 
      * @return single value
      */
-    private static function beltFashion()
+    private static function _beltFashion()
     {
         $beltfashion = [
             'embroidered', 'plain', 'smooth', 'simple',
@@ -83,41 +83,41 @@ class Belts
         // array of mixed vars from arrays.
         $belts = [
             //belt + buckle
-            self::beltFashion() . " " . self::beltmaterial() . " 
+            self::_beltFashion() . " " . self::beltmaterial() . " 
             belt with a " . MaterialGenerator::getMetalType() . " buckle",
 
             // buckled belt
-            MaterialGenerator::getMetalType() . " buckled " . self::beltFashion() . " 
+            MaterialGenerator::getMetalType() . " buckled " . self::_beltFashion() . " 
             " . self::beltmaterial() . " belt",
 
             //belt + item
-            self::beltFashion() . " " . self::beltmaterial() . " belt
+            self::_beltFashion() . " " . self::beltmaterial() . " belt
             with " . self::_beltitem() . " strapped to it",
 
             //belt + 2 items
-            self::beltFashion() . " " . self::beltmaterial() . " belt
+            self::_beltFashion() . " " . self::beltmaterial() . " belt
             with " . self::_beltitem() . " and " . self::_beltitem() . " 
             strapped to it",
 
             // belt + 3 items
-            self::beltFashion() . " " . self::beltmaterial() . " belt
+            self::_beltFashion() . " " . self::beltmaterial() . " belt
             used to hold  " . self::_beltitem() . ",  " . self::_beltitem() . "
             and  " . self::_beltitem(),
 
             //belt + item && belt 2 + item2
-            self::beltFashion() . " " . self::beltmaterial() . " belt
+            self::_beltFashion() . " " . self::beltmaterial() . " belt
             with " . self::_beltitem() . " strapped to it and another "
-                . self::beltFashion() . " " . self::beltmaterial() . " 
+                . self::_beltFashion() . " " . self::beltmaterial() . " 
             belt holding " . self::_beltitem(),
 
 
             //BANDOLIERS
-            self::beltFashion() . " " . self::beltmaterial() . " 
+            self::_beltFashion() . " " . self::beltmaterial() . " 
             bandolier with " . self::_beltitem() . ", " . self::_beltitem() . "
             and " . self::_beltitem() . " attached to it",
             //belt + item && bandolier + 2 item
-            self::beltFashion() . " " . self::beltmaterial() . " belt
-            holding " . self::_beltitem() . " and a " . self::beltFashion() .
+            self::_beltFashion() . " " . self::beltmaterial() . " belt
+            holding " . self::_beltitem() . " and a " . self::_beltFashion() .
                 " " . self::beltmaterial() . " bandolier with a "
                 . MaterialGenerator::getMetalType() . " buckle holding "
                 . self::_beltitem() . " and " . self::_beltitem(),

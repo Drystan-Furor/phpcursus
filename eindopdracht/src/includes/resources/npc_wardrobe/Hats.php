@@ -11,9 +11,9 @@ class Hats
      * Has hat yes/no 
      * Yes -> craft hat / No -> empty string
      */
-    private function __construct()
+    private function __construct($heshe)
     {
-        $this->hat = self::_hasHat();
+        $this->hat = self::_hasHat($heshe);
     }
 
     /**
@@ -22,13 +22,13 @@ class Hats
      * 
      * @return craftHat or empty string
      */
-    private function _hasHat()
+    private function _hasHat($heshe)
     {
         $this->hat = rand(1, 20);
         if ($this->hat > 15) {
             $this->hat = "";
         } else {
-            $this->hat = self::_craftHat();
+            $this->hat = self::_craftHat($heshe);
         }
         return $this->hat;
     }
@@ -67,21 +67,46 @@ class Hats
      * 
      * @return crafted hats
      */
-    private static function _craftHat()
+    private static function _craftHats()
     {
         $hats = [ //  wears
-            "a wimple, a piece of cloth worn over the head and around the face and neck",
-            "a ".self::_hatMaterials()." sugar loaf hat: a tallish, conical hat that resembles an 
+            "a wimple, a piece of cloth worn over the head 
+            and around the face and neck",
+
+            "a " . self::_hatMaterials() . " sugar loaf hat: a tallish, 
+            conical hat that resembles an 
             inverted flower pot",
-            "a ".self::_hatMaterials()." flat mortar board type hat, people associate 
-            with graduation,",
-            "a chaperon, a ".self::_hatMaterials()." hood that is sewn onto a cape",
-            "a ".self::_hatMaterials()." hood grown with extra fabric and slightly 
+
+            "a " . self::_hatMaterials() . " flat mortar board type hat, 
+            people associate with graduation,",
+
+            "a chaperon, a " . self::_hatMaterials() . " hood that is sewn onto a cape",
+
+            "a " . self::_hatMaterials() . " hood grown with extra fabric and slightly 
                 longer than necessary",
-            "a tall ".self::_hatMaterials()." conical hat worn tilted at the back of the head",
+
+            "a tall " . self::_hatMaterials() . " 
+            conical hat worn tilted at the back of the head",
+
             "a " . self::_hatMaterials() . " " . self::_hatTypes(),
         ];
         $hat = array_rand(array_flip($hats), 1);
+        return $hat;
+    }
+
+    /**
+     * From array of crafted hats, and passed nouns, built
+     * a sentence
+     * 
+     * @param $heshe = noun
+     * 
+     * @return string
+     */
+    private static function _craftHat($heshe)
+    {
+        $hat = strtoupper($heshe) . " is wearing " .
+            self::_craftHats() . ". ";
+
         return $hat;
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Shoes make the man
  */
@@ -19,7 +20,7 @@ class Shoes
      * 
      * @return string
      */
-    private static function _materials() 
+    private static function _materials()
     {
         $shoeMaterials = [
             'goat hide', 'cow hide', 'leather', 'felt',
@@ -33,7 +34,7 @@ class Shoes
      * 
      * @return string
      */
-    private static function _types() 
+    private static function _types()
     {
         $shoeTypes = [
             'simple shoes',
@@ -56,7 +57,7 @@ class Shoes
      * 
      * @return string
      */
-    private static function _wearing() 
+    private static function _wearing()
     {
         $feetCovers = [
             'Feet covered with',
@@ -72,13 +73,10 @@ class Shoes
      * 
      * @return shoes
      */
-    public static function shoes() 
+    public static function shoes()
     {
-        $wearing = self::_wearing(); // wearing
-        $shoeType = self::_types(); // shoes
-        $shoeMaterial = self::_materials(); // made of x
-
-        $shoes = $wearing." ".$shoeType . " made of " . $shoeMaterial . ". ";
+        $shoes = self::_wearing() . " " . self::_types() . " made of " .
+            self::_materials() . ". ";
         return $shoes;
     }
 
@@ -96,12 +94,3 @@ class Shoes
 $new_shoes = new Shoes();
 $new_shoes = $new_shoes->getShoes();
 */
-
-
-
-
-
-
-
-
-

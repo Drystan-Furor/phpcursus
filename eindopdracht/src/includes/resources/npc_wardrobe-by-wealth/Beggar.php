@@ -10,16 +10,16 @@ class Beggar
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    private function __construct()
+    private function __construct($heshe)
     {
-        $this->outfit = self::clothes();
+        $this->outfit = self::clothes($heshe);
         $this->intro = self::intros();
     }
 
     private static function textiles()
     {
         $textiles = [
-            'hemp', 'coarse wool', 
+            'hemp', 'coarse wool',
         ];
         $textile = array_rand(array_flip($textiles), 1);
         return $textile;
@@ -49,22 +49,46 @@ class Beggar
     private static function weathered()
     {
         $weathered = [
-            'partially torn', 'damaged and dirty', 
-            'stained', 'functional','',
+            'partially torn', 'damaged and dirty',
+            'stained', 'functional', '',
         ];
         $weathered = array_rand(array_flip($weathered));
         return $weathered;
     }
 
-    public function clothes()
+
+    //-----------------------------outfit
+    /**
+     * Sentence builder
+     * He / She 
+     * 
+     * @return outfit as a sentence
+     */
+    public function clothes($heshe)
     {
-        $this->outfit = " wears a " . self::weathered() ." " . self::outfits() . 
-        " made of " . self::textiles() . ", " . self::outfitDetails() . 
-        " and a " . self::weathered() ." ";//Belt;
+        $belt = new Belts();
+        $belt = $belt->getBelt();
+        // VerbsGenerator::holding()
+        // Rings::craftRing()
+        $shoes = new Shoes();
+        $shoes = $shoes->getShoes();
+
+        $this->outfit = strtoupper($heshe) . " wears a " . //He / She Wears a
+            self::weathered() . " " . self::outfits() . //weathered outfit
+            " made of " . self::textiles() . ", " . self::outfitDetails() . //made of 
+            " and a " . self::weathered() . " " . $belt . ". " //and a weathered Belt;
+            . SentenceGenerator::observing() . " " . Rings::craftRing() .
+            $heshe . " " . VerbsGenerator::holding() . ". " .
+            $shoes;
         return $this->outfit;
     }
 
     //-----------------------intro
+    /**
+     * Sentence builder
+     * 
+     * @return intro as a sentence
+     */
     public static function intros()
     {
         $wealthinessTypes = [
@@ -98,5 +122,4 @@ class Beggar
     {
         return $this->intro;
     }
-
 }

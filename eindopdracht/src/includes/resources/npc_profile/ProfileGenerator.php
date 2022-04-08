@@ -13,23 +13,12 @@ class ProfileGenerator
     /**
      * Constructor
      */
-    private function __construct()
+    private function __construct($dndrace, $new_npc, $class)
     {
-        $eyes = new Eyes();
-        $this->eyes = $eyes->getEyes();
-
-        $nose = new Nose();
-        $this->nose = $nose->getNose();
-
-        $mouth = new Mouth();
-        $this->mouth = $mouth->getMouth();
-
-        $teeth = new Teeth();
-        $this->teeth = $teeth->getTeeth();
-
-        $chin = new Chin();
-        $this->chin = $chin->getChin();
+        $this->face = self::_facialConstruction($dndrace, $new_npc, $class);
     }
+
+
 
     /**
      * Getter
@@ -79,6 +68,69 @@ class ProfileGenerator
     public function getTeeth()
     {
         return $this->teeth;
+    }
+
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
+    public function getFace()
+    {
+        return $this->face;
+    }
+
+
+    /**
+     * Facial Construction
+     * 
+     * @param $dndrace this race
+     * @param $new_npc the male/female nouns
+     * @param $class   this class
+     * 
+     * @return string
+     */
+    private function _facialConstruction($dndrace, $new_npc, $class)
+    {
+        //--- nouns
+        $manWoman = $new_npc->getManWoman();
+        $heshe = $new_npc->getHeShe();
+        $hisher = $new_npc->getHisHer();
+        $gender = $new_npc->getGender();
+
+        $eyes = new Eyes();
+        $this->eyes = $eyes->getEyes();
+
+        $nose = new Nose($dndrace);
+        $this->nose = $nose->getNose();
+
+        $mouth = new Mouth();
+        $this->mouth = $mouth->getMouth();
+
+        $teeth = new Teeth();
+        $this->teeth = $teeth->getTeeth();
+
+        $chin = new Chin();
+        $this->chin = $chin->getChin();
+
+        //---- see face
+        $face =  " You " . VerbsGenerator::getObservation() .
+            " this " . $manWoman . " has " . $this->nose . //see nose
+
+            ". The " . $class->getNpcClass() . " meets your gaze with " .
+            $this->eyes . // see eyes
+
+            "As you seize up the " . $manWoman . ", you " .
+            VerbsGenerator::getObservation() . " " . $heshe . " has " .
+            $this->chin . //see chin
+            " and " . $hisher . " mouth is set with " .
+            $this->mouth . ". " . //see mouth
+
+            "When the " . $dndrace->getRace() . " is talking or shouting, you "
+            . VerbsGenerator::getObservation() . " " . $heshe .
+            " " . $this->teeth . ". "; //see teeth
+
+        return $face;
     }
 }
 

@@ -1,11 +1,32 @@
 <?php
-
 /**
-  Weapons
+ * Weapons
  */
-
 class WeaponsGenerator
 {
+    /**
+     * Constructor
+     */
+    private function __construct($dndrace)
+    {
+        $this->weapon = self::_armed($dndrace);
+    }
+
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
+    public function getArms()
+    {
+        return $this->weapon;
+    }
+
+    /**
+     * Array of Holding/Carry verbs
+     * 
+     * @return string
+     */
     public static function holding()
     {
         //-------------------------------------------------------------holding
@@ -21,6 +42,11 @@ class WeaponsGenerator
         return $holding;
     }
 
+    /**
+     * Array of weapons
+     * 
+     * @return Weapon
+     */
     public static function weapon()
     {
         //------------------------------------------------------------------weapon
@@ -36,6 +62,22 @@ class WeaponsGenerator
         ];
         $weapon = array_rand(array_flip($weapons), 1);
         return $weapon;
+    }
+
+    /**
+     * Build full sentence
+     * 
+     * @param $dndrace == what race is holding it
+     * 
+     * @return string
+     */
+    private static function _armed($dndrace)
+    {
+        $HoldWeapon 
+            = SentenceGenerator::observing() ." ". $dndrace ." ".
+            self::holding() ." a ". self::weapon();
+
+        return $HoldWeapon;
     }
 }
 /*

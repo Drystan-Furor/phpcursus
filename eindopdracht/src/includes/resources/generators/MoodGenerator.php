@@ -9,7 +9,7 @@ class MoodGenerator
      */
     private function __construct()
     {
-        $this->mood = self::generateMood();
+        $this->mood = self::_generateMood();
     }
 
     /**
@@ -17,7 +17,7 @@ class MoodGenerator
      * 
      * @return emotion
      */
-    public static function generateMood()
+    private static function _generateMoods()
     {
         $moods = [
             'angry', 'happy', 'careless', 'neutral',
@@ -42,6 +42,19 @@ class MoodGenerator
         $mood = array_rand(array_flip($moods), 1);
         return $mood;
     }
+
+    /**
+     * Build a sentence around the mood
+     * 
+     * @return mood
+     */
+    private static function _generateMood()
+    {
+        $mood = "Who seems to be in a " . self::_generateMoods() . " mood.";
+
+        return $mood;
+    }
+
 
     /**
      * Getter

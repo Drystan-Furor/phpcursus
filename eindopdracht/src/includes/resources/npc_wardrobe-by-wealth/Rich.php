@@ -6,9 +6,9 @@ class Rich
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    private function __construct()
+    private function __construct($heshe)
     {
-        $this->outfit = self::_clothes();
+        $this->outfit = self::clothes($heshe);
         $this->intro = self::_intros();
     }
 
@@ -39,37 +39,71 @@ class Rich
      * 
      * @return outfit
      */
-    private static function _clothes()
+    private static function _clothing()
     {
         $clothes = [
-            VerbsGenerator::getComplexity() . " hooded " . 
-            self::textiles() . " cloak with " . GeneralWardrobe::outfitDetails() . 
-            " and it has " . GeneralWardrobe::richDetails(),
+            VerbsGenerator::getComplexity() . " hooded " .
+                self::textiles() . " cloak 
+                with " . OutfitDetailsGenerator::outfitDetails() .
+                " and it has " . OutfitDetailsGenerator::richDetails(),
 
-            VerbsGenerator::getComplexity() . " " . self::textiles() . 
-            " houppelande, a full length robe like garment with " . GeneralWardrobe::outfitDetails() . 
-            " and it has " . GeneralWardrobe::richDetails(),
+            VerbsGenerator::getComplexity() . " " . self::textiles() .
+                " houppelande, a full length robe like garment 
+                with " . OutfitDetailsGenerator::outfitDetails() .
+                " and it has " . OutfitDetailsGenerator::richDetails(),
 
             self::outfits() . ", that buttons in the front to a low waist, 
             and is fitted to a " . VerbsGenerator::getComplexity() . " bodice,",
 
-            self::outfits() . ", fit closely to the body with " . GeneralWardrobe::outfitDetails() . 
-            " and it has " . GeneralWardrobe::richDetails(),
+            self::outfits() . ", fit closely to the body 
+            with " . OutfitDetailsGenerator::outfitDetails() .
+                " and it has " . OutfitDetailsGenerator::richDetails(),
 
-            "Burgundian style " . self::outfits() ." with " . GeneralWardrobe::outfitDetails() . 
-            " and it has " . GeneralWardrobe::richDetails(),
+            "Burgundian style " . self::outfits() . " 
+            with " . OutfitDetailsGenerator::outfitDetails() .
+                " and it has " . OutfitDetailsGenerator::richDetails(),
 
-            VerbsGenerator::getComplexity() . " " . self::textiles() . " " . self::outfits(),
-    
-            self::outfits() . " of " . VerbsGenerator::getComplexity() . " " . self::textiles(),
-    
+            VerbsGenerator::getComplexity() . " " .
+                self::textiles() . " " . self::outfits(),
+
+            self::outfits() . " of " . VerbsGenerator::getComplexity() . " " .
+                self::textiles(),
+
             self::textiles() . " " . self::outfits() .
                 " similar to the clothing of the elite but made of cheaper 
                 materials with less dye and ornamentation",
-    
+
         ];
         $outfit = array_rand(array_flip($clothes), 1);
         return $outfit;
+    }
+
+    //-----------------------------outfit Jewelry::craftJewel()
+    /**
+     * Sentence builder
+     * He / She 
+     * 
+     * @param $heshe = noun
+     * 
+     * @return outfit as a sentence
+     */
+    public function clothes($heshe)
+    {
+        $belt = new Belts();
+        $belt = $belt->getBelt();
+
+        $hat = new Hats($heshe);
+        $hat = $hat->getHat();
+
+        $shoes = new Shoes();
+        $shoes = $shoes->getShoes();
+
+        $this->outfit = strtoupper($heshe) . " wears a " . //He / She Wears a
+            self::_clothing() .
+            " and a " . $belt . ". "
+            . SentenceGenerator::observing() . " " . Jewelry::craftJewel()
+            . $hat . " " . $shoes;
+        return $this->outfit;
     }
 
 
@@ -119,5 +153,3 @@ class Rich
         return $this->intro;
     }
 }
-
-

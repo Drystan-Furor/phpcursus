@@ -6,12 +6,13 @@
  */
 class Homebrew
 {
-
-    private $homebrew; // boolean operator for function
-
+    /**
+     * a Boolean check to know if Race exists in array or not
+     */
     private function __construct()
     {
         $this->homebrew = false;
+        $this->homebrew = self::setHomebrew();
         $this->dndrace = self::getHomebrewRace();
     }
 
@@ -50,10 +51,21 @@ class Homebrew
         return $this->homebrew;
     }
 
-    public function getHomebrewRace()
+    /**
+     * Check if given race actually exists in Array,
+     * If not, then it is a Homebrew Race
+     * 
+     * @param $race == dndrace
+     * 
+     * @return boolean
+     */
+    public static function isHomebrew($race)
     {
-        $this->dndrace = self::setHomebrew();
-        return $this->dndrace;
+        if (!in_array($race, Race::raceArray())) {
+            return true; 
+        } else {
+            return false;
+        }
     }
 
     public function echoHomebrew()
