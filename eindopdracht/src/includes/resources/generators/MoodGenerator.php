@@ -49,7 +49,7 @@ class MoodGenerator
      * @return mood
      */
     private static function _generateMood()
-    {
+    {           //nickname
         $mood = "Who seems to be in a " . self::_generateMoods() . " mood.";
 
         return $mood;

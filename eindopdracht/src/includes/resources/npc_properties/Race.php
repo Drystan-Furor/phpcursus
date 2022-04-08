@@ -22,8 +22,8 @@ class Race
      */  
     private function __construct()
     {
-        $this->dndrace = self::_randomRace(); 
-        $this->raceorigin = self::_setHeritage();
+        $this->dndrace = self::randomRace(); 
+        $this->raceorigin = self::setHeritage();
     }
 
 

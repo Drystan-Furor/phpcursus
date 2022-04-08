@@ -12,6 +12,10 @@ class ProfileGenerator
 {
     /**
      * Constructor
+     * 
+     * @param $dndrace this race
+     * @param $new_npc the male/female nouns
+     * @param $class   this class
      */
     private function __construct($dndrace, $new_npc, $class)
     {

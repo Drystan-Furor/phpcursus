@@ -27,9 +27,9 @@ class Name extends Race
      * @param $race   == dndrace
      * @param $origin == race origin / hertiage 
      */
-    private function __construct($race)
+    private function __construct($race, $new_npc)
     {
-        $this->biography = self::_generateName($race);
+        $this->biography = self::_generateName($race, $new_npc);
     } //object name exists
 
     
@@ -42,7 +42,7 @@ class Name extends Race
      * 
      * @return raceClass()
      */
-    private function _generateName($race) 
+    private function _generateName($race, $new_npc) 
     {
         //address the exceptions of races first
         if (Homebrew::isHomebrew($race) == true) {
@@ -56,8 +56,10 @@ class Name extends Race
         $raceName = strtolower($raceName);              //no caps's in filename
         $raceName = str_replace(' ', '', $raceName);    //no spaces in filename
         $raceName = str_replace('-', '', $raceName);    //no dashes in filename
-        $raceName = new $raceName();    //new aarakocra() [example]
+        $raceName = new $raceName($race, $new_npc);    //new aarakocra() [example]
+        /** 
         //include_once 'includes/dndraces/' . $raceName . '.php'; // call script
+        */
         $this->lastname = $raceName::getLastname();
         $this->firstname = $raceName::getFirstname();
         $this->nickname = $raceName::getNickname();

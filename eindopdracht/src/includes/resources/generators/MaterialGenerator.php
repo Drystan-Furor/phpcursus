@@ -17,6 +17,7 @@ class MaterialGenerator
         $metal = array_rand(array_flip($metals, 1));
         return $metal;
     }
+    //MaterialGenerator::getMetalType()
 
     public static function getPlateType()
     {

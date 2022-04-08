@@ -22,8 +22,7 @@ class Nose
     private static function _randomNose($dndrace)
     {
 
-        if ($dndrace == "aaracockra") {
-            $nose = new aarakocra();
+        if ($dndrace->getRace() == "aaracockra") {
             $nose = aarakocra::randomBeak();
         } else if ($dndrace == "") {
             $nose = new raceClass();

@@ -1,21 +1,17 @@
 <?php
 
 /**
- how is the NPC build? DEFAULTS
+ * How is the NPC build? DEFAULTS
  */
-
-
 class BodiesGenerator
 {
-    var $bodytype;
-    var $bodyshape;
-    var $bodysize;
 
-    private function __construct()
+    /**
+     * Bodybuilder ;P
+     */
+    private function __construct($new_npc)
     {
-        $this->bodytype = self::bodyType();
-        $this->bodyshape = self::bodyShape();
-        $this->bodysize = self::bodySize();
+        $this->body = self::_bodyBuilder($new_npc);
     }
 
     public static function bodyType()
@@ -68,17 +64,57 @@ class BodiesGenerator
         return $bodysize;
     }
 
+    /**
+     * Gather from array, build sentence 
+     * 
+     * @param $new_npc well of nouns
+     * 
+     * @return this body
+     */
+    private function _bodyBuilder($new_npc)
+    {
+        //--- nouns
+        $manWoman = $new_npc->getManWoman();
+        $heshe = $new_npc->getHeShe();
+        $hisher = $new_npc->getHisHer();
+        $gender = $new_npc->getGender();
+        $this->bodytype = self::bodyType();
+        $this->bodyshape = self::bodyShape();
+        $this->bodysize = self::bodySize();
 
+        $this->body = "Built " . $this->bodytype . ", " //type
+            . $heshe . " has a " . $gender . " body with " .
+            $this->bodyshape . ". "; //shape
+        
+        return $this->body;
+    }
+
+
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getBodyType()
     {
         return $this->bodyType;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getBodyShape()
     {
         return $this->bodyShape;
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getBodySize()
     {
         return $this->bodysize;

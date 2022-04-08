@@ -74,7 +74,7 @@ class WeaponsGenerator
     private static function _armed($dndrace)
     {
         $HoldWeapon 
-            = SentenceGenerator::observing() ." ". $dndrace ." ".
+            = SentenceGenerator::observing() ." ". $dndrace->getRace() ." ".
             self::holding() ." a ". self::weapon();
 
         return $HoldWeapon;

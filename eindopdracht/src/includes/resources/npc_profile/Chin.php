@@ -16,6 +16,7 @@ class Chin
 
     private function chinShaper()
     {
+        
         $chinshapes = [
             'a rather ', 'quite the', 'a very defined', 'a puffed',
             'a very protruding', 'a bulbous', 'a very small', 'a bit of a',

@@ -72,7 +72,7 @@ class DndNpcRng
         // -> explore to make users enter their own name.
         //pass object to class method, allows to pass multiple properties
         // pass race to Name so it can sort what race naming class should be calles
-        $this->name = new Name($this->dndrace);
+        $this->name = new Name($this->dndrace, $this->new_npc);
         $this->firstname = $this->name->getFirstname();
         $this->lastname = $this->name->getLastname();
         $this->nickname = $this->name->getNickname();
@@ -80,7 +80,7 @@ class DndNpcRng
 
 
         //body {also public method}
-        $this->body = new BodiesGenerator();
+        $this->body = new BodiesGenerator($this->new_npc);
         //---body
         $this->bodytype = $this->body->getBodyType();
         $this->bodysize = $this->body->getBodySize();
@@ -88,11 +88,12 @@ class DndNpcRng
 
         //face
         $this->face = new ProfileGenerator(
-            $this->dndrace, $this->new_npc, $this->npcClass
+            $this->dndrace,
+            $this->new_npc,
+            $this->npcClass
         );
-        /**
-         This face = this face [getter]
-         */
+        $this->face = $this->face->getFace();
+
 
         //Mood == Sentence
         $this->mood = new MoodGenerator();
@@ -153,63 +154,32 @@ $nameofthisNPC =  "You meet " . $firstname . " " . $lastname . ". ";    //------
 A medium sized female Drow Druid thats about 46 years old, who looks priviliged.
   {bodysize}   {noun}{race}{class}          {age}           {prosperity intro}
 */
-$genraceage = "A " . $new_npc->body->BodiesGenerator::getBodySize() . " " .
+$string = "A " . $this->body->getBodySize() . " " .
     $this->gender->getGender() . " " .
-    $new_npc->Race::getRace()  . " " . $new_npc->npcClass->getNpcClass()
-    . " thats about " . $new_npc->Age::getAge() . " years old, " .
-    $new_npc->intro->ProsperityGenerator::getIntro();
-// wealth divergence
-
-//----------------------------------------------------------------facial construction
-/* You SEE
-this MAN has
-NOSE. 
-The RACE meets your gaze with
-EYES
-As you seize up the MAN you 
-SEE HE has
-CHIN
-and HIS mouth is set with
-MOUTH.
-
+    $this->dndrace->getRace()  . " " . $this->npcClass->getNpcClass()
+    . " thats about " . $this->age . " years old, " .
+    $this->intro . ". " .
+    //--------------------------------------------------------------facial construction
+    /* You SEE this MAN has NOSE. 
+    The RACE meets your gaze with EYES
+    As you seize up the MAN you SEE HE has CHIN
+    and HIS mouth is set with MOUTH.
 */
+    $this->face . ". " .
 
-//--------------------------------------------------------------see scars
-
-$scar = ScarsGenerator::scar($new_npc) .
-    ScarsGenerator::scar($new_npc) .
-    ScarsGenerator::scar($new_npc);
-
-//------  -see body
-$body = " Built " . $new_npc->body->BodiesGenerator::getBodyType() . ", "
-    . $new_npc->gender->Gender::getHeShe() .
-    " has a " . $new_npc->gender->Gender::getGender() . " .
-    body with " .
-    $new_npc->body->BodiesGenerator::getBodyShape() . ". ";
-//--------------------------------------------------------------see outfit
-$outfit = $this->manWoman .
-    " " . $new_npc->outfit->ProsperityGenerator::getOutfit() .
-    " " . Belts::belt() . ". " .
-    $new_npc->hat->getHat() . Shoes::shoes() .
-    "The " . $this->gender->getManWoman() . " " .
-    VerbsGenerator::getClasping() . " " . Rings::craftRing() . ". ";
-
-
-
-//--------------------------------------------------------------see mood
-$mood = $nickname . " seems to be in a " . MoodGenerator::generateMood() . " mood. ";
-
-
-
-//-----------------------------------------------------------------see weapon
-$holdweapon = "You also " . VerbsGenerator::getObservation() . " " . $subject .
-    " " . WeaponsGenerator::holding() . " a " .
-    WeaponsGenerator::weapon() . ". ";
+    //--------------------------------------------------------------see scars
+    //--------------------------------------------------------------see body
+    $this->body . ". " .
+    //--------------------------------------------------------------see outfit
+    $this->outfit . ". " .
+    //--------------------------------------------------------------see mood
+    $this->mood . ". " .
+    //--------------------------------------------------------------see weapon
+    $this->weapon . PHP_EOL;
 
 
 //------------------------------------------------------------------- print results
-$randomizednpcresult = $nameofthisNPC . $genraceage . $face . $dentals .
-    $scar . $body . $outfit . $profile . $holdweapon . PHP_EOL;
+echo $string;
 
 /** 
  counter of website visits

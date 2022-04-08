@@ -1,21 +1,31 @@
 <?php
-/*
-    Aarakocra Names
-    An aarakocra of either gender may have one of these short names: 
-    */
+
+/** 
+ * Aarakocra Names
+ * An aarakocra of either gender may have one of these short names: 
+ */
 class aarakocra extends Name
 {
-    private function __construct()
+    /**
+     * Biography
+     * 
+     * @param $race    string
+     * @param $new_npc string
+     */
+    private function __construct($race, $new_npc)
     {
-        $lastname = self::lastname();
-        $firstname = self::firstname();
-        $nickname = self::nickname();
-        $description = self::description();
-
-        $this->biography = new Name($lastname, $firstname, $nickname, $description);
+        $this->lastname = self::_lastname();
+        $this->firstname = self::_firstname();
+        $this->nickname = self::_nickname();
+        $this->description = self::_description($race, $new_npc);
     }
 
-    private function lastname()
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private function _lastname()
     {
         $surnames = [
             'Aera', 'Aial', 'Aur', 'Deekek', 'Errk', 'Heehk', 'Ikki', 'Kleeck',
@@ -26,37 +36,50 @@ class aarakocra extends Name
         return $lastname;
     }
 
-    private function firstname()
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private function _firstname()
     {
         $firstname = "";
         $this->firstname = $firstname;
         return $firstname;
     }
 
-    private function nickname()
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private function _nickname()
     {
         $nickname = $this->lastname;
         $this->nickname = $nickname;
         return $nickname;
     }
 
-    private function description()
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private function _description($race, $new_npc)
     {
-        $description = "From below, the Aarakocra look much like a large bird. Only 
-        when " . $this->lastname . " descends to roost on a branch or walk across the ground does 
-        a humanoid appearance reveal itself.";
-        return $description;
-    }
+        $description = "From below, the " . $race->getRace() .
+            " look much like a large bird. Only 
+        when " . $this->lastname . " descends to roost on a branch or walk 
+        across the ground does " . $new_npc->getHisHer() .
+            " humanoid appearance reveal itself.";
 
-    public function getBiography()
-    {
-        return $this->biography;
+        return $description;
     }
 
     /**
      * Birds have beaks, not nose
      * 
-     * @return beak
+     * @return Nose replacer
      */
     public static function randomBeak()
     {
@@ -91,7 +114,7 @@ class aarakocra extends Name
                 break;
             case $nose >= 69 && $nose <= 76:
                 $nose = 'a perfectly straight beak. 
-            It gives ' . $this->lastname . ' an aggresive profile since 
+            It gives this birdfolk an aggresive profile since 
             it is usually seen on scavenging birds.';
                 break;
             case $nose >= 77 && $nose <= 84:
@@ -113,66 +136,85 @@ class aarakocra extends Name
         }
         return $nose;
     }
+
+
+
+    /**
+     * Array of beaks
+     * 
+     * @return mouth replacer
+     */
+    public static function mouthReplacer()
+    {
+        $mouthshapes = [
+            "sharp tomia", "rounded tomia", "bow shaped tomia", "heavy lower tomia",
+            "ridged tomia", "heavy upper tomia", "sawtooth serated tomia", "thin tomia",
+            "downward turned tomia", "perfectly proportioned tomia",
+        ];
+        $mouth = array_rand(array_flip($mouthshapes), 1);
+        return $mouth;
+    }
+
+    /**
+     * Array of beaks
+     * 
+     * @return chin replacer
+     */
+    public static function chinReplacer()
+    {
+        $chincurves = [
+            'pointy', 'round', 'square',
+        ];
+        $chincurve = array_rand(array_flip($chincurves), 1);
+
+        $chinshapes = [
+            'a rather ', 'quite the', 'a very defined', 'a puffed',
+            'a very protruding', 'a bulbous', 'a very small', 'a bit of a',
+        ];
+        $chinshape = array_rand(array_flip($chinshapes), 1);
+
+        $chin = $chinshape . " " . $chincurve . " culmen";
+
+        return $chin;
+    }
+
+    /**
+     * Array of beaks
+     * 
+     * @return teeth replacer
+     */
+    public static function teethReplacer()
+    {
+        $teethTypes = [
+            'shiny white', 'yellow', 'quite large',
+            'rather small', 'yellow and grey', 'crooked',
+            'lead', 'tin', 'copper', 'steel', 'cast-iron',
+            'iron', 'metal',
+        ];
+        $teethType = array_rand(array_flip($teethTypes), 1);
+
+        $dentalwork = [
+            "has a " . MaterialGenerator::getMetalType() . " beak",
+            "has a hard horny tissue at the tip of the beak",
+            "has a " . $teethType . " shield-shaped structure on the tip of it's beak",
+            "has a " . $teethType . " shield-shaped structure on it's beak tip, 
+            which spans the entire width of the beak",
+            "has a " . $teethType . " shield-shaped structure on it's beak, 
+            which is bent at the tip to form a hook",
+            "has a " . $teethType . " shield-shaped structure on it's beak tip, 
+            which spans the entire width of the beak and bent at the tip to form a hook",
+            "has a fake beak, like a prosthetic made of " . Verbsgenerator::quality() . " "
+                . MaterialGenerator::getMetalType(),
+        ];
+        $teeth = array_rand(array_flip($dentalwork), 1);
+
+        return $teeth;
+    }
+    
 }
 
-
-
-
-/* nose == nose
-
-if race == x
-nose == classX::nose
-*/
-
-
-// Face Detail Generator
-
-//--------------------------------------------------EYES DEFAULT
-
-//-----------------------------------------------------NO-chin
-$chinshapes = [
-    'a rather ', 'quite the', 'a very defined', 'a puffed',
-    'a very protruding', 'a bulbous', 'a very small', 'a bit of a',
-];
-$chinshape = array_rand(array_flip($chinshapes), 1);
-
-$chincurves = [
-    'pointy', 'round', 'square',
-];
-$chincurve = array_rand(array_flip($chincurves), 1);
-$chin = $chinshape . " " . $chincurve . " culmen";
-
-//---------------------------------------------------------------BEAK-----mouth Selector 
-$mouthshape = [
-    "sharp tomia", "rounded tomia", "bow shaped tomia", "heavy lower tomia",
-    "ridged tomia", "heavy upper tomia", "sawtooth serated tomia", "thin tomia",
-    "downward turned tomia", "perfectly proportioned tomia",
-];
-$mouth = array_rand(array_flip($mouthshape), 1);
-
-//---------------------------------------------------------------------------- Teeth
-$teethTypes = [
-    'shiny white', 'yellow', 'quite large',
-    'rather small', 'yellow and grey', 'crooked',
-    'lead', 'tin', 'copper', 'steel', 'cast-iron',
-    'iron', 'metal',
-];
-$teethType = array_rand(array_flip($teethTypes), 1);
-$quality = array_rand(array_flip($qualities), 1);
-
-$metal = array_rand($metals, 2);
-$x = rand(0, 6);
-$dentalwork = [
-    "has a " . $metals[$metal[1]] . " beak",
-    "has a hard horny tissue at the tip of the beak",
-    "has a " . $teethType . " shield-shaped structure on the tip of it's beak",
-    "has a " . $teethType . " shield-shaped structure on it's beak tip, 
-    which spans the entire width of the beak",
-    "has a " . $teethType . " shield-shaped structure on it's beak, 
-    which is bent at the tip to form a hook",
-    "has a " . $teethType . " shield-shaped structure on it's beak tip, 
-    which spans the entire width of the beak and bent at the tip to form a hook",
-    "has a fake beak, like a prosthetic made of " . $quality . " "
-        . $metals[$metal[1]],
-];
-$teeth = array_rand(array_flip($dentalwork), 1);
+/**
+ Like NOSE
+ go to all Profiles needed 
+ replace Mouth, Chin etc. with Public Static Functions
+ */
