@@ -24,6 +24,7 @@ class Race
     {
         $this->dndrace = self::randomRace(); 
         $this->raceorigin = self::setHeritage();
+        $this->racesArray = self::raceArray();
     }
 
 
@@ -134,16 +135,29 @@ class Race
             also, get and set homebrew out of Overwatch, not from Race
             setRace is a Homebrew thing
         */
-        $_POST['commonrace'] = $dndrace;
-        $this->dndrace = new Homebrew;
+        $this->dndrace = $_POST['commonrace'];
         $this->dndrace = $this->dndrace->getHomebrewRace();
-        $this->raceorigin = self::_setHeritage();
+        $this->raceorigin = self::setHeritage();
         $this->racesArray = self::updateRaceArray($this->dndrace);
     }
 
 
 
+    /**
+     * Turn "This-Race name" into thisracename
+     * 
+     * @param this race name
+     * 
+     * @return lowercase name of race.
+     */
+    public static function lowercase($dndrace)
+    {
+        $dndrace = strtolower($dndrace);              //no caps's in filename
+        $dndrace = str_replace(' ', '', $dndrace);    //no spaces in filename
+        $dndrace = str_replace('-', '', $dndrace);    //no dashes in filename
 
+        return $dndrace;
+    }
 
 
 
