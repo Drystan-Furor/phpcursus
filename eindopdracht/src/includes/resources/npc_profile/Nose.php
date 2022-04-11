@@ -10,6 +10,8 @@ class Nose
 
     /**
      * Constructor
+     * 
+     * @param $dndrace this race
      */
     private function __construct($dndrace)
     {
@@ -18,15 +20,19 @@ class Nose
 
     /**
      * RNG that nose
+     * 
+     * @param $dndrace this race
+     * 
+     * @return string
      */
     private static function _randomNose($dndrace)
     {
 
-        if ($dndrace->getRace() == "aaracockra") {
-            $nose = aarakocra::randomBeak();
+        if ($dndrace == "Aaracockra") {
+            $nose = aarakocra::noseReplacer();
         } else if ($dndrace == "") {
-            $nose = new raceClass();
-            $nose = raceClass::randomTHIS();
+            //$nose = new raceClass();
+            //$nose = raceClass::randomTHIS();
         } else {
             //-------------------------------------DEFAULT Human Nose
             $nose = rand(1, 100);
@@ -83,11 +89,12 @@ class Nose
         return $nose;
     }
 
-    public function setNose($nose)
-    {
-        $this->nose = $nose;
-    }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getNose()
     {
         return $this->nose;

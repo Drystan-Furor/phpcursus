@@ -1,17 +1,41 @@
 <?php
-
-//------------------------------------------------------Eyes
+/**
+ * Random set of eyes
+ */
 class Eyes
 {
-    private $eyes;
-
-    private function __construct()
+    /**
+     * Construct eyeshapes an determine if blind or not
+     */
+    private function __construct($dndrace)
     {
-            $this->eyes = self::eyeshape();
-            $this->eyes = self::canSee();
+            $this->eyes = self::_eyeshape($dndrace);
+            $this->eyes = self::_canSee();
     }
 
-    private function eyeshape() 
+    /**
+     * Build or choose specific arrray. Select random value string
+     * 
+     * @param $dndrace this race
+     * 
+     * @return eyes
+     */
+    private function _eyeShape($dndrace)
+    {
+        if ($dndrace == "") {
+            //$this->eyes = aarakocra::eyeReplacer();
+        } else if ($dndrace == "") {
+            //$this->eyes = raceClass::randomTHIS();
+        } else {
+            $this->eyes = self::_defaultEyeshape();
+        }
+    }
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    private static function _defaultEyeshape() 
     {
         $eyeshapes = [
             "squinty eyes", "big eyes", "small eyes", 
@@ -22,17 +46,26 @@ class Eyes
             "prominent eyes", "downturned eyes",
             "upturned eyes", "deep set eyes", "droopy eyes",
             "monolid eyes", "blind eyes",
-        ];//array of eye shapes
+        ];
 
-        $this->eyes = array_rand(array_flip($eyeshapes), 1);
+        $eyes = array_rand(array_flip($eyeshapes), 1);
+        return $eyes;
     }
 
-    private function canSee()
+    /**
+     * D100 if one can see.
+     * 1% chance to be blinded
+     * 9% to be naturally blind /half blind
+     * array to randomize blindness
+     * 
+     * @return string
+     */
+    private function _canSee()
     {
-        $hasEyes = rand(1, 100); //does it have eyes?
-        if ($hasEyes == 1) { //1% chance to be blinded
+        $hasEyes = rand(1, 100); 
+        if ($hasEyes == 1) { 
             $this->eyes = 'empty eye sockets, eyes gauged out';
-        } else if ($hasEyes >= 2 && $hasEyes <= 10) { //8% chance to be blind on one or both eyes
+        } else if ($hasEyes >= 2 && $hasEyes <= 10) {
             $blindeye = [
                 ", the left eye is blind", ", the right eye is blind",
                 ", but both eyes are blind",
@@ -40,10 +73,15 @@ class Eyes
             $blindness = array_rand(array_flip($blindeye), 1);
             $this->eyes = $this->eyes . $blindness;
         }  
-        return $this->eyeshape;
+        return $this->eyes;
     }
 
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getEyes() 
     {
         return $this->eyes;

@@ -8,14 +8,16 @@ class Teeth
 {
     /**
      * Grow some whiskers
+     * 
+     * @param $dndrace this race
      */
-    private function __construct()
+    private function __construct($dndrace)
     {
-        $this->teeth = self::_dentalWorks();
+        $this->teeth = self::_teethShape($dndrace);
     }
 
     /**
-     * Array of types
+     * Array of DEFAULT types
      * 
      * @return dentals
      */
@@ -30,43 +32,67 @@ class Teeth
     }
 
     /**
-     * Array of sentence-part
+     * Array of DEFAULT sentence-part
      * 
      * @return string
      */
-    private function _dentalWorks()
+    private function _defaultTeeth()
     {
-        $quality = Verbsgenerator::quality();
-        $metal = MaterialGenerator::getMetalType();
-        $teethType = self::_teethTypes();
 
         $dentalwork = [
-            "is missing a tooth", "is missing several teeth",
+            "is missing a tooth", 
+            
+            "is missing several teeth",
 
-            "has a " . $metal . " tooth",
+            "has a " . MaterialGenerator::getMetalType() . " tooth",
 
-            "has several " . $metal . " teeth",
+            "has several " . MaterialGenerator::getMetalType() . " teeth",
 
-            "has " . $teethType . " teeth", "has no teeth at all",
+            "has " . self::_teethTypes() . " teeth", 
+            
+            "has no teeth at all",
 
-            "has good dentals", "has yellow teeth, but all there",
+            "has good dentals", 
+            
+            "has yellow teeth, but all there",
 
             "has fairly good dentals",
 
-            "has " . $teethType . " teeth that could use some bracers",
+            "has " . self::_teethTypes() . " teeth that could use some bracers",
 
             "has no regular teeth but canine whiskers",
 
-            "has good dentals", "has rather bad dentals",
+            "has good dentals", 
+            
+            "has rather bad dentals",
 
             "has sharp edged teeth, as if they are trimmed or filed",
 
-            "has fake teeth, like a prosthetic made of " . $quality . " "
-                . $metal,
+            "has fake teeth, like a prosthetic made of " . Verbsgenerator::quality() . " "
+                . MaterialGenerator::getMetalType(),
         ];
         $teeth = array_rand(array_flip($dentalwork), 1);
 
         return $teeth;
+    }
+
+    /**
+     * Build or choose specific arrray. Select random value string
+     * 
+     * @param $dndrace this race
+     * 
+     * @return teeth
+     */
+    private function _teethShape($dndrace)
+    {
+        if ($dndrace == "Aaracockra") {
+            $this->teeth = aarakocra::teethReplacer();
+        } else if ($dndrace == "") {
+            //$nose = new raceClass();
+            //$nose = raceClass::randomTHIS();
+        } else {
+            $this->teeth = self::_defaultTeeth();
+        }
     }
 
     /**

@@ -1,27 +1,33 @@
 <?php
 
-
-//------------------------------------------------------chin
-
-//if beard
-// am i constructing a chin when class is called?
+/**
+ * Random Chin
+ */
 class Chin
 {
-    var $chin;
-
-    private function __construct()
+    /**
+     * Consttruct a chin
+     * 
+     * @param $dndrace this race
+     */
+    private function __construct($dndrace)
     {
-        $this->chin = self::chinShaper();
+        $this->chin = self::_chinShape($dndrace);
     }
 
-    private function chinShaper()
+    /**
+     * Arrays of strings Default Chins
+     * 
+     * @return concatinated string
+     */
+    private function _defaultChins()
     {
-        
+
         $chinshapes = [
             'a rather ', 'quite the', 'a very defined', 'a puffed',
             'a very protruding', 'a bulbous', 'a very small', 'a bit of a',
         ];
-    
+
         $chincurves = [
             'pointy', 'round', 'square',
         ];
@@ -31,7 +37,30 @@ class Chin
         $this->chin = $chinshape . " " . $chincurve . " chin";
     }
 
+    /**
+     * Build or choose specific arrray. Select random value string
+     * 
+     * @param $dndrace this race
+     * 
+     * @return chin
+     */
+    private function _chinShape($dndrace)
+    {
+        if ($dndrace == "Aaracockra") {
+            $this->chin = aarakocra::chinReplacer();
+        } else if ($dndrace == "") {
+            //$nose = new raceClass();
+            //$nose = raceClass::randomTHIS();
+        } else {
+            $this->chin = self::_defaultChins();
+        }
+    }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getChin()
     {
         return $this->chin;

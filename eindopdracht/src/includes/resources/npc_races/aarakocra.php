@@ -63,6 +63,9 @@ class aarakocra extends Name
     /**
      * Array
      * 
+     * @param $race    this race 
+     * @param $new_npc nouns
+     * 
      * @return string
      */
     private function _description($race, $new_npc)
@@ -76,12 +79,14 @@ class aarakocra extends Name
         return $description;
     }
 
+
+    //-----------------------------------------REPLACERS
     /**
      * Birds have beaks, not nose
      * 
      * @return Nose replacer
      */
-    public static function randomBeak()
+    public static function noseReplacer()
     {
         $nose = rand(1, 100);
         switch ($nose) {
@@ -212,9 +217,3 @@ class aarakocra extends Name
     }
     
 }
-
-/**
- Like NOSE
- go to all Profiles needed 
- replace Mouth, Chin etc. with Public Static Functions
- */
