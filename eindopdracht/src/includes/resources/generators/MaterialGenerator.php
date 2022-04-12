@@ -5,7 +5,11 @@
  */
 class MaterialGenerator
 {
-
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getMetalType()
     {
         //------------------------------------------------------metals
@@ -19,6 +23,11 @@ class MaterialGenerator
     }
     //MaterialGenerator::getMetalType()
 
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getPlateType()
     {
         //--------------------------------------------platemetals
@@ -30,6 +39,11 @@ class MaterialGenerator
         return $platemetal;
     }
 
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getEnamelType()
     {
         $enameling = [ //--------------------------enameled with
@@ -39,6 +53,11 @@ class MaterialGenerator
         return $enamel;
     }
 
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getWoodType()
     {
         //-------------------------------------------wood kinds
@@ -51,6 +70,11 @@ class MaterialGenerator
         return $wood;
     }
 
+    /**
+     * Array
+     * 
+     * @return string
+     */
     public static function getGemstoneType()
     {
         $gemstones = [
@@ -83,6 +107,44 @@ class MaterialGenerator
         $gemstone = array_rand(array_flip(array_keys($gemstones)));
         return $gemstone;
     }
+
+    /**
+     * Array
+     * 
+     * @return string
+     */
+    public static function getJewelTone()
+    {
+        $jewelTones = [
+            'black Onyx',
+            'green Emerald',
+            'blue Sapphire',
+            'white Diamond',
+            'red Ruby',
+            "nature’s firework Opal",
+            'Pearlescent',
+            'black Pearlescent',
+            'blue Spinel',
+            'blue-green Turqoise',
+            'watery gold  Amber',
+            'crimson Coral',
+            'Pyrite',
+            'rose Quartz',
+            'blue Quartz',
+            'gray-black Hermatite',
+            'dark green Malachite',
+            'Sardonyx',
+            'yellow-golden Zircon',
+            'red Zircon',
+            'blue-green Zircon',
+            'brown, yellow- reddish Jasper',
+            'purple Amethyst',
+            'transparent fiery orange Jacinth',
+        ];
+        $jewelTone = array_rand(array_flip($jewelTones), 1);
+        return $jewelTone;
+    //MaterialGenerator::getJewelTone()
+}
 }
 /*
 $new_metal = MaterialGenerator::getMetalType();

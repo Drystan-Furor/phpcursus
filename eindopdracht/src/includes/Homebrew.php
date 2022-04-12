@@ -1,8 +1,16 @@
 <?php
-
 /**
  * $this->homebrew [BOOLEAN]
  * [true] IF [$race != in array]
+ * 
+ * Homebrew is when a race does not exist in the given array, 
+ * which means the user gives input.
+ * Basically Homebrew means to use any given string from FORM
+ * check if FORM_String is not in raceArray()
+ * tell us if we have a brand new race.
+ * 
+ * Why? any user input should be valid for home creation, 
+ * but if a race does exist use properties of those races.
  */
 class Homebrew
 {
@@ -13,13 +21,17 @@ class Homebrew
     {
         $this->homebrew = false;
         $this->homebrew = self::setHomebrew();
-        $this->dndrace = self::getHomebrewRace();
     }
 
     //------------------------------------------------------homebrew
     /** 
      * Local race variable is readline on page, 
      * allows Homebrew // && $race != 'Drow' 
+     * clean that input
+     * ALL OF THE WORDS (caps to lower)
+     * Of -> of
+     * The -> the
+     * Not all of the Words (In case of Yuan"-ti", we restore to Yuan-Ti)
      * 
      * @return UserInputRace
      */
@@ -30,22 +42,24 @@ class Homebrew
             && !ctype_space($_POST['commonrace']) // is it NOT white spacing
             && !((bool)$_POST['commonrace'] == null) // does it exist?
         ) {
-            $race = EscapeString::from_Input(($_POST['commonrace'])); //clean that input
-            $race = ucwords(strtolower($race)); //-------------------ALL OF THE WORDS (caps to lower)
-            $race = ucfirst(str_replace("Of", "of", $race)); //--Not All of The Words (first letter is Capitalized)
-            $race = ucfirst(str_replace("The", "the", $race)); //Not All Of the Words (unless it is Hank "The" Man, "The" becomes "the")
-            $race = ucfirst(str_replace("Yuan-ti", "Yuan-Ti", $race)); //Not all of the Words (In case of Yuan"-ti", we restore to Yuan-Ti)
-            $raceClass = new Race();
-            $raceClass = $raceClass->Race::setRace($race); //->sets race in the race class, why?
+            $race = EscapeString::from_Input(($_POST['commonrace'])); 
+            $race = ucwords(strtolower($race)); 
+            $race = ucfirst(str_replace("Of", "of", $race)); 
+            $race = ucfirst(str_replace("The", "the", $race)); 
+            $race = ucfirst(str_replace("Yuan-ti", "Yuan-Ti", $race)); 
             //determine homebrew based on entry, TRUE if not in array
-            $RacesArray = $raceClass->Race::raceArray();
-            if (!in_array($race, $RacesArray)) {
+            if (Race::isRaceInRaceArray($race) == false) {
                 $this->homebrew = true; //default false on class
             }
         }
-        return $race; //pass back the array with potentially Drow added
+        return $race; 
     }
 
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
     public function getHomebrew()
     {
         return $this->homebrew;
@@ -59,18 +73,23 @@ class Homebrew
      * 
      * @return boolean
      */
-    public static function isHomebrew($race)
+    public static function isHomebrew($dndrace)
     {
-        if (!in_array($race, Race::raceArray())) {
+        if (!in_array($dndrace, Race::raceArray())) {
             return true; 
         } else {
             return false;
         }
     }
 
-    public function echoHomebrew()
+    /**
+     * pass a var based on boolean
+     * var used to show value on page
+     * value only if homebrew is true 
+     */
+    public function echoHomebrew($dndrace)
     {
-        if (self::getHomebrew() == true) {
+        if (self::isHomebrew($dndrace) == true) {
             $homebrewed = "HOMEBREW";
         } else {
             $homebrewed = "";

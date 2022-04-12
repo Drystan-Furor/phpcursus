@@ -6,11 +6,13 @@ class Eyes
 {
     /**
      * Construct eyeshapes an determine if blind or not
+     * 
+     * @param $dndrace this race
      */
     private function __construct($dndrace)
     {
             $this->eyes = self::_eyeshape($dndrace);
-            $this->eyes = self::_canSee();
+            $this->eyes = self::canSee();
     }
 
     /**
@@ -22,12 +24,10 @@ class Eyes
      */
     private function _eyeShape($dndrace)
     {
-        if ($dndrace == "") {
-            //$this->eyes = aarakocra::eyeReplacer();
-        } else if ($dndrace == "") {
-            //$this->eyes = raceClass::randomTHIS();
+        if (Race::isRaceInRaceArray($dndrace) == true) {
+            $this->eyes = strtolower($dndrace)::eyeReplacer();
         } else {
-            $this->eyes = self::_defaultEyeshape();
+            $this->eyes = self::canSee();
         }
     }
     /**
@@ -35,7 +35,7 @@ class Eyes
      * 
      * @return string
      */
-    private static function _defaultEyeshape() 
+    public static function defaultEyeshape() 
     {
         $eyeshapes = [
             "squinty eyes", "big eyes", "small eyes", 
@@ -45,7 +45,7 @@ class Eyes
             "wide set eyes", "close set eyes", 
             "prominent eyes", "downturned eyes",
             "upturned eyes", "deep set eyes", "droopy eyes",
-            "monolid eyes", "blind eyes",
+            "monolid eyes",
         ];
 
         $eyes = array_rand(array_flip($eyeshapes), 1);
@@ -60,20 +60,21 @@ class Eyes
      * 
      * @return string
      */
-    private function _canSee()
+    public static function canSee()
     {
+        $eyes = self::defaultEyeshape();
         $hasEyes = rand(1, 100); 
         if ($hasEyes == 1) { 
-            $this->eyes = 'empty eye sockets, eyes gauged out';
+            $eyes = 'empty eye sockets, eyes gauged out';
         } else if ($hasEyes >= 2 && $hasEyes <= 10) {
             $blindeye = [
                 ", the left eye is blind", ", the right eye is blind",
                 ", but both eyes are blind",
             ];
             $blindness = array_rand(array_flip($blindeye), 1);
-            $this->eyes = $this->eyes . $blindness;
+            $eyes .= $blindness;
         }  
-        return $this->eyes;
+        return $eyes;
     }
 
 

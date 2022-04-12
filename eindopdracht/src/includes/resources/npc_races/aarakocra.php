@@ -11,12 +11,12 @@ class aarakocra extends Name
      * @param $race    string
      * @param $new_npc string
      */
-    private function __construct($race, $new_npc)
+    private function __construct($dndrace, $new_npc)
     {
         $this->lastname = self::_lastname();
-        $this->firstname = self::_firstname();
-        $this->nickname = self::_nickname();
-        $this->description = self::_description($race, $new_npc);
+        $this->firstname = $this->lastname;
+        $this->nickname = $this->lastname;
+        $this->description = self::_description($dndrace, $new_npc);
     }
 
     /**
@@ -67,9 +67,9 @@ class aarakocra extends Name
      * 
      * @return string
      */
-    private function _description($race, $new_npc)
+    private function _description($dndrace, $new_npc)
     {
-        $description = "From below, the " . $race->getRace() .
+        $description = "From below, the " . $dndrace->getRace() .
             " look much like a large bird. Only 
         when " . $this->lastname . " descends to roost on a branch or walk 
         across the ground does " . $new_npc->getHisHer() .
@@ -141,6 +141,16 @@ class aarakocra extends Name
         return $nose;
     }
 
+    /**
+     * Array of eyes.
+     * 
+     * @return eyes replacer
+     */
+    public static function eyesReplacer()
+    {
+        $eyes = Eyes::canSee();
+        return $eyes;
+    }
 
 
     /**

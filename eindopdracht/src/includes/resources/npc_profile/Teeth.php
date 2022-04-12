@@ -36,7 +36,7 @@ class Teeth
      * 
      * @return string
      */
-    private function _defaultTeeth()
+    public static function defaultTeeth()
     {
 
         $dentalwork = [
@@ -83,16 +83,14 @@ class Teeth
      * 
      * @return teeth
      */
-    private function _teethShape($dndrace)
+    private static function _teethShape($dndrace)
     {
-        if ($dndrace == "Aaracockra") {
-            $this->teeth = aarakocra::teethReplacer();
-        } else if ($dndrace == "") {
-            //$nose = new raceClass();
-            //$nose = raceClass::randomTHIS();
+        if (Race::isRaceInRaceArray($dndrace) == true) {
+            $teeth = strtolower($dndrace)::teethReplacer();
         } else {
-            $this->teeth = self::_defaultTeeth();
+            $teeth = self::defaultTeeth();
         }
+        return $teeth;
     }
 
     /**

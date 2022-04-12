@@ -21,7 +21,7 @@ class Mouth
      * 
      * @return default single string of mouths
      */
-    private function _defaultMouths()
+    public static function defaultMouths()
     {
         $mouthshape = [
             "full lips", "round lips", "bow shaped lips", "heavy lower lips",
@@ -41,13 +41,10 @@ class Mouth
      */
     private function _mouthShape($dndrace)
     {
-        if ($dndrace == "Aaracockra") {
-            $this->mouth = aarakocra::mouthReplacer();
-        } else if ($dndrace == "") {
-            //$nose = new raceClass();
-            //$nose = raceClass::randomTHIS();
+        if (Race::isRaceInRaceArray($dndrace) == true) {
+            $this->mouth = strtolower($dndrace)::mouthReplacer();
         } else {
-            $this->mouth = self::_defaultMouths();
+            $this->mouth = self::defaultMouths();
         }
     }
 

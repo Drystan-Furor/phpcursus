@@ -65,7 +65,13 @@ class DndNpcRng
         $this->age = new Age();
         $this->age = $this->age->getAge();
 
-
+        //face
+        $this->face = new ProfileGenerator(
+            $this->dndrace,
+            $this->new_npc,
+            $this->npcClass
+        );
+        $this->face = $this->face->getFace();
 
         //name [requires a race]
         //$this->name = new Name(); the constructor requires 4 values 
@@ -86,13 +92,7 @@ class DndNpcRng
         $this->bodysize = $this->body->getBodySize();
         $this->bodyshape = $this->body->getBodyShape();
 
-        //face
-        $this->face = new ProfileGenerator(
-            $this->dndrace,
-            $this->new_npc,
-            $this->npcClass
-        );
-        $this->face = $this->face->getFace();
+
 
 
         //Mood == Sentence

@@ -20,7 +20,7 @@ class Chin
      * 
      * @return concatinated string
      */
-    private function _defaultChins()
+    public static function defaultChins()
     {
 
         $chinshapes = [
@@ -34,7 +34,9 @@ class Chin
 
         $chinshape = array_rand(array_flip($chinshapes), 1);
         $chincurve = array_rand(array_flip($chincurves), 1);
-        $this->chin = $chinshape . " " . $chincurve . " chin";
+        $chin = $chinshape . " " . $chincurve . " chin";
+
+        return $chin;
     }
 
     /**
@@ -46,13 +48,10 @@ class Chin
      */
     private function _chinShape($dndrace)
     {
-        if ($dndrace == "Aaracockra") {
-            $this->chin = aarakocra::chinReplacer();
-        } else if ($dndrace == "") {
-            //$nose = new raceClass();
-            //$nose = raceClass::randomTHIS();
+        if (Race::isRaceInRaceArray($dndrace) == true) {
+            $this->chin = strtolower($dndrace)::chinReplacer();
         } else {
-            $this->chin = self::_defaultChins();
+            $this->chin = self::defaultChins();
         }
     }
 

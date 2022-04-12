@@ -102,19 +102,19 @@ class ProfileGenerator
         $hisher = $new_npc->getHisHer();
         $gender = $new_npc->getGender();
 
-        $eyes = new Eyes();
+        $eyes = new Eyes($dndrace);
         $this->eyes = $eyes->getEyes();
 
         $nose = new Nose($dndrace);
         $this->nose = $nose->getNose();
 
-        $mouth = new Mouth();
+        $mouth = new Mouth($dndrace);
         $this->mouth = $mouth->getMouth();
 
-        $teeth = new Teeth();
+        $teeth = new Teeth($dndrace);
         $this->teeth = $teeth->getTeeth();
 
-        $chin = new Chin();
+        $chin = new Chin($dndrace);
         $this->chin = $chin->getChin();
 
         //---- see face

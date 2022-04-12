@@ -119,8 +119,22 @@ class Race
         return $heritage;
     }
 
-
-
+    /**
+     * Is Race in race array?
+     * 
+     * @param $dndrace this race
+     * 
+     * @return boolean
+     */
+    public static function isRaceInRaceArray($dndrace)
+    {
+        if (in_array($dndrace, Race::raceArray())) {
+            $boolean = true; 
+        } else {
+            $boolean = false;
+        }
+        return $boolean;
+    }
 
     
 
