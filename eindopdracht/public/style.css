@@ -52,7 +52,7 @@ body {
     border-radius: 50px;
     font-size: 80%;
     font-family: Verdana, monospace;
-    text-align: left;
+    text-align: right;
     border: 3px solid #EE8600;
     top: 8px;
     left: 16px;
@@ -72,6 +72,45 @@ body {
 }
 
 
+/* HOME.php -------------------*/
+
+.rngcenter {
+    font-family: Copperplate, Fantasy, serif;
+    font-weight: bold;
+    /*text-shadow: 2px 2px;*/
+    font-size: 480%;
+    color: #d41e1e;
+    text-align: center;
+    background-color: rgb(15, 15, 15);
+    border: 15px solid rgb(15, 15, 15);
+    border-radius: 50px 50px 0 0;
+    margin-bottom: -10px;
+}
+
+.whitetext {
+    color: white;
+    font-size: 80%;
+    font-weight: lighter;
+}
+
+.whitespan {
+    color: white;
+    text-shadow: 1px 1px #EE8600;
+}
+
+.redtext {
+    color: #d41e1e;
+    font-family: Copperplate, Fantasy, serif;
+    text-shadow: 1px 1px black;
+}
+
+.rngh2 {
+    font-family: "Courier New", monospace;
+    color: #767676;
+    text-align: center;
+}
+
+
 /*--------------------------------------------------------------CENTER*/
 
 .center {
@@ -88,6 +127,7 @@ body {
     border: 3px solid #EE8600;
     border-radius: 50px;
     margin-bottom: 1px;
+    border-radius: 50px;
 }
 
 .centeredpar {
@@ -198,6 +238,8 @@ body {
     position: relative;
 }
 
+
+/*
 footer {
     background-color: #767676;
     color: #45CEF7;
@@ -218,10 +260,192 @@ footer a:visited {
     color: rgb(248, 4, 4);
     text-decoration: none;
 }
+*/
+
+footer {
+    background-color: rgb(15, 15, 15);
+    color: rgb(248, 4, 4);
+    padding: 5px 0 15px 15px;
+    border: 1px solid white;
+    border-radius: 50px 50px 0 0;
+    font-size: 80%;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 2% 0 0 0;
+}
+
+footer a:link,
+footer a:visited {
+    color: rgb(248, 4, 4);
+    text-decoration: none;
+}
 
 img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20%;
+    margin-top: 5%;
 }
+
+
+/*-----LOADING BAR----------------------------------------------------*/
+
+
+/*-------------------------------------------------------LOAD BOX*/
+
+.generateloader {
+    font-family: Copperplate, Fantasy, serif;
+    font-weight: bold;
+    /*text-shadow: 2px 2px;*/
+    font-size: 200%;
+    color: #d41e1e;
+    text-align: center;
+    background-color: rgb(15, 15, 15);
+    border: 15px solid rgb(15, 15, 15);
+    border-radius: 50px 50px 50px 50px;
+    padding: 0 0 50px 0;
+    margin: 0 20% -50px 20%;
+}
+
+
+/*
+background-color: rgb(15, 15, 15);
+    color: rgb(248, 4, 4);
+*/
+
+.loading-box {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 40%;
+    height: 30px;
+    border-radius: 50px;
+    border: 3px solid #EE8600;
+    overflow: hidden;
+    background: #767676;
+    margin: auto;
+}
+
+.loader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50px;
+    background: linear-gradient(45deg, white, rgb(248, 4, 4));
+    left: 0%;
+}
+
+.loader {
+    left: -100%;
+    animation: load 3s linear infinite;
+}
+
+@keyframes load {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+
+/*-------------------------------collapsible-----------------------------------------------------------*/
+
+.wrap-collabsible {
+    margin-bottom: 1.2rem;
+}
+
+
+/* set the checkbox element to display: none. 
+The checkbox will be invisible and its label will be used instead to check or uncheck it.: */
+
+.wrap-collabsible input[type='checkbox'] {
+    display: none;
+}
+
+
+/* default label */
+
+.lbl-toggle {
+    display: block;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem;
+    color: #DFEBFC;
+    background-color: #EE8600;
+    cursor: pointer;
+    border-radius: 0 0 50px 50px;
+    transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+    color: rgb(15, 15, 15);
+}
+
+
+/* small arrow:  */
+
+.lbl-toggle::before {
+    content: ' ';
+    display: inline-block;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid currentColor;
+    vertical-align: middle;
+    margin-right: .7rem;
+    transform: translateY(-2px);
+    transition: transform .2s ease-out;
+}
+
+
+/*  use of currentColor variable:  triangle == color label’s text.
+basic styles to the inner content:  */
+
+.collapsible-content .content-inner {
+    background: #26282A;
+    color: #EE8600;
+    border-bottom: 1px solid #EE8600;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: .5rem 1rem;
+    border: 2px solid #EE8600;
+}
+
+
+/*   
+ default, collapsible-content div max-height == 0px, making it completely hidden: */
+
+.collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .25s ease-in-out;
+}
+
+
+/*adjacent sibling selector (+) to select our content div when the checkbox is checked: */
+
+.toggle:checked+.lbl-toggle+.collapsible-content {
+    max-height: 100vh;
+}
+
+
+/*  rotate triangle 
+ when the collapsible is expanded */
+
+.toggle:checked+.lbl-toggle::before {
+    transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle:checked+.lbl-toggle {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+/*--------------------------collapsible 1----------------------------------------------*/

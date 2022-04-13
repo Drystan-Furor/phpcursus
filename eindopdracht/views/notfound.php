@@ -1,4 +1,4 @@
-<?php $title = '404 - Pagina niet gevonden' ?>
+<?php $title = '404 Page Not Found' ?>
 
 <?php require 'components/header.php'; ?>
 

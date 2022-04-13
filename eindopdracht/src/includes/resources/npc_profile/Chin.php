@@ -6,7 +6,7 @@
 class Chin
 {
     /**
-     * Consttruct a chin
+     * Construct a chin
      * 
      * @param $dndrace this race
      */
@@ -20,7 +20,7 @@ class Chin
      * 
      * @return concatinated string
      */
-    public static function defaultChins()
+    public static function defaultChin()
     {
 
         $chinshapes = [
@@ -51,7 +51,7 @@ class Chin
         if (Race::isRaceInRaceArray($dndrace) == true) {
             $this->chin = strtolower($dndrace)::chinReplacer();
         } else {
-            $this->chin = self::defaultChins();
+            $this->chin = self::defaultChin();
         }
     }
 

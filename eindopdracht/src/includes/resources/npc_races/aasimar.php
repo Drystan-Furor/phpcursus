@@ -107,14 +107,14 @@ class aasimar
     /**
      * Array
      * 
-     * @param $race    this race 
+     * @param $dndrace    this race 
      * @param $new_npc nouns
      * 
      * @return string
      */
-    private function _description($race, $new_npc)
+    private function _description($dndrace, $new_npc)
     {
-        $description = "From below, the " . $race->getRace() .
+        $description = "From below, the " . $dndrace->getRace() .
             " look much like a large bird. Only 
         when " . $this->lastname . " descends to roost on a branch or walk 
         across the ground does " . $new_npc->getHisHer() .
@@ -122,29 +122,84 @@ class aasimar
 
         return $description;
     }
-}
 
+
+    //-----------------------------------------REPLACERS
+    /**
+     * Array of replacer
+     * 
+     * @return Nose replacer
+     */
+    public static function noseReplacer()
+    {
+        $nose = Nose::defaultNose();
+        return $nose;
+    }
+
+    /**
+     * Array of eyes.
+     * 
+     * @return eyes replacer
+     */
+    public static function eyesReplacer($dndrace, $new_npc)
+    {
+        if ($dndrace == 'Fallen Aasimar') {
+            $eyelights = [
+                'dark', 'pale muted',
+            ];
+            $eyelight = array_rand(array_flip($eyelights), 1);
+
+            $eyes = $eyelight . " " . MaterialGenerator::getJewelTone() . " toned " .
+                Eyes::canSee() . ", and dark spots forming under " . 
+                $new_npc->getHisHer() . " eyes";
+        } else {
+            $eyes =  MaterialGenerator::getJewelTone() . " toned " . Eyes::canSee();
+        }
+        return $eyes;
+    }
+
+
+    /**
+     * Array of replacer
+     * 
+     * @return mouth replacer
+     */
+    public static function mouthReplacer()
+    {
+        $mouth = Mouth::defaultMouths();
+        return $mouth;
+    }
+
+    /**
+     * Array of replacer
+     * 
+     * @return chin replacer
+     */
+    public static function chinReplacer()
+    {
+        $chin = Chin::defaultChin();
+        return $chin;
+    }
+
+    /**
+     * Array of replacer
+     * 
+     * @return teeth replacer
+     */
+    public static function teethReplacer()
+    {
+        $teeth = Teeth::defaultTeeth();
+        return $teeth;
+    }
+}
+// replacers
 
 
 //----------------------------------------------------------------Aasimar
 
-if ($race == 'Aasimar') {
-    $eyes = MaterialGenerator::getJewelTone() . " toned " . $eyes;
-    $hairShine = $hisher . " hair has a " . MaterialGenerator::getMetalType() . " 
-    shine to it with accents of " . MaterialGenerator::getMetalType();
 
-    $divergence = $nickname . " bears the mark of $hisher celestial touch 
-    through many different physical features, like " . $hairShine . ". ";
-}
 //------------------------------------------------------------------Fallen
-if ($race == 'Fallen Aasimar') {
-    $eyelights = [
-        'dark', 'pale muted',
-    ];
-    $eyelight = array_rand(array_flip($eyelights), 1);
-
-    $eyes = $eyelight . " " . MaterialGenerator::getJewelTone() . " toned " .
-        $eyes . ", and dark spots forming under $hisher eyes";
+if ($this->dndrace == 'Fallen Aasimar') {
 
     $hairShines = [
         'black', 'white',
@@ -156,6 +211,12 @@ if ($race == 'Fallen Aasimar') {
     $divergence = $nickname . " bears the mark of $hisher fall 
         through many different physical features, like " . $hairShine .
         " and a very gaunt, almost corpse-like appearance";
+} else {
+    $hairShine = $hisher . " hair has a " . MaterialGenerator::getMetalType() . " 
+    shine to it with accents of " . MaterialGenerator::getMetalType();
+
+    $divergence = $nickname . " bears the mark of $hisher celestial touch 
+    through many different physical features, like " . $hairShine . ". ";
 }
 //----------------------------------------------------------------------------SCRIPT
 require_once 'includes/dndraces/human.php'; // call script Human

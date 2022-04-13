@@ -19,10 +19,12 @@ class Race
     /** 
      * Race RNG 
      * new race() is by default a random race
+     * consider a this->homebrew (get boolean flag)
+     * consider this->dndrace be updated if homebrew == true
      */  
     private function __construct()
     {
-        $this->dndrace = self::randomRace(); 
+        $this->dndrace = self::randomRace(); //must be setRace and return random if null
         $this->raceorigin = self::setHeritage();
         $this->racesArray = self::raceArray();
     }
@@ -159,8 +161,9 @@ class Race
 
     /**
      * Turn "This-Race name" into thisracename
+     * lowercase also strip dash and space
      * 
-     * @param this race name
+     * @param $dndrace race name
      * 
      * @return lowercase name of race.
      */

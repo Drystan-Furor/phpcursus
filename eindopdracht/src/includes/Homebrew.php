@@ -69,7 +69,7 @@ class Homebrew
      * Check if given race actually exists in Array,
      * If not, then it is a Homebrew Race
      * 
-     * @param $race == dndrace
+     * @param $dndrace string of race name
      * 
      * @return boolean
      */
@@ -83,9 +83,13 @@ class Homebrew
     }
 
     /**
-     * pass a var based on boolean
+     * Pass a var based on boolean
      * var used to show value on page
      * value only if homebrew is true 
+     * 
+     * @param $dndrace this race
+     * 
+     * @return string
      */
     public function echoHomebrew($dndrace)
     {

@@ -4,11 +4,9 @@
         <script src="" async defer></script>
 <div class="footer-container">
 <footer>
-Tristan Arts
-Pastoor Stassenstraat 76<br>
-5921CV Venlo
-Tel: +31 6 24770098
-E: ArtsTristan@gmail.com
+Disclaimer : <a href="https://www.dndbeyond.com/">Wizards of the Coast, Dungeons & Dragons, D&D, Forgotten Realms,<br>
+and their logos are trademarks of Wizards of the Coast LLC in the United States and other countries. <br>
+This blog is not affiliated with, endorsed, sponsored, or specifically approved by Wizards of the Coast LLC.</a>
 </footer>
 </div>
 </body>

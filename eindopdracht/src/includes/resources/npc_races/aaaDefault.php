@@ -1,4 +1,3 @@
-<php
 <?php
 /** 
  * Default Names
@@ -8,7 +7,7 @@ class aaaDefault extends Name
     /**
      * Biography
      * 
-     * @param $race    string
+     * @param $dndrace    string
      * @param $new_npc string
      */
     private function __construct($dndrace, $new_npc)
@@ -62,7 +61,7 @@ class aaaDefault extends Name
     /**
      * Array
      * 
-     * @param $race    this race 
+     * @param $dndrace this race 
      * @param $new_npc nouns
      * 
      * @return string
