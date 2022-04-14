@@ -13,9 +13,9 @@
 
     <?php else : ?>
 
-        <h1>Deze pagina is nog niet gepubliceerd..</h1>
+        <h1>This page is not yet published</h1>
 
     <?php endif; ?>
 
-    <img src="/images/logo.jpeg" alt="Avans+ logo" width="200" />
+    <img src="/images/Dungeons-Dragons-Logo.png" alt="logo" width="400" />
     <?php require 'components/footer.php'; ?>

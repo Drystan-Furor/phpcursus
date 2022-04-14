@@ -25,7 +25,7 @@ body {
 
 .adminmenu {
     position: absolute;
-    top: 8px;
+    top: 40px;
     right: 16px;
     padding: 15px;
     border: 3px solid #EE8600;
@@ -45,18 +45,26 @@ body {
 
 /* navigatie menu ---------------------------------------------------------------------------*/
 
+.navmenucontainer {
+    position: relative;
+}
+
 .navmenu {
+    position: absolute;
     background-color: #767676;
     color: white;
-    padding: 10px 15px 10px 15px;
-    border-radius: 50px;
-    font-size: 80%;
+    padding: 1px 5px 1px 5px;
+    border-radius: 0 0 10px 10px;
+    font-size: 40%;
     font-family: Verdana, monospace;
-    text-align: right;
+    text-align: center;
     border: 3px solid #EE8600;
-    top: 8px;
-    left: 16px;
+    display: block;
+    top: 0px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 18px;
+    width: 100%;
 }
 
 .navmenu a:link,
@@ -72,6 +80,32 @@ body {
 }
 
 
+/*----------------logoutcontainer----------*/
+
+.logoutcontainer {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: 16px;
+    width: 10%;
+    font-family: Copperplate, Fantasy, serif;
+    /*text-shadow: 2px 2px;*/
+    font-size: 80%;
+    color: #45CEF7;
+    text-align: center;
+    background-color: rgb(15, 15, 15);
+    border: 3px solid #EE8600;
+    border-radius: 50px;
+    margin-bottom: 1px;
+}
+
+.logoutcontainer a:link,
+.logoutcontainer a:visited {
+    color: #d41e1e;
+    text-decoration: none;
+}
+
+
 /* HOME.php -------------------*/
 
 .rngcenter {
@@ -83,8 +117,9 @@ body {
     text-align: center;
     background-color: rgb(15, 15, 15);
     border: 15px solid rgb(15, 15, 15);
-    border-radius: 50px 50px 0 0;
+    border-radius: 0 0 0 0;
     margin-bottom: -10px;
+    padding-top: 20px;
 }
 
 .whitetext {
@@ -157,13 +192,134 @@ body {
     text-align: center;
 }
 
+.centertext a:link {
+    color: rgb(248, 4, 4);
+}
+
+.centertext a:visited {
+    color: #EE8600;
+}
+
+
+/*--------------------------LOGIN------------------------*/
+
+.login {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-family: Copperplate, Fantasy, serif;
+    /*text-shadow: 2px 2px;*/
+    font-size: 200%;
+    color: #d41e1e;
+    text-align: center;
+    background-color: rgb(15, 15, 15);
+    border: 3px solid #EE8600;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    margin-top: 10%;
+    border-radius: 50px;
+}
+
+.loginform {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    border: 3px solid #767676;
+    border-radius: 50px;
+    font-size: 110%;
+    text-align: center;
+    color: #45CEF7;
+    left: 0;
+    bottom: 0;
+}
+
+.loginform::placeholder {
+    color: #45CEF7;
+}
+
+
+/*-----------------------dnd races---------------------------*/
+
+.dndraces,
+.dndraces a:link,
+.dndraces a:visited {
+    text-align: center;
+    color: #EE8600;
+    text-decoration: none;
+}
+
+
+/*---------------------------------------------------summarize---------*/
+
+.summarize {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 50px;
+}
+
+
+/*------------------------------------------user input race-------------------------*/
+
+.setcommonrace {
+    background-color: black;
+    color: rgb(248, 4, 4);
+    padding: 5px 0 5px 5px;
+    font-family: Copperplate, Fantasy, serif;
+    border: 3px solid #EE8600;
+    border-radius: 50px;
+    font-size: 120%;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 10%;
+    cursor: pointer;
+    margin-bottom: 1%;
+}
+
+
+/*------------------------------------------user input race form------------------------------------*/
+
+#commonrace {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    border: 3px solid #767676;
+    border-radius: 50px;
+    font-size: 110%;
+    text-align: center;
+    color: #45CEF7;
+    left: 0;
+    bottom: 0;
+}
+
+#commonrace::placeholder {
+    color: #45CEF7;
+}
+
+
+/*-----------------------result printer-----------------------------------*/
+
+.generatedcode {
+    border: 2px solid #EE8600;
+    border-radius: 50px 50px 0 0;
+    background-color: white;
+    padding: 2%;
+    margin-bottom: -40px;
+}
+
 
 /*--------------------------buttons-------------*/
 
 .submitbutton {
     background-color: #767676;
     color: rgb(9, 129, 35);
-    padding: 5px;
+    padding: 3px;
     font-family: Copperplate, Fantasy, serif;
     border: 3px solid rgb(9, 129, 35);
     border-radius: 50px;
@@ -173,32 +329,8 @@ body {
     bottom: 0;
     width: 50%;
     cursor: pointer;
-}
-
-
-/*----------------logoutcontainer----------*/
-
-.logoutcontainer {
-    display: block;
-    margin-left: auto;
-    margin-right: 16px;
     margin-top: 3px;
-    width: 20%;
-    font-family: Copperplate, Fantasy, serif;
-    /*text-shadow: 2px 2px;*/
-    font-size: 80%;
-    color: #45CEF7;
-    text-align: center;
-    background-color: rgb(15, 15, 15);
-    border: 3px solid #EE8600;
-    border-radius: 50px;
-    margin-bottom: 1px;
-}
-
-.logoutcontainer a:link,
-.logoutcontainer a:visited {
-    color: #d41e1e;
-    text-decoration: none;
+    margin-bottom: 3%;
 }
 
 
@@ -236,6 +368,7 @@ body {
 
 .footer-container {
     position: relative;
+    bottom: -webkit-calc(-100% + 4px);
 }
 
 
@@ -271,9 +404,10 @@ footer {
     font-size: 80%;
     text-align: center;
     left: 0;
+    right: 0;
     bottom: 0;
     width: 100%;
-    margin: 2% 0 0 0;
+    margin: 0 0 0 0;
 }
 
 footer a:link,

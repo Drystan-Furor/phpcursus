@@ -8,7 +8,7 @@
 
     <?php else : ?>
 
-        <h2 class="centertext">Deze Blog is nog niet gepubliceerd..</h2>
+        <h2 class="centertext">This section is under development</h2>
 
     <?php endif; ?>
 <?php endforeach; ?>

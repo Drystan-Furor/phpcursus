@@ -6,6 +6,6 @@
 
 <?php else : ?>
 
-<h1 class="centertext">Deze pagina is nog niet gepubliceerd..</h1>
+<h1 class="centertext">This page is not published yet.</h1>
 
 <?php endif; ?>

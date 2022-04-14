@@ -17,5 +17,5 @@
 
     <?php endif; ?>
 
-    <img src="/images/logo.jpeg" alt="Avans+ logo" width="200" />
+    <img src="/images/Dungeons-Dragons-Logo.png" alt="logo" width="400" />
     <?php require 'components/footer.php'; ?>

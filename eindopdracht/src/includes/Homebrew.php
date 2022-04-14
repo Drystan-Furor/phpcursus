@@ -35,24 +35,20 @@ class Homebrew
      * 
      * @return UserInputRace
      */
-    public function setHomebrew()
+    public static function setHomebrew()
     {
         if (array_key_exists('setcommonrace', $_POST) //is button clicked
             && !$_POST['commonrace'] == "" // is it not empty string
             && !ctype_space($_POST['commonrace']) // is it NOT white spacing
             && !((bool)$_POST['commonrace'] == null) // does it exist?
         ) {
-            $race = EscapeString::from_Input(($_POST['commonrace'])); 
-            $race = ucwords(strtolower($race)); 
-            $race = ucfirst(str_replace("Of", "of", $race)); 
-            $race = ucfirst(str_replace("The", "the", $race)); 
-            $race = ucfirst(str_replace("Yuan-ti", "Yuan-Ti", $race)); 
-            //determine homebrew based on entry, TRUE if not in array
-            if (Race::isRaceInRaceArray($race) == false) {
-                $this->homebrew = true; //default false on class
-            }
+            $dndrace = EscapeString::from_Input(($_POST['commonrace']));//clean it
+            $dndrace = ucwords(strtolower($dndrace)); 
+            $dndrace = ucfirst(str_replace("Of", "of", $dndrace)); 
+            $dndrace = ucfirst(str_replace("The", "the", $dndrace)); 
+            $dndrace = ucfirst(str_replace("Yuan-ti", "Yuan-Ti", $dndrace)); 
         }
-        return $race; 
+        return $dndrace; 
     }
 
     /**
@@ -91,7 +87,7 @@ class Homebrew
      * 
      * @return string
      */
-    public function echoHomebrew($dndrace)
+    public static function echoHomebrew($dndrace)
     {
         if (self::isHomebrew($dndrace) == true) {
             $homebrewed = "HOMEBREW";

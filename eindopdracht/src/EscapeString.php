@@ -14,6 +14,9 @@ class EscapeString
         $this->data = trim($this->data);
         $this->data = stripslashes($this->data);
         $this->data = htmlspecialchars($this->data);
+        $this->data = strip_tags($this->data);
+        $this->data = filter_var($this->data, FILTER_UNSAFE_RAW);
+
         return $this->data;
     }
 
@@ -22,6 +25,8 @@ class EscapeString
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
+        $data = strip_tags($data);
+        $data = filter_var($data, FILTER_UNSAFE_RAW);
         //$data = mysqli_real_escape_string($connection, $data);
         return $data;
     }

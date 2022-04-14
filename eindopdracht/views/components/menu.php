@@ -6,26 +6,33 @@ $j = 1;
 ?>
 <div class="navmenucontainer">
     <div class="navmenu">
-        <div>Menu</div>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Inloggen</a></li>
-            <ul>Pages:
-                <?php
-                foreach ($menulist as $page) : ?>
-                    <a href="<?php echo "/newpage/?id=" . $page['id'] ?>">
-                        [<?php echo $i . "] " . $page['title'];
-                            $i++; ?> / </a>
-                <?php endforeach; ?>
-            </ul>
-            <ul>Blogs:
-                <?php
-                foreach ($bloglist as $blogpost) : ?>
-                    <li><a href="<?php echo "/showblog/?id=" . $blogpost['id']?>"> <!-- ?id=" . $blogpost['id'] -->
-                            [<?php echo $j . "] " . $blogpost['title'];
-                                $j++; ?></a></li>
-                <?php endforeach; ?>
-            </ul>
-        </ul>
+
+        <a href="/"><span class="redtext">DnD </span> <span class="whitespan">RNG</span></a> |
+        <a href="/login"><span class="redtext">Log</span> <span class="whitespan">in</span></a> |
+        <span class="redtext">Pages </span> <span class="whitespan">:</span></a>
+        <?php
+        foreach ($menulist as $page) : ?>
+            <a href="<?php echo "/newpage/?id=" . $page['id'] ?>">
+                <span class="redtext">
+                    [<?php echo " " . $i . " ] " ?></span>
+                <span class="whitespan">
+                    <?php echo $page['title'];
+                    $i++; ?></span></a>
+        <?php endforeach; ?>
+
+        <span class="redtext">Blogs </span> <span class="whitespan">:</span></a>
+        <?php
+        foreach ($bloglist as $blogpost) : ?>
+            <a href="<?php echo "/showblog/?id=" . $blogpost['id'] ?>">
+                <!-- ?id=" . $blogpost['id'] -->
+                <span class="redtext">
+                    [<?php echo " " . $j . " ] " ?></span>
+                <span class="whitespan">
+                    <?php echo $blogpost['title'];
+                    $j++; ?>
+            </a>
+        <?php endforeach; ?>
+
+
     </div>
 </div>
