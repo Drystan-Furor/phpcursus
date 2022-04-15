@@ -306,11 +306,12 @@ body {
 /*-----------------------result printer-----------------------------------*/
 
 .generatedcode {
+    display: block;
     border: 2px solid #EE8600;
     border-radius: 50px 50px 0 0;
     background-color: white;
     padding: 2%;
-    margin-bottom: -40px;
+    margin-bottom: -5px;
 }
 
 

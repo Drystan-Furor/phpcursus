@@ -6,9 +6,9 @@ class Rich
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    private function __construct($heshe)
+    public function __construct($heshe, $npcClass)
     {
-        $this->outfit = self::clothes($heshe);
+        $this->outfit = self::clothes($heshe, $npcClass);
         $this->intro = self::_intros();
     }
 
@@ -87,7 +87,7 @@ class Rich
      * 
      * @return outfit as a sentence
      */
-    public function clothes($heshe)
+    public function clothes($heshe, $npcClass)
     {
         $belt = new Belts();
         $belt = $belt->getBelt();
@@ -98,10 +98,11 @@ class Rich
         $shoes = new Shoes();
         $shoes = $shoes->getShoes();
 
-        $this->outfit = strtoupper($heshe) . " wears a " . //He / She Wears a
+        $this->outfit = ucfirst($heshe) . " wears a " . //He / She Wears a
             self::_clothing() .
             " and a " . $belt . ". "
-            . SentenceGenerator::observing() . " " . Jewelry::craftJewel()
+            . SentenceGenerator::observing() . " " . $npcClass . " wears " .
+            Jewelry::craftJewel() . ". "
             . $hat . " " . $shoes;
         return $this->outfit;
     }
@@ -116,14 +117,14 @@ class Rich
     private function _intros()
     {
         $intros = [
-            'who looks quite wealthy.',
-            'who looks very comfortable.',
-            'who seems to be blooming.',
-            'that looks "in the money".',
-            'who recently became flourishing.',
-            'looking halcyon at best.',
-            'who looks well-off.',
-            'who seems to be on top of the heap.',
+            'who looks quite wealthy',
+            'who looks very comfortable',
+            'who seems to be blooming',
+            'that looks "in the money"',
+            'who recently became flourishing',
+            'looking halcyon at best',
+            'who looks well-off',
+            'who seems to be on top of the heap',
         ];
         $intro = array_rand(array_flip($intros), 1);
         return $intro;

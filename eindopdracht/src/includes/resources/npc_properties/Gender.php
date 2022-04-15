@@ -8,9 +8,9 @@ class Gender
     /**
      * Construct a man or a woman
      */
-    private function __construct()
+    public function __construct()
     {
-        $this->gender = self::_setGender();
+        $this->Class_gender = self::_setGender();
     }
 
 

@@ -27,7 +27,7 @@ class Name extends Race
      * @param $race   == dndrace
      * @param $origin == race origin / hertiage 
      */
-    private function __construct($dndrace, $new_npc)
+    public function __construct($dndrace, $new_npc)
     {
         $this->biography = self::_generateName($dndrace, $new_npc);
     } //object name exists
@@ -60,12 +60,11 @@ class Name extends Race
         /** 
         //include_once 'includes/dndraces/' . $raceName . '.php'; // call script
         */
-        $this->lastname = $raceName::getLastname();
-        $this->firstname = $raceName::getFirstname();
-        $this->nickname = $raceName::getNickname();
-        $this->description = $raceName::getDescription();
+        $this->lastname = $raceName->getLastname();
+        $this->firstname = $raceName->getFirstname();
+        $this->nickname = $raceName->getNickname();
+        $this->description = $raceName->getDescription();
     }
-
 
     /**
      * Getter

@@ -5,9 +5,9 @@ class Prosperous
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    private function __construct()
+    public function __construct($heshe, $npcClass)
     {
-        $this->outfit = self::clothes($heshe);
+        $this->outfit = self::clothes($heshe, $npcClass);
         $this->intro = self::intros();
     }
 
@@ -69,7 +69,7 @@ class Prosperous
      * 
      * @return outfit as a sentence
      */
-    public function clothes($heshe)
+    public function clothes($heshe, $npcClass)
     {
         $belt = new Belts();
         $belt = $belt->getBelt();
@@ -86,11 +86,12 @@ class Prosperous
         ];
         $jewel = array_rand(array_flip($jewels), 1);
 
-        $this->outfit = strtoupper($heshe) . " wears a " . //He / She Wears a
+        $this->outfit = ucfirst($heshe) . " wears a " . //He / She Wears a
             self::_clothing() .
             " and a " . $belt . ". "
-            . SentenceGenerator::observing() . " " . $jewel
-            . " " . $shoes . " "
+            . SentenceGenerator::observing() . " " . $npcClass .
+            " wears " . $jewel //class
+            . ". " . $shoes . " "
             . $hat;
         return $this->outfit;
     }
@@ -99,14 +100,14 @@ class Prosperous
     private function intros()
     {
         $wealthinessTypes = [
-            'who seems to have some coin.',
-            'who looks rather comfortable.',
-            'who seems to be fortunate.',
-            'that looks a bit prospering.',
-            'who recently became upper-class.',
-            'looking affluent at best.',
-            'who looks priviliged.',
-            'who seems to be doing well.',
+            'who seems to have some coin',
+            'who looks rather comfortable',
+            'who seems to be fortunate',
+            'that looks a bit prospering',
+            'who recently became upper-class',
+            'looking affluent at best',
+            'who looks priviliged',
+            'who seems to be doing well',
         ];
         $intro = array_rand(array_flip($wealthinessTypes), 1);
         return $intro;

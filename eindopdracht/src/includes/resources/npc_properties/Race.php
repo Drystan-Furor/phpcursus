@@ -21,12 +21,15 @@ class Race
      * new race() is by default a random race
      * consider a this->homebrew (get boolean flag)
      * consider this->dndrace be updated if homebrew == true
-     */  
-    private function __construct()
+     * Homebrew::setHomebrew() verifies existence of input and sanitizes input
+     * else returns a random race.
+     */
+    public function __construct()
     {
-        $this->dndrace = self::randomRace(); //must be setRace and return random if null
+        $this->dndrace = Homebrew::setHomebrew();
         $this->raceorigin = self::setHeritage();
         $this->racesArray = self::raceArray();
+        $this->racesArray = self::updateRaceArray($this->dndrace, $this->racesArray);
     }
 
 
@@ -58,15 +61,15 @@ class Race
      * if input === "Drow" then != homebrew
      * add Drow to Race Array, logically after cleaning because array is RETURNED
      * 
-     * @param $dndrace == value to be checked IF == DROW
+     * @param $dndrace    == value to be checked IF == DROW
+     * @param $racesArray == array of races
      * 
-     * @return updated raceArray
+     * @return updated push raceArray
      */
-    protected function updateRaceArray($dndrace)
+    protected function updateRaceArray($dndrace, $racesArray)
     {
-        if ($dndrace == "drow") { 
-            $racesArray[] = self::raceArray();
-            $racesArray[] = "Drow"; 
+        if ($dndrace == "drow" || $dndrace == "Drow") {
+            $racesArray[] = "Drow";
             return $racesArray;
         }
     }
@@ -76,7 +79,7 @@ class Race
      * 
      * @return random value of raceArray
      */
-    private function _randomFromRaceArray()
+    public static function randomFromRaceArray()
     {
         $RacesArray = self::raceArray();
         $random = array_rand(array_flip($RacesArray), 1); //random
@@ -91,10 +94,9 @@ class Race
      */
     public static function randomRace()
     {
-        $dndrace  = self::_randomFromRaceArray(); //random
-        $_POST['commonrace'] = $dndrace; 
+        $dndrace  = self::randomFromRaceArray(); //random
 
-        return $_POST['commonrace'];
+        return $dndrace;
     }
 
     //------------------------------------------------HERITAGE getter/setter
@@ -109,15 +111,15 @@ class Race
      */
     public static function setHeritage()
     {
-        $heritage = self::_randomFromRaceArray(); //random
+        $heritage = self::randomFromRaceArray(); //random
         while (
             $heritage == "Genasi"
             || $heritage == "Yuan-Ti Pureblood"
             || $heritage == "Simic Hybrid"
         ) {
-            $heritage = self::_randomFromRaceArray();
+            $heritage = self::randomFromRaceArray();
         }
- 
+
         return $heritage;
     }
 
@@ -131,32 +133,12 @@ class Race
     public static function isRaceInRaceArray($dndrace)
     {
         if (in_array($dndrace, Race::raceArray())) {
-            $boolean = true; 
+            $boolean = true;
         } else {
             $boolean = false;
         }
         return $boolean;
     }
-
-    
-
-    /**
-     * Public Race setter for FORM handling 
-     * enables the user to create a custom race
-     */
-    public function setRace()// hard setter for user input
-    {
-        /** 
-            THIS DOES NOT WORK LIKE THIS
-            also, get and set homebrew out of Overwatch, not from Race
-            setRace is a Homebrew thing
-        */
-        $this->dndrace = $_POST['commonrace'];
-        $this->dndrace = $this->dndrace->getHomebrewRace();
-        $this->raceorigin = self::setHeritage();
-        $this->racesArray = self::updateRaceArray($this->dndrace);
-    }
-
 
 
     /**
@@ -201,4 +183,14 @@ class Race
         return $this->raceorigin;
     }
 
+
+    /**
+     * Getter to acces value of dndraces array
+     * 
+     * @return dndraceArray
+     */
+    public function getRaceArray()
+    {
+        return $this->racesArray;
+    }
 }

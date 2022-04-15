@@ -11,9 +11,9 @@ class Mouth
      * 
      * @param $dndrace this race
      */
-    private function __construct($dndrace)
+    public function __construct($dndrace)
     {
-        $this->mouth = self::_mouthShape($dndrace);
+        $this->Class_mouth = self::_mouthShape($dndrace);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Emotion Getter
  */
@@ -7,9 +8,9 @@ class MoodGenerator
     /**
      * Constructor
      */
-    private function __construct()
+    public function __construct($class)
     {
-        $this->mood = self::_generateMood();
+        $this->mood = self::_generateMood($class);
     }
 
     /**
@@ -48,9 +49,9 @@ class MoodGenerator
      * 
      * @return mood
      */
-    private static function _generateMood()
+    private static function _generateMood($class)
     {           //nickname
-        $mood = "Who seems to be in a " . self::_generateMoods() . " mood.";
+        $mood = "The " . $class . " seems to be in a " . self::_generateMoods() . " mood.";
 
         return $mood;
     }

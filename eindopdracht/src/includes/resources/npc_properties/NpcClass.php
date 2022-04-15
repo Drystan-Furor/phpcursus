@@ -8,9 +8,9 @@ class NpcClass
     /**
      * Get 1 random class
      */
-    private function __construct()
+    public function __construct()
     {
-        $this->npcClass = self::getNpcClass();
+        $this->Class_npcClass = self::generateClass();
     }
 
     //-----------------CLASSES

@@ -47,6 +47,8 @@ class Homebrew
             $dndrace = ucfirst(str_replace("Of", "of", $dndrace)); 
             $dndrace = ucfirst(str_replace("The", "the", $dndrace)); 
             $dndrace = ucfirst(str_replace("Yuan-ti", "Yuan-Ti", $dndrace)); 
+        } else {
+            $dndrace = Race::randomRace();
         }
         return $dndrace; 
     }

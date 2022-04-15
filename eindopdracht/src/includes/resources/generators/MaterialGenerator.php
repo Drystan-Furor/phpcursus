@@ -18,7 +18,7 @@ class MaterialGenerator
             'steel', 'copper', 'platinum',
             'iron',
         ];
-        $metal = array_rand(array_flip($metals, 1));
+        $metal = array_rand(array_flip($metals), 1);
         return $metal;
     }
     //MaterialGenerator::getMetalType()
@@ -35,7 +35,7 @@ class MaterialGenerator
             'lead', 'tin', 'copper', 'steel', 'cast-iron',
             'iron', 'metal', 'darkwood', 'stone', 'rock',
         ];
-        $platemetal = array_rand(array_flip($platemetals, 1));
+        $platemetal = array_rand(array_flip($platemetals), 1);
         return $platemetal;
     }
 
@@ -49,7 +49,7 @@ class MaterialGenerator
         $enameling = [ //--------------------------enameled with
             'bronze', 'silver', 'platinum', 'gold', 'chrome', 'glass',
         ];
-        $enamel = array_rand(array_flip($enameling, 1));
+        $enamel = array_rand(array_flip($enameling), 1);
         return $enamel;
     }
 
@@ -66,7 +66,7 @@ class MaterialGenerator
             'Mahogany', 'Maple', 'Poplar', 'Willow', 'Spruce', 'Chestnut', 'Fir',
             'Cypress', 'Redcedar', 'Hemlock',
         ];
-        $wood = array_rand(array_flip($carpenterswood, 1));
+        $wood = array_rand(array_flip($carpenterswood), 1);
         return $wood;
     }
 
@@ -104,7 +104,7 @@ class MaterialGenerator
             'rock of Amethyst',
             'transparent fiery orange Jacinth',
         ];
-        $gemstone = array_rand(array_flip(array_keys($gemstones)));
+        $gemstone = array_rand(array_flip($gemstones), 1);
         return $gemstone;
     }
 

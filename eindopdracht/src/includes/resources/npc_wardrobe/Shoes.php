@@ -9,7 +9,7 @@ class Shoes
     /**
      * Get me a pair of shoes
      */
-    private function __construct()
+    public function __construct()
     {
         $this->shoes = self::shoes();
     }

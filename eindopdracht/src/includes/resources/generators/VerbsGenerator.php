@@ -73,7 +73,7 @@ class VerbsGenerator
             'glimpse', 'mark', 'catch a glimpse that', 'catch sight', 'make out',
             'take notice', 'survey',
         ];
-        $observe = array_rand($observations, 1);
+        $observe = array_rand(array_flip($observations), 1);
         return $observe;
     }
 

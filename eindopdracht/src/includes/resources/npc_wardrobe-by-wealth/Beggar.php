@@ -10,9 +10,9 @@ class Beggar
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    private function __construct($heshe)
+    public function __construct($heshe, $npcClass)
     {
-        $this->outfit = self::clothes($heshe);
+        $this->outfit = self::clothes($heshe, $npcClass);
         $this->intro = self::intros();
     }
 
@@ -64,7 +64,7 @@ class Beggar
      * 
      * @return outfit as a sentence
      */
-    public function clothes($heshe)
+    public function clothes($heshe, $npcClass)
     {
         $belt = new Belts();
         $belt = $belt->getBelt();
@@ -73,14 +73,17 @@ class Beggar
         $shoes = new Shoes();
         $shoes = $shoes->getShoes();
 
-        $this->outfit = strtoupper($heshe) . " wears a " . //He / She Wears a
+        $this->outfit = ucfirst($heshe) . " wears a " . //He / She Wears a
             self::weathered() . " " . self::outfits() . //weathered outfit
             " made of " . self::textiles() . ", " . self::outfitDetails() . //made of 
             " and a " . self::weathered() . " " . $belt . ". " //and a weathered Belt;
-            . SentenceGenerator::observing() . " " . Rings::craftRing() .
-            $heshe . " " . VerbsGenerator::holding() . ". " .
+            . SentenceGenerator::observing() . " " . $npcClass . " " . 
+            VerbsGenerator::holding() . " " . Rings::craftRing() .
+            ". " .
             $shoes;
         return $this->outfit;
+
+        // While checking, you mark the {man} {an uncomplicated platinum signet ring set with a dark green Malachitehe} {is thightly squeezing}.
     }
 
     //-----------------------intro
@@ -92,10 +95,10 @@ class Beggar
     public static function intros()
     {
         $wealthinessTypes = [
-            'who seems to be homeless.', 'that looks like a beggar.',
-            'who looks wretched.', 'that looks really squalid.',
-            'a genuine panhandler.', 'a scrounger at best.',
-            'who is regarded as a deadbeat.', 'who looks like a real hobo.',
+            'who seems to be homeless', 'that looks like a beggar',
+            'who looks wretched', 'that looks really squalid',
+            'a genuine panhandler', 'a scrounger at best',
+            'who is regarded as a deadbeat', 'who looks like a real hobo',
         ];
         $intro = array_rand(array_flip($wealthinessTypes), 1);
         return $intro;

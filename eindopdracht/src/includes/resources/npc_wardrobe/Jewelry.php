@@ -8,7 +8,7 @@ class Jewelry
     /**
      * Construct a piece of jewelry
      */
-    private function __construct()
+    public function __construct()
     {
         $this->jewel = self::craftJewel();
     }

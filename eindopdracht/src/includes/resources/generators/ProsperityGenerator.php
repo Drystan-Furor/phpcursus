@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Rng how wealthy one is
  */
@@ -9,9 +8,9 @@ class ProsperityGenerator
     /**
      * Construct outfit and a sentence
      */
-    private function __construct($heshe)
+    public function __construct($heshe, $npcClass)
     {
-        $this->outfit = self::_rngOutfit($heshe);
+        $this->Class_outfit = self::_rngOutfit($heshe, $npcClass);
         $this->outfit = self::getOutfit();
         $this->intro = self::getIntro();
     }
@@ -23,38 +22,38 @@ class ProsperityGenerator
      * 
      * @return outfit
      */
-    private function _rngOutfit($heshe)
+    private function _rngOutfit($heshe, $npcClass)
     {
         $wealth = rand(1, 100);
 
         switch ($wealth) {
             case $wealth >= 1 && $wealth <= 15: //15% homeless
-                $outfit = new Beggar($heshe);
+                $outfit = new Beggar($heshe, $npcClass);
                 $this->outfit = $outfit->getOutfit();
                 $this->intro = $outfit->getIntro();
                 break;
             case $wealth >= 16 && $wealth <= 40: //24% poor
-                $outfit = new Poor($heshe);
+                $outfit = new Poor($heshe, $npcClass);
                 $this->outfit = $outfit->getOutfit();
                 $this->intro = $outfit->getIntro();
                 break;
             case $wealth >= 41 && $wealth <= 70: //29% moderate
-                $outfit = new Prosperous($heshe); // MODERATE
+                $outfit = new Prosperous($heshe, $npcClass); // MODERATE
                 $this->outfit = $outfit->getOutfit();
                 $this->intro = $outfit->getIntro();
                 break;
             case $wealth >= 71 && $wealth <= 89: //18% rich
-                $outfit = new Rich($heshe); //RICH
+                $outfit = new Rich($heshe, $npcClass); //RICH
                 $this->outfit = $outfit->getOutfit();
                 $this->intro = $outfit->getIntro();
                 break;
             case $wealth >= 90 && $wealth <= 100: //10% noble
-                $outfit = new Loaded($heshe); // FILTHY RICH
+                $outfit = new Loaded($heshe, $npcClass); // FILTHY RICH
                 $this->outfit = $outfit->getOutfit();
                 $this->intro = $outfit->getIntro();
                 break;
             default:
-                $outfit = new Poor($heshe);
+                $outfit = new Poor($heshe, $npcClass);
                 $this->outfit = $outfit->getOutfit();
                 $this->intro = $outfit->getIntro();
                 break;

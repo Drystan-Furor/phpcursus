@@ -10,9 +10,9 @@ class Poor
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    private function __construct($heshe)
+    public function __construct($heshe, $npcClass)
     {
-        $this->outfit = self::clothes($heshe);
+        $this->outfit = self::clothes($heshe, $npcClass);
         $this->intro = self::intros();
     }
 
@@ -77,7 +77,7 @@ class Poor
      * 
      * @return outfit as a sentence
      */
-    public function clothes($heshe)
+    public function clothes($heshe, $npcClass)
     {
         $belt = new Belts();
         $belt = $belt->getBelt();
@@ -89,7 +89,7 @@ class Poor
         $shoes = $shoes->getShoes();
 
 
-        $this->outfit = strtoupper($heshe) . " wears a " . //He / She Wears a
+        $this->outfit = ucfirst($heshe) . " wears a " . //He / She Wears a
             self::_clothing() .
             " and a " . $belt . ". " . $shoes . " "
             . $hat;
@@ -100,10 +100,10 @@ class Poor
     private function intros()
     {
         $wealthinessTypes = [
-            'who looks rather poor.',
-            'who seems to be penniless.', 'that looks quite impoverished.',
-            'who recently became bankrupt.', ' looking poverty-stricken at best.',
-            'who looks underpriviliged.', 'who makes a down-and-out impression.',
+            'who looks rather poor',
+            'who seems to be penniless', 'that looks quite impoverished',
+            'who recently became bankrupt', ' looking poverty-stricken at best',
+            'who looks underpriviliged', 'who makes a down-and-out impression',
         ];
         $intro = array_rand(array_flip($wealthinessTypes), 1);
         return $intro;

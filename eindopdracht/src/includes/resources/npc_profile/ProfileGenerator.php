@@ -17,7 +17,7 @@ class ProfileGenerator
      * @param $new_npc the male/female nouns
      * @param $class   this class
      */
-    private function __construct($dndrace, $new_npc, $class)
+    public function __construct($dndrace, $new_npc, $class)
     {
         $this->face = self::_facialConstruction($dndrace, $new_npc, $class);
     }
@@ -102,7 +102,7 @@ class ProfileGenerator
         $hisher = $new_npc->getHisHer();
         $gender = $new_npc->getGender();
 
-        $eyes = new Eyes($dndrace);
+        $eyes = new Eyes($dndrace, $new_npc);
         $this->eyes = $eyes->getEyes();
 
         $nose = new Nose($dndrace);
@@ -121,8 +121,8 @@ class ProfileGenerator
         $face =  " You " . VerbsGenerator::getObservation() .
             " this " . $manWoman . " has " . $this->nose . //see nose
 
-            ". The " . $class->getNpcClass() . " meets your gaze with " .
-            $this->eyes . // see eyes
+            ". The " . $class . " meets your gaze with " .
+            $this->eyes . ". " .// see eyes
 
             "As you seize up the " . $manWoman . ", you " .
             VerbsGenerator::getObservation() . " " . $heshe . " has " .
@@ -130,9 +130,9 @@ class ProfileGenerator
             " and " . $hisher . " mouth is set with " .
             $this->mouth . ". " . //see mouth
 
-            "When the " . $dndrace->getRace() . " is talking or shouting, you "
+            "When the " . $dndrace . " is talking or shouting, you "
             . VerbsGenerator::getObservation() . " " . $heshe .
-            " " . $this->teeth . ". "; //see teeth
+            " " . $this->teeth; //see teeth
 
         return $face;
     }

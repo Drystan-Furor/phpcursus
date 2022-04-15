@@ -8,10 +8,16 @@ class BodiesGenerator
 
     /**
      * Bodybuilder ;P
+     * 
+     * @param $new_npc to get nouns
      */
-    private function __construct($new_npc)
+    public function __construct($new_npc)
     {
+        $this->bodyType = self::bodyType();
+        $this->bodyShape = self::bodyShape();
+        $this->bodySize = self::bodySize();
         $this->body = self::_bodyBuilder($new_npc);
+
     }
 
     public static function bodyType()
@@ -78,13 +84,11 @@ class BodiesGenerator
         $heshe = $new_npc->getHeShe();
         $hisher = $new_npc->getHisHer();
         $gender = $new_npc->getGender();
-        $this->bodytype = self::bodyType();
-        $this->bodyshape = self::bodyShape();
-        $this->bodysize = self::bodySize();
 
-        $this->body = "Built " . $this->bodytype . ", " //type
+
+        $this->body = "Built " . $this->bodyType . ", " //type
             . $heshe . " has a " . $gender . " body with " .
-            $this->bodyshape . ". "; //shape
+            $this->bodyShape; //shape
         
         return $this->body;
     }
@@ -117,6 +121,17 @@ class BodiesGenerator
      */
     public function getBodySize()
     {
-        return $this->bodysize;
+        return $this->bodySize;
+    }
+
+    
+    /**
+     * Getter
+     * 
+     * @return this object
+     */
+    public function getBody()
+    {
+        return $this->body;
     }
 }

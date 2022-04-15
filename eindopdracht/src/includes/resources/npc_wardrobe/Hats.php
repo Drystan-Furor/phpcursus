@@ -11,7 +11,7 @@ class Hats
      * Has hat yes/no 
      * Yes -> craft hat / No -> empty string
      */
-    private function __construct($heshe)
+    public function __construct($heshe)
     {
         $this->hat = self::_hasHat($heshe);
     }
@@ -78,7 +78,7 @@ class Hats
             inverted flower pot",
 
             "a " . self::_hatMaterials() . " flat mortar board type hat, 
-            people associate with graduation,",
+            people associate with graduation",
 
             "a chaperon, a " . self::_hatMaterials() . " hood that is sewn onto a cape",
 
@@ -104,7 +104,7 @@ class Hats
      */
     private static function _craftHat($heshe)
     {
-        $hat = strtoupper($heshe) . " is wearing " .
+        $hat = ucfirst($heshe) . " is wearing " .
             self::_craftHats() . ". ";
 
         return $hat;

@@ -9,7 +9,7 @@ class ScarsGenerator
     /**
      * Give me a scar, 50% chance
      */
-    private function __construct($new_npc)
+    public function __construct($new_npc)
     {
         $this->scar = self::scar($new_npc);
     }
@@ -26,7 +26,7 @@ class ScarsGenerator
             'scar', 'cut', 'bruise', 'laceration', 'graze', 'claw mark',
             'birth mark', 'wound', 'jab', 'bruise', 'scratch',
         ];
-        $mark = array_rand(array_flip($markings, 1));
+        $mark = array_rand(array_flip($markings));
         return $mark;
     }
 
@@ -46,7 +46,7 @@ class ScarsGenerator
             "diagonal " . $mark . ", from the left to the right",
             "diagonal " . $mark . ", from the right to the left",
         ];
-        $line = array_rand(array_flip($scarlines, 1));
+        $line = array_rand(array_flip($scarlines));
         return $line;
     }
 
@@ -62,7 +62,7 @@ class ScarsGenerator
         $scarsides = [
             "left side", "right side", "middle",
         ];
-        $side = array_rand(array_flip($scarsides, 1));
+        $side = array_rand(array_flip($scarsides));
         return $side;
     }
 
@@ -100,10 +100,10 @@ class ScarsGenerator
         $hasScar = rand(1, 2);
         if ($hasScar == 1) {
             $scar = "You " . VerbsGenerator::getObservation() . " " .
-                $new_npc->Gender::getHeShe() . " has a " .
+                $new_npc->getHeShe() . " has a " .
                 ScarsGenerator::scarLines() . ' on the ' .
                 ScarsGenerator::scarSides() . ' of ' .
-                $new_npc->Gender::getHisHer() . " " .
+                $new_npc->getHisHer() . " " .
                 ScarsGenerator::scarLocation() . ". ";;
         } else {
             $scar = "";

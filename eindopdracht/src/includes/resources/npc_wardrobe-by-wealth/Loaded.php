@@ -5,9 +5,9 @@ class Loaded
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    private function __construct($heshe)
+    public function __construct($heshe, $npcClass)
     {
-        $this->outfit = self::clothes($heshe);
+        $this->outfit = self::clothes($heshe, $npcClass);
         $this->intro = self::intros();
     }
 
@@ -89,17 +89,17 @@ class Loaded
     private function intros()
     {
         $wealthinessTypes = [
-            'who is unmistakenly of noble herritage.',
-            'who looks extremely wealthy.',
-            'who looks to have money to burn.',
-            'who seems to be lousy self.',
-            'that looks opulent and roaring.',
-            'who is self and flourishing.',
-            'looking truly halcyon and lucky.',
-            'who looks positivly thriving.',
-            'looking aristocratic and dignified.',
-            'who seems to be a member of a noble family.',
-            'who makes a real aristocratic impression.',
+            'who is unmistakenly of noble herritage',
+            'who looks extremely wealthy',
+            'who looks to have money to burn',
+            'who seems to be lousy self',
+            'that looks opulent and roaring',
+            'who is self and flourishing',
+            'looking truly halcyon and lucky',
+            'who looks positivly thriving',
+            'looking aristocratic and dignified',
+            'who seems to be a member of a noble family',
+            'who makes a real aristocratic impression',
         ];
         $intro = array_rand(array_flip($wealthinessTypes), 1);
         return $intro;
@@ -112,7 +112,7 @@ class Loaded
      * 
      * @return outfit as a sentence
      */
-    public function clothes($heshe)
+    public function clothes($heshe, $npcClass)
     {
         $belt = new Belts();
         $belt = $belt->getBelt();
@@ -123,10 +123,11 @@ class Loaded
         $shoes = new Shoes();
         $shoes = $shoes->getShoes();
 
-        $this->outfit = strtoupper($heshe) . " wears a " . //He / She Wears a
+        $this->outfit = ucfirst($heshe) . " wears a " . //He / She Wears a
             self::_clothing() .
             " and a pristine " . $belt . ". "
-            . SentenceGenerator::observing() . " " . Jewelry::craftJewel()
+            . SentenceGenerator::observing() . " " . $npcClass .
+            " wears " . Jewelry::craftJewel()
             . " and a matching " . Rings::craftRing()
             . $hat . " " . $shoes;
         return $this->outfit;

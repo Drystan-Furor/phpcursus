@@ -9,9 +9,9 @@ class Eyes
      * 
      * @param $dndrace this race
      */
-    private function __construct($dndrace)
+    public function __construct($dndrace, $new_npc)
     {
-            $this->eyes = self::_eyeshape($dndrace);
+            $this->eyes = self::_eyeshape($dndrace, $new_npc);
             $this->eyes = self::canSee();
     }
 
@@ -22,10 +22,10 @@ class Eyes
      * 
      * @return eyes
      */
-    private function _eyeShape($dndrace)
+    private function _eyeShape($dndrace, $new_npc)
     {
         if (Race::isRaceInRaceArray($dndrace) == true) {
-            $this->eyes = strtolower($dndrace)::eyeReplacer();
+            $this->eyes = strtolower($dndrace)::eyesReplacer($dndrace, $new_npc);
         } else {
             $this->eyes = self::canSee();
         }

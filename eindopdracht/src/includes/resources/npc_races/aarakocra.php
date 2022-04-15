@@ -11,10 +11,10 @@ class aarakocra extends Name
      * @param $race    string
      * @param $new_npc string
      */
-    private function __construct($dndrace, $new_npc)
+    public function __construct($dndrace, $new_npc)
     {
         $this->lastname = self::_lastname();
-        $this->firstname = $this->lastname;
+        $this->firstname = self::_firstname();
         $this->nickname = $this->lastname;
         $this->description = self::_description($dndrace, $new_npc);
     }
@@ -69,7 +69,7 @@ class aarakocra extends Name
      */
     private function _description($dndrace, $new_npc)
     {
-        $description = "From below, the " . $dndrace->getRace() .
+        $description = "From below, the " . $dndrace .
             " look much like a large bird. Only 
         when " . $this->lastname . " descends to roost on a branch or walk 
         across the ground does " . $new_npc->getHisHer() .
@@ -90,14 +90,14 @@ class aarakocra extends Name
         $nose = rand(1, 100);
         switch ($nose) {
             case $nose >= 1 && $nose <= 24:
-                $nose = 'a very generalist, prominent big beak.';
+                $nose = 'a very generalist, prominent big beak';
                 break;
             case $nose >= 25 && $nose <= 38:
-                $nose = 'a scything upturned beak, small in width but quite long ';
+                $nose = 'a scything upturned beak, small in width but quite long';
                 break;
             case $nose >= 39 && $nose <= 47:
                 $nose = 'an eagles beak, quite raptorial. With a strong sloping curve that
-             prominently protrudes from the face.';
+             prominently protrudes from the face';
                 break;
             case $nose >= 48 && $nose <= 56:
                 $outlines = [
@@ -105,25 +105,25 @@ class aarakocra extends Name
                 ];
                 $outline = array_rand(array_flip($outlines), 1);
                 $nose = 'a snub beak that is common with ' . $outline .
-                    ' birds.';
+                    ' birds';
                 break;
             case $nose >= 57 && $nose <= 64:
                 $nose = 'a very long and sharp beak, thin and pointy, small in height but quite flat, 
-            common with aerial fishing birds.';
+            common with aerial fishing birds';
                 break;
             case $nose >= 65 && $nose <= 68:
                 $nose = 'a "Hawk" beak that has similarities with the curved 
             beaks of eagles and other predatory birds. It has a dramatic arched 
-            shape.';
+            shape';
                 break;
             case $nose >= 69 && $nose <= 76:
                 $nose = 'a perfectly straight beak. 
             It gives this birdfolk an aggresive profile since 
-            it is usually seen on scavenging birds.';
+            it is usually seen on scavenging birds';
                 break;
             case $nose >= 77 && $nose <= 84:
                 $nose = 'a dip netting beak, rather big, with a very prominent 
-            bottom mandible, like pelicans normally have.';
+            bottom mandible, like pelicans normally have';
                 break;
             case $nose >= 85 && $nose <= 91:
                 $outlines = [
@@ -135,7 +135,7 @@ class aarakocra extends Name
                 break;
             case $nose >= 92 && $nose <= 100:
                 $nose = "a bulbous beak, it has a a swollen, disproportionate nasal tip,
-            almost like it's too big. Imagine something like a fruit eating toucan.";
+            almost like it's too big. Imagine something like a fruit eating toucan";
                 break;
         }
         return $nose;
@@ -217,7 +217,7 @@ class aarakocra extends Name
             which is bent at the tip to form a hook",
             "has a " . $teethType . " shield-shaped structure on it's beak tip, 
             which spans the entire width of the beak and bent at the tip to form a hook",
-            "has a fake beak, like a prosthetic made of " . Verbsgenerator::quality() . " "
+            "has a fake beak, like a prosthetic made of " . VerbsGenerator::quality() . " "
                 . MaterialGenerator::getMetalType(),
         ];
         $teeth = array_rand(array_flip($dentalwork), 1);

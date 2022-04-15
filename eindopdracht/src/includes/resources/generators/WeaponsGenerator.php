@@ -7,7 +7,7 @@ class WeaponsGenerator
     /**
      * Constructor
      */
-    private function __construct($dndrace)
+    public function __construct($dndrace)
     {
         $this->weapon = self::_armed($dndrace);
     }
@@ -74,7 +74,7 @@ class WeaponsGenerator
     private static function _armed($dndrace)
     {
         $HoldWeapon 
-            = SentenceGenerator::observing() ." ". $dndrace->getRace() ." ".
+            = SentenceGenerator::observing() ." ". $dndrace ." ".
             self::holding() ." a ". self::weapon();
 
         return $HoldWeapon;

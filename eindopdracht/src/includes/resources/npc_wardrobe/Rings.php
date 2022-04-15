@@ -8,7 +8,7 @@ class Rings
     /** 
      * Forged in the fires of mount Doom
      */
-    private function __construct()
+    public function __construct()
     {
         $this->ring = Rings::craftRing();
     }

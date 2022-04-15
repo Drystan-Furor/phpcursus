@@ -1,8 +1,8 @@
 <?php
 /** 
- * Default Names
+ * Calishite Names
  */
-class aaaDefault extends Name
+class Calishite extends Name
 {
     /**
      * Biography
@@ -10,11 +10,11 @@ class aaaDefault extends Name
      * @param $dndrace    string
      * @param $new_npc string
      */
-    public function __construct($dndrace, $new_npc)
+    private function __construct($dndrace, $new_npc)
     {
         $this->lastname = self::_lastname();
-        $this->firstname = self::_firstname();
-        $this->nickname = self::_nickname();
+        $this->firstname = self::_firstname($new_npc);
+        $this->nickname = $this->firstname;
         $this->description = self::_description($dndrace, $new_npc);
     }
 
@@ -23,14 +23,12 @@ class aaaDefault extends Name
      * 
      * @return string
      */
-    private function _lastname()
+    public static function _lastname()
     {
         $surnames = [
-            'Aera', 'Aial', 'Aur', 'Deekek', 'Errk', 'Heehk', 'Ikki', 'Kleeck',
-            'Oorr', 'Ouss', 'Quaf', 'Quierk', 'Salleek', 'Urreek', 'Zeed',
+            'Basha', 'Dumein', 'Jassan', 'Khalid', 'Mostana', 'Pashar', 'Rein',
         ];
         $lastname = array_rand(array_flip($surnames), 1);
-        $this->lastname = $lastname;
         return $lastname;
     }
 
@@ -39,40 +37,41 @@ class aaaDefault extends Name
      * 
      * @return string
      */
-    private function _firstname()
+    public static function _firstname($new_npc)
     {
-        $firstname = "";
-        $this->firstname = $firstname;
+        if ($new_npc->getGender() == 'male') {
+            $malenames = [
+            'Aseir', 'Bardeid', 'Haseid', 'Khemed', 'Mehmen', 'Sudeiman', 'Zasheir',
+            ];
+            $firstname = array_rand(array_flip($malenames), 1);    
+        }   
+    
+        if ($new_npc->getGender() == 'female') {
+            $femalenames = [
+            'Atala', 'Ceidil', 'Hama', 'Jasmal', 'Meilil', 'Seipora', 
+            'Yasheira', 'Zasheida', 
+            ];
+            $firstname = array_rand(array_flip($femalenames), 1);            
+        } 
         return $firstname;
     }
 
-    /**
-     * Array
-     * 
-     * @return string
-     */
-    private function _nickname()
-    {
-        $nickname = $this->lastname;
-        $this->nickname = $nickname;
-        return $nickname;
-    }
 
     /**
      * Array
+     * $dndrace->getRace()
+     * $new_npc->getHisHer()
      * 
      * @param $dndrace this race 
      * @param $new_npc nouns
      * 
      * @return string
      */
-    private function _description($dndrace, $new_npc)
+    public static function _description($dndrace, $new_npc)
     {
-        $description = "From below, the " . $dndrace->getRace() .
-            " look much like a large bird. Only 
-        when " . $this->lastname . " descends to roost on a branch or walk 
-        across the ground does " . $new_npc->getHisHer() .
-            " humanoid appearance reveal itself.";
+        $description = "Shorter and slighter in build than most other humans, 
+                        Calishites have dusky brown skin, hair, and eyes. 
+                        They’re found primarily in southwest Faerûn."; 
 
         return $description;
     }

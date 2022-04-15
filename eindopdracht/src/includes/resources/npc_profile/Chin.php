@@ -10,9 +10,9 @@ class Chin
      * 
      * @param $dndrace this race
      */
-    private function __construct($dndrace)
+    public function __construct($dndrace)
     {
-        $this->chin = self::_chinShape($dndrace);
+        $this->Class_chin = self::_chinShape($dndrace);
     }
 
     /**

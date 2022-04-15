@@ -11,7 +11,7 @@ class Belts
     /**
      * Constructor
      */
-    private function __construct()
+    public function __construct()
     {
         $this->belt = self::belt();
     }
@@ -38,7 +38,7 @@ class Belts
             'a spyglass', 'a dangling censer', 'a drinking horn',
             'an iron flask', 'a boomerang', 'ten pouches',
         ];
-        $beltitem = array_rand($beltitems, 5);
+        $beltitem = array_rand(array_flip($beltitems), 1);
         return $beltitem;
     }
 
@@ -54,7 +54,7 @@ class Belts
             'braided leather', 'tooled leather', 'suede', 'rope',
             'studded leather',
         ];
-        $beltmaterial = array_rand($beltmaterial, 3);
+        $beltmaterial = array_rand(array_flip($beltmaterial), 1);
         return $beltmaterial;
     }
 
@@ -69,7 +69,7 @@ class Belts
             'embroidered', 'plain', 'smooth', 'simple',
             'traditional', 'common',
         ];
-        $beltfashion = array_rand($beltfashion, 3);
+        $beltfashion = array_rand(array_flip($beltfashion), 1);
         return $beltfashion;
     }
 

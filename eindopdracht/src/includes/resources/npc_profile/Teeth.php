@@ -11,7 +11,7 @@ class Teeth
      * 
      * @param $dndrace this race
      */
-    private function __construct($dndrace)
+    public function __construct($dndrace)
     {
         $this->teeth = self::_teethShape($dndrace);
     }
