@@ -143,7 +143,7 @@ class aasimar extends Name
             MaterialGenerator::getMetalType() . " 
         shine but withered to " . $hairShine;
 
-        $description = "The ". $dndrace . " " . $nickname . " bears the mark of " .
+        $description = "The " . $dndrace . " " . $nickname . " bears the mark of " .
             $new_npc->getHisHer() . " fall 
             through many different physical features, like " . $hairShine .
             " and a very gaunt, almost corpse-like appearance. ";
@@ -174,24 +174,18 @@ class aasimar extends Name
 
 
     //-----------------------------------------REPLACERS
-    /**
-     * Array of replacer
-     * 
-     * @return Nose replacer
-     */
-    public static function noseReplacer()
-    {
-        $nose = Nose::defaultNose();
-        return $nose;
-    }
 
     /**
      * Array of eyes.
+     * 
+     * @param $dndrace this race
+     * @param $new_npc object of nouns
      * 
      * @return eyes replacer
      */
     public static function eyesReplacer($dndrace, $new_npc)
     {
+        $eyes =  MaterialGenerator::getJewelTone() . " toned " . Eyes::canSee();
         if ($dndrace == 'Fallen Aasimar') {
             $eyelights = [
                 'dark', 'pale muted',
@@ -201,43 +195,8 @@ class aasimar extends Name
             $eyes = $eyelight . " " . MaterialGenerator::getJewelTone() . " toned " .
                 Eyes::canSee() . ", and dark spots forming under " .
                 $new_npc->getHisHer() . " eyes";
-        } else {
-            $eyes =  MaterialGenerator::getJewelTone() . " toned " . Eyes::canSee();
+                return $eyes;
         }
         return $eyes;
-    }
-
-
-    /**
-     * Array of replacer
-     * 
-     * @return mouth replacer
-     */
-    public static function mouthReplacer()
-    {
-        $mouth = Mouth::defaultMouths();
-        return $mouth;
-    }
-
-    /**
-     * Array of replacer
-     * 
-     * @return chin replacer
-     */
-    public static function chinReplacer()
-    {
-        $chin = Chin::defaultChin();
-        return $chin;
-    }
-
-    /**
-     * Array of replacer
-     * 
-     * @return teeth replacer
-     */
-    public static function teethReplacer()
-    {
-        $teeth = Teeth::defaultTeeth();
-        return $teeth;
     }
 }

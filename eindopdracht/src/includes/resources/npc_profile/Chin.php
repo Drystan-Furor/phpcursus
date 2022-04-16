@@ -10,9 +10,9 @@ class Chin
      * 
      * @param $dndrace this race
      */
-    public function __construct($dndrace)
+    public function __construct($dndrace, $new_npc)
     {
-        $this->Class_chin = self::_chinShape($dndrace);
+        $this->Class_chin = self::_chinShape($dndrace, $new_npc);
     }
 
     /**
@@ -46,10 +46,10 @@ class Chin
      * 
      * @return chin
      */
-    private function _chinShape($dndrace)
+    private function _chinShape($dndrace, $new_npc)
     {
-        if (Race::isRaceInRaceArray($dndrace) == true) {
-            $this->chin = strtolower($dndrace)::chinReplacer();
+        if (method_exists(strtolower($dndrace), 'chinReplacer') == true) {
+            $this->chin = strtolower($dndrace)::chinReplacer($dndrace, $new_npc);
         } else {
             $this->chin = self::defaultChin();
         }
@@ -70,3 +70,4 @@ class Chin
 $chin = new Chin();
 $chin = $chin->getChin();
 */
+

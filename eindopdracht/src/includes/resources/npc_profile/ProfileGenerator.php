@@ -105,16 +105,16 @@ class ProfileGenerator
         $eyes = new Eyes($dndrace, $new_npc);
         $this->eyes = $eyes->getEyes();
 
-        $nose = new Nose($dndrace);
+        $nose = new Nose($dndrace, $new_npc);
         $this->nose = $nose->getNose();
 
-        $mouth = new Mouth($dndrace);
+        $mouth = new Mouth($dndrace, $new_npc);
         $this->mouth = $mouth->getMouth();
 
-        $teeth = new Teeth($dndrace);
+        $teeth = new Teeth($dndrace, $new_npc);
         $this->teeth = $teeth->getTeeth();
 
-        $chin = new Chin($dndrace);
+        $chin = new Chin($dndrace, $new_npc);
         $this->chin = $chin->getChin();
 
         //---- see face

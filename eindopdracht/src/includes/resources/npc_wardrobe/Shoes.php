@@ -9,9 +9,9 @@ class Shoes
     /**
      * Get me a pair of shoes
      */
-    public function __construct()
+    public function __construct($dndrace)
     {
-        $this->shoes = self::shoes();
+        $this->shoes = self::theRightShoes($dndrace);
     }
 
 
@@ -88,6 +88,23 @@ class Shoes
     public function getShoes()
     {
         return $this->shoes;
+    }
+
+    /**
+     * Build or choose specific arrray. Select random value string
+     * 
+     * @param $dndrace this race
+     * 
+     * @return alternate shoes
+     */
+    public function theRightShoes($dndrace)
+    {
+        if (method_exists(strtolower($dndrace), 'shoeReplacer') == true) {
+            $shoes = strtolower($dndrace)::shoeReplacer();
+        } else {
+            $shoes = self::shoes();
+        }
+        return $shoes;
     }
 }
 /*

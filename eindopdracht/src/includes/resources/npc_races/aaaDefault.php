@@ -7,7 +7,7 @@ class aaaDefault extends Name
     /**
      * Biography
      * 
-     * @param $dndrace    string
+     * @param $dndrace string
      * @param $new_npc string
      */
     public function __construct($dndrace, $new_npc)
@@ -26,8 +26,7 @@ class aaaDefault extends Name
     private function _lastname()
     {
         $surnames = [
-            'Aera', 'Aial', 'Aur', 'Deekek', 'Errk', 'Heehk', 'Ikki', 'Kleeck',
-            'Oorr', 'Ouss', 'Quaf', 'Quierk', 'Salleek', 'Urreek', 'Zeed',
+            'Array', 
         ];
         $lastname = array_rand(array_flip($surnames), 1);
         $this->lastname = $lastname;
@@ -41,7 +40,11 @@ class aaaDefault extends Name
      */
     private function _firstname()
     {
-        $firstname = "";
+        $firstnames = [
+            'Array', 
+        ];
+        $firstname = array_rand(array_flip($firstnames), 1);
+
         $this->firstname = $firstname;
         return $firstname;
     }
@@ -68,11 +71,9 @@ class aaaDefault extends Name
      */
     private function _description($dndrace, $new_npc)
     {
-        $description = "From below, the " . $dndrace->getRace() .
-            " look much like a large bird. Only 
-        when " . $this->lastname . " descends to roost on a branch or walk 
-        across the ground does " . $new_npc->getHisHer() .
-            " humanoid appearance reveal itself.";
+        $description = "string " . $dndrace->getRace() .
+            " string " . $this->lastname . " string " . $new_npc->getHisHer() .
+            " string.";
 
         return $description;
     }

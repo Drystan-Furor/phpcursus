@@ -8,7 +8,7 @@ class aarakocra extends Name
     /**
      * Biography
      * 
-     * @param $race    string
+     * @param $dndrace string
      * @param $new_npc string
      */
     public function __construct($dndrace, $new_npc)
@@ -141,16 +141,7 @@ class aarakocra extends Name
         return $nose;
     }
 
-    /**
-     * Array of eyes.
-     * 
-     * @return eyes replacer
-     */
-    public static function eyesReplacer()
-    {
-        $eyes = Eyes::canSee();
-        return $eyes;
-    }
+
 
 
     /**

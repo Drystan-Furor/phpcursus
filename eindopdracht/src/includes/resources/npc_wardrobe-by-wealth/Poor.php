@@ -10,9 +10,9 @@ class Poor
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    public function __construct($heshe, $npcClass)
+    public function __construct($heshe, $npcClass, $dndrace)
     {
-        $this->outfit = self::clothes($heshe, $npcClass);
+        $this->outfit = self::clothes($heshe, $npcClass, $dndrace);
         $this->intro = self::intros();
     }
 
@@ -77,7 +77,7 @@ class Poor
      * 
      * @return outfit as a sentence
      */
-    public function clothes($heshe, $npcClass)
+    public function clothes($heshe, $npcClass, $dndrace)
     {
         $belt = new Belts();
         $belt = $belt->getBelt();
@@ -85,7 +85,7 @@ class Poor
         $hat = new Hats($heshe);
         $hat = $hat->getHat();
 
-        $shoes = new Shoes();
+        $shoes = new Shoes($dndrace);
         $shoes = $shoes->getShoes();
 
 

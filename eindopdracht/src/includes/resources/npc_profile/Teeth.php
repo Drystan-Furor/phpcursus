@@ -11,9 +11,9 @@ class Teeth
      * 
      * @param $dndrace this race
      */
-    public function __construct($dndrace)
+    public function __construct($dndrace, $new_npc)
     {
-        $this->teeth = self::_teethShape($dndrace);
+        $this->teeth = self::_teethShape($dndrace, $new_npc);
     }
 
     /**
@@ -83,10 +83,10 @@ class Teeth
      * 
      * @return teeth
      */
-    private static function _teethShape($dndrace)
+    private static function _teethShape($dndrace, $new_npc)
     {
-        if (Race::isRaceInRaceArray($dndrace) == true) {
-            $teeth = strtolower($dndrace)::teethReplacer();
+        if (method_exists(strtolower($dndrace), 'teethReplacer') == true) {
+            $teeth = strtolower($dndrace)::teethReplacer($dndrace, $new_npc);
         } else {
             $teeth = self::defaultTeeth();
         }

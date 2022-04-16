@@ -10,9 +10,9 @@ class Beggar
      * Construct an outfit
      * and a sentence based on this class outfit 
      */
-    public function __construct($heshe, $npcClass)
+    public function __construct($heshe, $npcClass, $dndrace)
     {
-        $this->outfit = self::clothes($heshe, $npcClass);
+        $this->outfit = self::clothes($heshe, $npcClass, $dndrace);
         $this->intro = self::intros();
     }
 
@@ -64,13 +64,13 @@ class Beggar
      * 
      * @return outfit as a sentence
      */
-    public function clothes($heshe, $npcClass)
+    public function clothes($heshe, $npcClass, $dndrace)
     {
         $belt = new Belts();
         $belt = $belt->getBelt();
         // VerbsGenerator::holding()
         // Rings::craftRing()
-        $shoes = new Shoes();
+        $shoes = new Shoes($dndrace);
         $shoes = $shoes->getShoes();
 
         $this->outfit = ucfirst($heshe) . " wears a " . //He / She Wears a

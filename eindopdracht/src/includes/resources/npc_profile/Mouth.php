@@ -11,9 +11,9 @@ class Mouth
      * 
      * @param $dndrace this race
      */
-    public function __construct($dndrace)
+    public function __construct($dndrace, $new_npc)
     {
-        $this->Class_mouth = self::_mouthShape($dndrace);
+        $this->Class_mouth = self::_mouthShape($dndrace, $new_npc);
     }
 
     /**
@@ -39,10 +39,10 @@ class Mouth
      * 
      * @return mouth
      */
-    private function _mouthShape($dndrace)
+    private function _mouthShape($dndrace, $new_npc)
     {
-        if (Race::isRaceInRaceArray($dndrace) == true) {
-            $this->mouth = strtolower($dndrace)::mouthReplacer();
+        if (method_exists(strtolower($dndrace), 'mouthReplacer') == true) {
+            $this->mouth = strtolower($dndrace)::mouthReplacer($dndrace, $new_npc);
         } else {
             $this->mouth = self::defaultMouths();
         }

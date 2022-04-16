@@ -121,7 +121,7 @@ class DndNpcRng
         $this->scar3 = $this->scar->getScar();
 
         //npc_wardrobe-by-wealth +npc_wardrobe
-        $this->outfit = new ProsperityGenerator($this->heshe, $this->class);
+        $this->outfit = new ProsperityGenerator($this->heshe, $this->class, $this->dndrace);
         $this->intro = $this->outfit->getIntro();
         $this->outfit = $this->outfit->getOutfit();
 

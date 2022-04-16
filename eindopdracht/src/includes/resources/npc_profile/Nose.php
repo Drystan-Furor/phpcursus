@@ -13,9 +13,9 @@ class Nose
      * 
      * @param $dndrace this race
      */
-    public function __construct($dndrace)
+    public function __construct($dndrace, $new_npc)
     {
-        $this->nose = self::_randomNose($dndrace);
+        $this->nose = self::_randomNose($dndrace, $new_npc);
     }
 
     /**
@@ -25,10 +25,10 @@ class Nose
      * 
      * @return string
      */
-    private static function _randomNose($dndrace)
+    private static function _randomNose($dndrace, $new_npc)
     {
-        if (Race::isRaceInRaceArray($dndrace) == true) {
-            $nose = strtolower($dndrace)::noseReplacer();
+        if (method_exists(strtolower($dndrace), 'noseReplacer') == true) {
+            $nose = strtolower($dndrace)::noseReplacer($dndrace, $new_npc);
         } else {
             $nose = self::defaultNose();
         }

@@ -12,7 +12,6 @@ class Eyes
     public function __construct($dndrace, $new_npc)
     {
             $this->eyes = self::_eyeshape($dndrace, $new_npc);
-            $this->eyes = self::canSee();
     }
 
     /**
@@ -24,11 +23,12 @@ class Eyes
      */
     private function _eyeShape($dndrace, $new_npc)
     {
-        if (Race::isRaceInRaceArray($dndrace) == true) {
+        if (method_exists(strtolower($dndrace), 'eyesReplacer') == true) {
             $this->eyes = strtolower($dndrace)::eyesReplacer($dndrace, $new_npc);
         } else {
             $this->eyes = self::canSee();
         }
+        return $this->eyes;
     }
     /**
      * Array
