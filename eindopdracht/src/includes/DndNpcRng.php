@@ -74,6 +74,7 @@ class DndNpcRng
         $this->race = new Race();
         $this->raceorigin = $this->race->getRaceorigin();
         $this->raceArray = $this->race->getRaceArray();
+        //$this->raceArray = $this->race->updateRaceArray($this->race->getRace(), $this->raceArray);
         $this->dndrace = $this->race->getRace();
 
         $this->age = new Age($this->dndrace);
@@ -92,11 +93,12 @@ class DndNpcRng
         // -> explore to make users enter their own name.
         //pass object to class method, allows to pass multiple properties
         // pass race to Name so it can sort what race naming class should be calles
-        $this->name = new Name($this->dndrace, $this->new_npc);
+        $this->name = new Name($this->race, $this->new_npc);
         $this->firstname = $this->name->getFirstname();
         $this->lastname = $this->name->getLastname();
         $this->nickname = $this->name->getNickname();
         $this->description = $this->name->getDescription();
+        $this->dndrace = $this->race->getRace();
 
 
         //body {also public method}

@@ -47,7 +47,7 @@ class Jewelry
      */
     public static function craftJewel()
     {
-        $jewel = MaterialGenerator::getMetalType() . " " . self::_jewelryType() .
+        $jewel = " a ".MaterialGenerator::getMetalType() . " " . self::_jewelryType() .
             " set with a " . MaterialGenerator::getGemstoneType();
 
         return $jewel;

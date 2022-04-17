@@ -90,7 +90,7 @@ class bugbear extends Name
      */
     private function _description($dndrace, $new_npc)
     {
-        $description = $dndrace . "s are hairy goblinoids
+        $description = $dndrace->getRace() . "s are hairy goblinoids
          born for battle and mayhem. 
         They survive by raiding and hunting, but are fond of setting ambushes 
         and fleeing when outmatched.";

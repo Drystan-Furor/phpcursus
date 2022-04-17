@@ -95,8 +95,10 @@ class centaur extends Name
      */
     private function _description($dndrace, $new_npc)
     {
-        $description = "Roamers at heart, " . $dndrace . "s love open spaces and the freedom 
-        to travel. As much as they can, " . $dndrace . "s run. They race the wind,
+        $description = "Roamers at heart, " . $dndrace->getRace() 
+        . "s love open spaces and the freedom 
+        to travel. As much as they can, " . $dndrace->getRace() 
+        . "s run. They race the wind,
          hooves thundering and tails streaming behind them.";
 
         return $description;

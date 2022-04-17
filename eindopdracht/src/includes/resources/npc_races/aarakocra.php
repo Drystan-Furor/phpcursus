@@ -69,7 +69,7 @@ class aarakocra extends Name
      */
     private function _description($dndrace, $new_npc)
     {
-        $description = "From below, the " . $dndrace .
+        $description = "From below, the " . $dndrace->getRace() .
             " look much like a large bird. Only 
         when " . $this->lastname . " descends to roost on a branch or walk 
         across the ground does " . $new_npc->getHisHer() .

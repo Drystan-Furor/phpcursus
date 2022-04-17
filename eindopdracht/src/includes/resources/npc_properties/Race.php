@@ -55,6 +55,19 @@ class Race
         return $RacesArray;
     }
 
+    /**
+     * Setter
+     * 
+     * @param $dndrace the race to set
+     * 
+     * @return string
+     */
+    public function setRace($dndrace)
+    {
+        $this->dndrace = $dndrace;
+        return $this->dndrace;
+    }
+
 
     /**
      * Drow is offical, but not on webpage, Elf-Subclass, 
@@ -62,16 +75,18 @@ class Race
      * add Drow to Race Array, logically after cleaning because array is RETURNED
      * 
      * @param $dndrace    == value to be checked IF == DROW
-     * @param $racesArray == array of races
+     * @param $array == array of races
      * 
-     * @return updated push raceArray
+     * @return $racesArray push raceArray
      */
-    protected function updateRaceArray($dndrace, $racesArray)
+    private function updateRaceArray($dndrace, $array)
     {
         if ($dndrace == "drow" || $dndrace == "Drow") {
-            $racesArray[] = "Drow";
-            return $racesArray;
+            $this->racesArray[] = "Drow";
+            $array = $this->racesArray;
+            return $array;
         }
+        return $array;
     }
 
     /**

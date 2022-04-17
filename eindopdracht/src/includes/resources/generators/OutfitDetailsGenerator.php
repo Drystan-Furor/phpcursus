@@ -13,22 +13,22 @@ class OutfitDetailsGenerator
     public static function outfitDetails()
     {
         $clothingDetails = [ //with 
-            "a separate and fuller skirt sewn to the body,",
-            "a loose blouse that can be tightly laced,",
+            "a separate and fuller skirt sewn to the body",
+            "a loose blouse that can be tightly laced",
             "an overcoat",
             "a garnache, a long cloak,",
             "a bodice sewn to a skirt",
-            "the fabric falling in folds into a bell shape,",
-            "a low cut V neck that shows a piece of contrasting fabric underneath,",
+            "the fabric falling in folds into a bell shape",
+            "a low cut V neck that shows a piece of contrasting fabric underneath",
             "a Gothic style influence, a look that accentuates slenderness and an 
-            elongated form,",
+            elongated form",
             "a vertical color difference with a split vertical dividing line in 
-            the center of the body,",
+            the center of the body",
             "a light linen shift underneath,",
             "luxurious fabrics", "a luxurious trim",
             "beautiful prints and vibrant colors",
             "edges of the outer garments decorated with dagging, edged with 
-            loose pieces of fabric that resembled leaves,",
+            loose pieces of fabric that resembled leaves",
             "the highest quality textiles",
             //--------------------all but beggar
         ];

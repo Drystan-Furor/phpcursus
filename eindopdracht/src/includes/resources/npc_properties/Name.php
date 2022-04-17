@@ -37,6 +37,7 @@ class Name extends Race
      * Name based on Race
      * Check if Homebrew
      * Set call to RNG Origin if Homebrew
+     * $this->race->getRace()
      * 
      * @param $race == dndrace
      * 
@@ -45,21 +46,17 @@ class Name extends Race
     private function _generateName($dndrace, $new_npc) 
     {
         //address the exceptions of races first
-        if (Homebrew::isHomebrew($dndrace) == true) {
+        if (Homebrew::isHomebrew($dndrace->getRace()) == true) {
             $raceName = Race::setHeritage(); 
             //Homebrews get a RNG origin to generate names
         } else {
-            $raceName = $dndrace;
+            $raceName = $dndrace->getRace();
         }
         // ELSE == ALL other scenario's
 
-        $raceName = strtolower($raceName);              //no caps's in filename
-        $raceName = str_replace(' ', '', $raceName);    //no spaces in filename
-        $raceName = str_replace('-', '', $raceName);    //no dashes in filename
+        $raceName = Race::lowercase($raceName);
         $raceName = new $raceName($dndrace, $new_npc);    //new aarakocra() [example]
-        /** 
-        //include_once 'includes/dndraces/' . $raceName . '.php'; // call script
-        */
+
         $this->lastname = $raceName->getLastname();
         $this->firstname = $raceName->getFirstname();
         $this->nickname = $raceName->getNickname();

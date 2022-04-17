@@ -13,9 +13,7 @@ class aasimar extends Name
      */
     public function __construct($dndrace, $new_npc)
     {
-        $this->$dndrace = $dndrace;
-        $this->$dndrace = self::isFallen($dndrace);
-        $dndrace = $this->$dndrace;
+        $dndrace = self::isFallen($dndrace);
         $this->isAasimar = true;
         $this->lastname = self::_lastname();
         $this->firstname = self::_firstname($new_npc);
@@ -36,13 +34,13 @@ class aasimar extends Name
     /**
      * RNG if race isFallenAasimar
      * 
-     * @return boolean
+     * @return property of object
      */
     public function isFallen($dndrace)
     {
         $isFallen = rand(1, 20);
         if ($isFallen > 10) {
-            $dndrace = "Fallen Aasimar";
+            $dndrace->setRace("Fallen Aasimar");
             return $dndrace;
         } else {
             return $dndrace;
@@ -117,7 +115,7 @@ class aasimar extends Name
      */
     private function _description($dndrace, $new_npc, $nickname)
     {
-        if ($dndrace == "Fallen Aasimar") {
+        if ($dndrace->getRace() == "Fallen Aasimar") {
             $description = self::descriptionFallen($dndrace, $new_npc, $nickname);
         } else {
             $description = self::descriptionRegular($new_npc, $nickname);
@@ -143,7 +141,7 @@ class aasimar extends Name
             MaterialGenerator::getMetalType() . " 
         shine but withered to " . $hairShine;
 
-        $description = "The " . $dndrace . " " . $nickname . " bears the mark of " .
+        $description = "The " . $dndrace->getRace() . " " . $nickname . " bears the mark of " .
             $new_npc->getHisHer() . " fall 
             through many different physical features, like " . $hairShine .
             " and a very gaunt, almost corpse-like appearance. ";
