@@ -1,5 +1,3 @@
-# Voorbereiding Eindopdracht
-
 ## Webserver
 Stel de document root van MAMP in op de /public map.
 
@@ -39,8 +37,6 @@ Open de webpagina van mamp en ga naar deze website.
 Analyseer de werking van deze applicatie.
 
 - Bekijk het bestand bootstrap.php, dit is het startpunt van de applicatie.
-- Indien je Opdracht 4 nog niet gemaakt hebt, kun je dit project gebruiken en uitbreiden met de overige gewenste functionaliteit.
-https://phpcursus.herokuapp.com/cursus/module3/opdracht/
 
 ## Structuur
 
@@ -50,5 +46,3 @@ https://phpcursus.herokuapp.com/cursus/module3/opdracht/
 - *views*: bevat de bestanden met html die aan de gebruiker worden gepresenteerd
 - *bootstrap.php*: het beginpunt van de applicatie
 - *routes.php*: handelt de routes af zodat de juiste controller wordt aangeroepen en juiste method. 
-
-
